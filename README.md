@@ -5,7 +5,7 @@ The front-end study 保存代码
 
 #### 使用说明
 
-克隆到本地
+git clone 
 
 #### 参与贡献
 
