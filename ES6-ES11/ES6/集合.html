@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    //数组去重
+    const arr = [1,2,3,4,1,2]
+    /*const result = [...new Set(arr)]
+    console.log(result instanceof Array);*/
+    const arr1 = [3,4,5,4,3]
+    //求出两个数组的交集
+    /*const result = [...new Set(arr)].filter(value => {
+        let s2 = new Set(arr1)
+        if (s2.has(value)){
+            return value
+        }else {
+            return false
+        }
+    })*/
+    /*let result = [...new Set(arr)].filter(value => new Set(arr1).has(value))
+    console.log(result);*/
+
+    //求出两个数组的并集
+    /*let newarr = [...arr,...arr1]
+    let result = [...new Set(newarr)]
+    console.log(result);
+    let s = new Set(arr)*/
+
+    //求出两个数组的差集
+    /*let result = [...new Set(arr)].filter(value => {
+        let s2 = new Set(arr1);
+        if (!s2.has(value)){
+            return true
+        }
+    })*/
+    let result = [...new Set(arr)].filter(value => !(new Set(arr1).has(value)))
+    console.log(result);
+
+
+    /*
+            let newarr = arr.filter(value => {
+                if (value > 2){
+                    return true
+                }
+            })
+            console.log(newarr);*/
+
+    console.time()
+    for (let i = 0 ; i < 200 ; i++){
+        const arr = new Array(1000)
+    }
+    console.timeEnd()
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#tpqh{
+				margin: 50px auto;
+				width: 1000px;
+				height: 650px;
+				background-color: darkturquoise;
+				text-align: center;
+			}
+			#img{
+				width: 1000px;
+				height: 580px;
+			}
+			#wz{
+				padding: 5px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				imgarr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.jpg"];
+				index = 0;
+				var syz = document.getElementById("syz");
+				var xyz = document.getElementById("xyz");
+				var tp = document.getElementsByTagName("img")[0];
+				var wz = document.getElementById("wz");
+				wz.innerHTML="一共有"+imgarr.length+"张，现在是第"+(index+1)+"张"
+				syz.onclick=function(){
+					index--;
+					if (index < 0) {
+						index = imgarr.length-1
+					}
+					tp.src=imgarr[index];
+					wz.innerHTML="一共有"+imgarr.length+"张，现在是第"+(index+1)+"张"
+				};
+				
+				xyz.onclick=function(){
+					index++;
+					if (index > imgarr.length-1) {
+						index = 0;
+					}
+					tp.src=imgarr[index];
+					wz.innerHTML="一共有"+imgarr.length+"张，现在是第"+(index+1)+"张"
+				};
+			};
+			
+		</script>
+	</head>
+	<body>
+		<div id="tpqh">
+			<p id="wz"></p>
+			<img id = "img" src="img/1.jpg"></img>
+			<button id="syz">上一张</button>
+			<button id="xyz">下一张</button>
+		</div>
+	</body>
+</html>

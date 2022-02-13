@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object.creat</title>
+</head>
+<body>
+<script>
+  function fn(){
+      console.log('this is a function')
+  }
+  const obj = {
+      a:1,
+      b:2
+  }
+  let m = Object.create(obj)
+  m.z = 2;
+  console.log(m);
+</script>
+</body>
+</html>

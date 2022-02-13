@@ -1,0 +1,30 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "The front-end study",
+  "main": "Node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "int-test": "mocha --require babel-core/register --recursive test",
+    "lint": "eslint --ext .js --ext .jsx client/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/preset-env": "^7.16.11",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "browserify": "^17.0.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jquery": "^3.6.0",
+    "uniq": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/imng696/front-end.git"
+  }
+}

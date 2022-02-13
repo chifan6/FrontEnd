@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+</head>
+<script>
+  const p = new Promise(function (resolve, reject) {
+    const XML = new XMLHttpRequest();
+    XML.open('GET','http://poetry.apiopen.top/sentences')
+    XML.send()
+    XML.onreadystatechange = function (){
+      if (XML.readyState === 4){
+        if (XML.status <= 300 && XML.status >= 200){
+          resolve(XML.response)
+        }else{
+          reject(XML.status)
+        }
+      }
+    }
+  })
+  p.then(function (value){
+    console.log(value);
+  },function (reason){
+    console.log(reason);
+  })
+
+  /*const arr1 = [1,2,3]
+  const arr2 = [4,5,6]
+  console.log(arr1.join("\t\n"));*/
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+			}
+			#box2{
+				width: 500px;
+				height: 500px;
+				background-color: yellow;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var box = document.getElementById("box");
+				var ht = document.documentElement;
+				var body1 = document.body;
+				document.onmousemove=function(event){
+					event = event || window.event;
+					var t = ht.scrollTop||body1.scrollTop;
+					var l = ht.scrollLeft||body1.scrollLeft;
+					var x = event.clientX;
+//					console.log("X坐标："+x)
+					var y = event.clientY;
+//					console.log("Y坐标："+y)
+//					console.log("<---->")
+					box.style.left = x + l + "px";
+					box.style.top = y + t + "px";
+				}
+				var box2 = document.getElementById("box2");
+				box2.onmousemove = function(event){
+					event = event || window.event;
+					event.cancelBubble = true;
+				};
+			}
+		</script>
+	</head>
+	<body style="height: 10000px;">
+		<div id="box2"></div>
+		<div id="box"></div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 150px;
+				height: 180px;
+				margin: 50px auto;
+				text-align: center;
+				border-style: solid solid solid solid;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var Mat = document.getElementById("Mat");
+				var Mat1 = document.getElementById("Mat1");
+				var obj = {random01:"",random02:"",random03:"",timer:"",timer1:""}
+				var btn01 = document.getElementById("btn01").onclick = function(){
+					clearInterval(obj.timer);
+					obj.timer = setInterval(function(){
+					obj.random01 = Math.round((Math.random()*9)+1);
+					obj.random02 = Math.round((Math.random()*9)+1);
+					obj.random03 = Math.round((Math.random()*9)+1);
+					Mat.innerHTML = obj.random01 + "&nbsp&nbsp&nbsp" + obj.random02 + "&nbsp&nbsp&nbsp" + obj.random03;
+					},20000)
+				}
+					var btn02 = document.getElementById("btn02").onclick =function(){
+					clearInterval(obj.timer1);
+					obj.timer1 = setInterval(function(){
+					var sum = obj.random01 + obj.random02 + obj.random03;
+						Mat1.innerHTML = sum
+					},20000)
+				}
+			}
+		</script>
+	</head>
+	<body>
+	<div id="box">
+		<p id="Mat">0&nbsp&nbsp0&nbsp&nbsp0</p>
+		<button id="btn01">点击获取随机数</button>
+		<br />
+		<p id="Mat1">0</p>
+		<button id="btn02">点击求和</button>
+	</div>
+	</body>
+</html>

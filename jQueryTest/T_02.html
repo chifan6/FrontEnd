@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <button id="btn01">测试</button>
+    <br>
+    <input type="text" id="t1"></input>
+    <br>
+    <input type="text" id="t2"></input>
+</div>
+</body>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        var i = 2;
+        $("#btn01").click(function () {
+            alert($(this).html())
+            i++;
+            $("<br><input type=\"text\" id=\"t"+i+"\"></input>").appendTo("div")
+        })
+    })
+    var arr =[1,2,3,4,5,6];
+    $.each(arr,function (index,item){
+        console.log(item)
+    })
+</script>
+</html>

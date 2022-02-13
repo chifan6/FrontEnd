@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网易新闻</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .news_container{
+            width: 300px;
+            height: 377px;
+            margin: 50px auto;
+            border-top: #ddd 1px solid;
+        }
+        .new_head{
+            font-size: 20px;
+            font-weight: bold;
+            border-top: 1px solid red;
+            display: inline-block;
+            margin-top: -1px;
+            padding: 10px 0;
+        }
+        .new_img{
+            width: 100%;
+            height: 130px;
+        }
+        .new_img h2{
+            margin-top: -2px;
+            height: 35px;
+            font-weight: bold;
+        }
+        .new_img h2 span{
+            padding-left: 10px;
+            background-color: red;
+            display: inline-block;
+            width: 40px;
+            font-size: 14px;
+            line-height: 30px;
+            color: #fff;
+        }
+        .new_img a{
+            color: black;
+            text-decoration: None;
+        }
+        .new_img a:hover{
+            color: red;
+        }
+        .news_list ul li{
+            margin-bottom: 5px;
+        }
+        .news_list li:before{
+            content: "•";
+            color:#dddddd;
+            padding-right: 5px;
+        }
+        .news_list li a {
+            color: #666;
+            text-decoration: None;
+            font-size: 14px;
+            font-family: 宋体;
+        }
+        .news_list li a:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="news_container">
+    <div class="new_head">
+        <h1>新闻专题</h1>
+    </div>
+    <div class="new_img">
+        <div class="img">
+            <a href="#"><img src="img/news01.jpg" alt=""></a>
+        </div>
+        <h2><span>HOT</span>
+            <strong><a href="#">2022年北京冬奥会</a></strong>
+        </h2>
+    </div>
+    <div class="news_list">
+        <ul>
+            <li><a href="#">新村走基层</a></li>
+            <li><a href="#">国内多省现本土疫情</a></li>
+            <li><a href="#">变异毒株奥秘克戎来势汹汹</a></li>
+            <li><a href="#">哈萨克斯坦爆发骚乱</a></li>
+        </ul>
+    </div>
+</div>>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jQueryTest/js/jquery.js"></script>
+    <script type="text/javascript">
+        const getBase64 = function(img) { //传入图片路径，返回base64，使用getBase64(url).then(function(base64){},function(err){});
+            let getBase64Image = function(img, width, height) { //width、height调用时传入具体像素值，控制大小,不传则默认图像大小
+                let canvas = document.createElement("canvas");
+                canvas.width = width ? width : img.width;
+                canvas.height = height ? height : img.height;
+                let ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                let dataURL = canvas.toDataURL();
+                return dataURL;
+            }
+            let image = new Image();
+            image.crossOrigin = '';
+            image.src = img;
+            let deferred = $.Deferred();
+            if (img) {
+                image.onload = function() {
+                    deferred.resolve(getBase64Image(image));
+                }
+                return deferred.promise();
+            }
+        }
+        let result = getBase64("轮播图/img/1.jpg")
+        //console.log(result)
+
+
+
+        const random = function(min, max) { // 生成随机数范围
+            if (arguments.length === 2) {
+                return Math.floor(min + Math.random() * ((max + 1) - min))
+            } else {
+                return null
+            }
+        }
+        //let result = random(1,10000)
+        //console.log(result)
+
+        const changeCase = function(str, type) { // 字符串大小写转换 type:  1:首字母大写  2：首页母小写  3：大小写转换  4：全部大写  5：全部小写
+            type = type || 4
+            switch (type) {
+                case 1:
+                    return str.replace(/\b\w+\b/g, function(word) {
+                        return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase()
+                    })
+                case 2:
+                    return str.replace(/\b\w+\b/g, function(word) {
+                        return word.substring(0, 1).toLowerCase() + word.substring(1).toUpperCase()
+                    })
+                case 3:
+                    return str.split('').map(function(word) {
+                        if (/[a-z]/.test(word)) {
+                            return word.toUpperCase()
+                        } else {
+                            return word.toLowerCase()
+                        }
+                    }).join('')
+                case 4:
+                    return str.toUpperCase()
+                case 5:
+                    return str.toLowerCase()
+                default:
+                    return str
+            }
+        }
+        //let str = "liqiming"
+        //console.log(changeCase(str,4))
+
+        console.log(Date.now())
+
+    </script>
+</head>
+<body>
+</body>
+</html>

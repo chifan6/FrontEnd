@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width:300px;
+				height: 301px;
+				background-color: yellow;
+				overflow: auto;
+				position: relative;
+			}
+			#box1{
+				width: 200px;
+				height: 600px;
+				background-color: red;
+				/*margin: 100px;*/
+				
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+			var dox =document.getElementById("box");
+			var dox1 =document.getElementById("box1");
+			var btn = document.getElementById("btn").onclick=function(){
+				box.style.width="400px";
+				box.style.height="400px";
+				box.style.backgroundColor="red"
+				console.log("当前宽是："+getstyle(box,"width"));
+				console.log("当前高是："+getstyle(box,"height"));
+				console.log("当前颜色是："+getstyle(box,"backgroundColor"));
+
+				//可见高度宽度
+				var clinetW = dox.clientWidth;
+				var clinetH = dox.clientHeight;
+				var clinetW1 = dox1.clientWidth;
+				var clinetH1 = dox.clientHeight;
+				console.log("box可见宽:"+clinetW);
+				console.log("box可见高:"+clinetH)
+				console.log("box1可见宽:"+clinetW1);
+				console.log("box1可见高:"+clinetH1)
+				
+				//可见高度宽度(不包括方框)
+				var offsetW = dox.offsetWidth;
+				var offsetH = dox.offsetHeight;
+				var offsetW1 = dox1.offsetWidth;
+				var offsetH1 = dox1.offsetHeight;
+				var offsetP = dox1.offsetParent;
+				var offsetL = dox1.offsetLeft;
+				console.log("box整体宽:"+offsetW);
+				console.log("box整体高:"+offsetH)
+				console.log("box1整体宽:"+offsetW1);
+				console.log("box1整体高:"+offsetH1);
+				console.log("box1:"+offsetP)
+				console.log(offsetL)
+				
+				//整体高度宽度
+				var scrollH = dox1.scrollHeight;
+				var scrollW = dox1.scrollWidth;
+				//滑动的高度宽度
+				var scrollT = dox1.scrollTop;
+				var scrollL = dox1.scrollLeft;
+				console.log(scrollH);
+				console.log(scrollW);
+				console.log(scrollT);
+				console.log(scrollL);
+				
+				//可以判断是否滑到底部
+				var scrollw = dox.scrollHeight - dox.scrollTop 
+				console.log(scrollw);
+			};
+			function getstyle(obj,name){
+				if (window.getComputedStyle) {
+					return getComputedStyle(obj,null)[name];
+				} else{
+					return obj.currentStyle[name];
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box1"></div></div>
+		<br />
+		<button id="btn">点击事件</button>
+	</body>
+</html>

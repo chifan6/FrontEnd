@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symbol</title>
+    <script>
+        let Symbol1 = Symbol("wef");
+        console.log(Symbol1, typeof Symbol1);
+
+
+        let obj = {
+            name: "lqm",
+            age: 23,
+            up: function () {
+                console.log('我是旧up的方法')
+            },
+            dow: function () {
+                console.log("我是旧的dow方法")
+            },
+            [Symbol.for("text")]: function () {
+                console.log('我是text方法')
+            }
+        }
+        obj[Symbol("up")] = function () {
+            console.log('我是up的新方法')
+        }
+        obj[Symbol("up")] = function () {
+            console.log('我是up的第二个新方法')
+        }
+        obj[Symbol.for("text")]();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

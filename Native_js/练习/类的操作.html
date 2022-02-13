@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.b1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.b2{
+				height: 200px;
+				background-color: yellow;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var btn01 = document.getElementById("btn01");
+				var box01 =document.getElementById("box01");
+				btn01.onclick = function(){
+					toggleClass(box01,"b2")
+				};
+				function addClass (obj,cn){
+					obj.className += " "+cn
+				}; 
+				function hasClass (obj,cn){
+					var reg = new RegExp("\\b"+cn+"\\b")
+					return reg.test(obj.className)
+				};
+				function remove (obj,cn){
+					var reg = new RegExp("\\b"+cn+"\\b")
+					obj.className = obj.className.replace(reg,"")
+				};
+				function toggleClass(obj,cn){
+					if (hasClass (obj,cn)) {
+						remove (obj,cn);
+					}else{
+						addClass (obj,cn);
+					};
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<button id="btn01">点击添加类</button>
+		<br /><br />
+		<div id="box01" class="b1"></div>
+	</body>
+</html>

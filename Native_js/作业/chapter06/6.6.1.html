@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>6.6.1</title>
+<link rel="stylesheet" href="css/zrzy.css" />
+	</head>
+<body id="Investors">
+<div id="doc2" class="yui-t3">
+    <div id="hd">
+                <div class="yui-gd">
+                        <div class="yui-u first">
+                                <h1 id="logo"><a href="/">个人主页</a></h1>
+                        </div>
+<div class="yui-u sh_nav">
+<ul class="nav">
+	<li><a href="/"><strong>个人主页</strong></a>
+		<ul style="z-index: 1049; display: none; ">
+			<li><a href="/member/index.php">登陆</a></li>
+			<li><a href="/member/index_do.php?fmdo=user&dopost=regnew">注册</a></li>
+			<li><a href="/edit/web_edit.php">编辑主页</a></li>
+			<li><a href="/member/index_do.php?fmdo=login&dopost=exit" class="last">退出登陆</a></li>
+		</ul>
+	</li>
+	<li><a href="/muban/"><strong>主页模板</strong></a>	</li>
+	<li><a  href="/bizhi/"><strong>主页壁纸</strong></a>	</li>
+	<li><a href="/gonggao/"><strong>官方公告</strong></a></li>
+	<li><a href="/bangzhu/"><strong>帮助文档</strong></a>	</li>
+	<li><a href="/html/"><strong>用户文档</strong></a>	</li>
+</ul>
+                  </div>
+                </div>
+        </div>			
+	<div id="bd">
+	<div style="width:100%;">
+		<div style="width:22%; float:left;"> 
+<ul id="wshnav">
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script language="javascript" type="text/javascript">
+	$(function(){
+		$("a[_for]").mouseover(function(){
+			$(this).parents().children("a[_for]").removeClass("thisclass").parents().children("dd").hide();
+			$(this).addClass("thisclass").blur();
+			$("#"+$(this).attr("_for")).show();
+		});
+		$("a[_for=uc_member]").mouseover();
+		$("a[_for=flink_1]").mouseover();
+	});
+	function CheckLogin(){
+	  var taget_obj = document.getElementById('_userlogin');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_loginsta.php");
+	  DedeXHTTP = null;
+	}
+-->
+</script>
+<dd id="uc_member" >
+     <div id="_userlogin">
+      <div class="userlogin">
+       <form name="userlogin" action="/member/index_do.php" method="POST">
+        <input type="hidden" name="fmdo" value="login" />
+        <input type="hidden" name="dopost" value="login" />
+        <input type="hidden" name="keeptime" value="604800" />
+        <div class="fb"><span>用户名:</span>
+         <input type="text" name="userid" size="20" class="ipt-txt" />
+        </div><br>
+        <div class="fb"><span>密　码:</span>
+         <input type="password" name="pwd" size="20" class="ipt-txt" />
+        </div><br>
+        
+        <div class="fb"><span>验证码:</span>
+         <input type="text" name="vdcode" size="8" class="ipt-txt" />
+         <img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor:pointer;margin-left:0px;text-transform:uppercase;" alt="看不清？点击更换" src="/include/vdimgck.php"/></div>
+        <br>
+        <div class="submit">
+          　<button type="submit" class="btn-1">登录</button> 　<a href="/member/index_do.php?fmdo=user&dopost=regnew" >注册帐号</a>　<a href="/member/resetpassword.php">忘记密码?</a> </div>
+       </form>
+      </div>
+     </div>
+     <script language="javascript" type="text/javascript">CheckLogin();</script>
+    </dd>
+</ul>
+<div class="f12">
+会员个人主页欣赏<hr>
+      <div class="e7">
+	  <li><a href="/member/home.php?mid=22" target="_blank"><img src="/member/templets/images/dfboy.png" alt='angkor84的空间' width="52" height="52" /><br>angkor84</a></li><li><a href="/member/home.php?mid=10" target="_blank"><img src="/member/templets/images/dfgirl.png" alt='angkor11的空间' width="52" height="52" /><br>angkor11</a></li><li><a href="/member/home.php?mid=24" target="_blank"><img src="/member/templets/images/dfboy.png" alt='angkor86的空间' width="52" height="52" /><br>angkor86</a></li><li><a href="/member/home.php?mid=23" target="_blank"><img src="/member/templets/images/dfboy.png" alt='angkor85的空间' width="52" height="52" /><br>angkor85</a></li>
+      </div>
+</div>
+<div id="wsh_rightCol"> 
+<div id="wsh_miniQuote">
+	<div class="wsh_miniQuote_Head font10">赞助商链接</div>
+<div class="center"><img src="http://webhome123.com/images/da01.jpg" width='180' height='150' alt=''></div>
+</div> 
+<div id="toolbar">
+<div class="ToolbarContent">  
+  <div class="ToolbarTitle font10">添加到收藏夾分享</div>	 
+    <ul>      
+<div class="sharebar_div_02">		<a href="javascript:void(0);" onClick="sharebarto(&#39;tsina&#39;);return false;" class="stitle"><span class="stico stico_tsina">新浪微博</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;vivi&#39;);return false;" class="stitle"><span class="stico stico_sina">新浪收藏</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;t163&#39;);return false;" class="stitle"><span class="stico stico_t163">网易微博</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;tsohu&#39;);return false;" class="stitle"><span class="stico stico_tsohu">搜狐微博</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;kaixin001&#39;);return false;" class="stitle"><span class="stico stico_kaixin001">开心网</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;renren&#39;);return false;" class="stitle"><span class="stico stico_renren">人人网</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;qq&#39;);return false;" class="stitle"><span class="stico stico_qq">QQ书签</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;qzone&#39;);return false;" class="stitle"><span class="stico stico_qzone">QQ空间</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;baidu&#39;);return false;" class="stitle"><span class="stico stico_baidu">百度收藏</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;google&#39;);return false;" class="stitle"><span class="stico stico_google">谷歌收藏</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;douban&#39;);return false;" class="stitle"><span class="stico stico_douban">豆瓣</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;taojianghu&#39;);return false;" class="stitle"><span class="stico stico_taojianghu">淘江湖</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;51&#39;);return false;" class="stitle"><span class="stico stico_51">51社区</span></a><a href="javascript:void(0);" onClick="sharebarto(&#39;bai&#39;);return false;" class="stitle"><span class="stico stico_bai">白社会</span></a><div style="clear:both"></div></div>
+    </ul>
+	</div>
+	<div class="ToolbarContent">  
+	<div class="ToolbarTitle font10">搜索文档</div>
+	<ul>
+		<li>
+        <form name="formsearch" action="/plus/search.php">
+            <input type="hidden" name="kwtype" value="0" />
+            <input type="text" name="q" id="keyword" class="wsh_searchBox" value="keyword(s)" onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" >
+            <input type="submit" value="Go" class="submit">
+        </form>
+		</li>	
+	</ul>	
+  </div>  
+</div>
+	</div></div>
+		<div style="width:75%; float:right;">
+		      <div id="menu_container" class="wsh_floatR" style="width:20%;">      
+		        <a href="#" onclick="addfavorite()" rel="nofollow"><img src="/images/clear_print.gif" border="0" alt="收藏个性主页" title="收藏个性主页" width="16" height="16"></a>&#160;&#160;		      </div>
+			<h1 style="width:80%; margin-top:0;">个人主页</h1>
+'    <div class="focus">
+    <ul class="rslides f426x240" style="margin-left:0px; margin-top:0px;">
+        <li><a href="/member/home.php?mid=36" target="_blank"><img src="http://webhome123.com/uploads/allimg/121025/1-121025155126420.gif" alt="" width="711" height="317"/></a></li>
+        <li><a href="/member/home.php?mid=29" target="_blank"><img src="http://webhome123.com/uploads/allimg/121012/1-1210121FGR40.gif" alt="" width="711" height="317"></a></li>
+        <li><a href="/member/home.php?mid=259" target="_blank"><img src="http://webhome123.com/uploads/allimg/121114/1-1211141FA5135.gif" alt="" width="711" height="317"/></a></li>
+        <li><a href="/member/home.php?mid=10" target="_blank"><img src="/images/04.jpg" alt="" width="711" height="317"/></a></li>
+        <li><a href="/member/home.php?mid=34" target="_blank"><img src="http://webhome123.com/uploads/allimg/121019/1-12101921214a10.gif" alt="" width="711" height="317"/></a></li>
+    </ul>
+</div>
+<table class="dataTable" cellspacing="0" cellpadding="0" width="100%" summary="">
+  <tbody><tr><th>主页介绍</th></tr>
+  <tr class="primary"><td><div id="info">　　个人主页网是一个开放式的个人主页免费平台系统,只需要5秒<a href="http://webhome123.com/member/index_do.php?fmdo=user&dopost=regnew" target="_blank">快速注册</a>后,用户便可以得到一个精美的个人主页(<a href="http://webhome123.com/member/home.php?mid=23" target="_blank">示例</a>).在这个用户独有的个人主页上,用户可以diy修改上面的任何内容,包括:文本内容,链接地址,背景图片,文本框颜色,文本框位置等,并且个人主页网自带许多已经做好的精美<a href="http://webhome123.com/muban/" target="_blank">模板</a>,一键导入,简单方便,适用于美化浏览器主页,便捷上网操作.<p>
+  <div>　　　
+  <button id='g1' class ='ga' onclick="javascript:location='/member/index_do.php?fmdo=user&dopost=regnew'"></button><button id='g2' class ='ga' onclick="javascript:location='/member/'"></button><button id='g3' class ='ga' onclick="javascript:location='/edit/web_edit.php'"></button></div></div></td></tr>
+</tbody></table>
+<table class="dataTable" cellspacing="0" cellpadding="0" width="100%">
+  <tbody><tr><th colspan="2">公告 & 帮助</th></tr>
+    <tr class="primary">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>12月16日,2016</nobr>
+        <br>01:12 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/gonggao/1149/"><strong>个人主页网更换服务器地址速度更快</strong></a><p>感谢大家多年以来的支持 近日,本站以从美国主机更改为香港主机 从原来的ping 300多ms 到现在稳定ping 46 ms 速度方面可以说快了7倍 网站方面大家放心使用 本站也算了4年老站了 继续稳定默默无闻的为大家服务......</div>
+    </td>
+  </tr>
+<tr class="alternate">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>03月20日,2014</nobr>
+        <br>10:03 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/bangzhu/1135/"><strong>个人主页免登陆编辑主页系统开放</strong></a><p>个人主页最新免登陆编辑主页系统开放使用 在用户登陆后,进入编辑页面 如下图, 可见免登陆key的文本框,这里可以输入32位的key值,输入好key值后,先按最下方的确定保存数据 然后返回编辑页面,再按打开免登陆地址,这样会在新窗口打开我们的个人主页,如: http://webhome123.......</div>
+    </td>
+  </tr>
+<tr class="primary">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>04月09日,2013</nobr>
+        <br>08:04 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/gonggao/1108/"><strong>个人主页网现已修复 开放使用</strong></a><p>前几天,因为空间续费问题,耽搁了几天,现在已经恢复了,请喜爱本站的用户放心使用. 这个也算是本人自作聪明吧,在使用支付宝支付空间续费的时候,第一次忘记支付密码,然后空间商的renew按钮一次没支付的话要等24小时才能再次支付,于是本人把支付宝的交易链接保存下来,等我......</div>
+    </td>
+  </tr>
+<tr class="alternate">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>02月01日,2013</nobr>
+        <br>05:02 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/gonggao/1047/"><strong>额,最近两日网站出了问题,现已修复</strong></a><p>近两日可能出现无法注册,无法编辑个人主页的情况,现已修复,各位用户可以继续使用. 多谢大家的支持.祝大家天天都有好心情.......</div>
+    </td>
+  </tr>
+<tr class="primary">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>11月21日,2012</nobr>
+        <br>05:11 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/bangzhu/935/"><strong>重要！网站部分功能缓存BUG解决方法</strong></a><p>近日， 个人主页 网网速大优化，包括用户个人主页页面的访问速度都得到了显著提升。 尤其是开启网页缓存技术后，大部分页面都会先直接调用客户端缓存的网页文件，所以速度非常快，在访问用户个人主页时，基本上已经达到秒开的境地。 但是也正是因为网页缓存，会带来不......</div>
+    </td>
+  </tr>
+<tr class="alternate">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>11月21日,2012</nobr>
+        <br>04:11 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/bangzhu/918/"><strong>个人主页百度搜索功能添加方法</strong></a><p>大家可以按个人喜好选择是否添加这个功能，也还不错吧，但现在大多数浏览器都自带的有搜索框，还是看需要添加吧。下面是演示。 首先是百度搜索功能的代码，如下： form action=http://www.baidu.com/baidu target=_blankinput name=tn type=hidden value=baidua href=h......</div>
+    </td>
+  </tr>
+<tr class="primary">
+    <td nowrap="nowrap" width="15%" class="text">
+         <nobr>11月21日,2012</nobr>
+        <br>04:11 
+    </td>        
+    <td width="85%"><div  class="text"><a href="/bangzhu/910/"><strong>个人主页添加超链接方法</strong></a><p>在完成注册后，我们可以在自己的个人主页上添加各种内容，最常使用的就是添加超链接，记住一些常用的网址，方便上网冲浪。 首先进入我们的编辑个人主页页面 这里我们做一个百度的超链接，先在文本编辑器里，输入百度两个字，然后用鼠标左键按住从第一个字到最后一个字......</div>
+    </td>
+  </tr>
+
+</tbody></table>
+<table class="dataTable" cellspacing="0" cellpadding="0" width="100%">
+  <tbody><tr><th colspan="3">最新模板 & 壁纸 & 用户文档</th></tr>
+  <tr class="[field:global runphp='yes' name=autoindex]$a="alternate";$b="primary";if ((@me%2)==0) @me=$a;else @me=$b;[/field:global]">
+    <td nowrap="nowrap" width="100%" class="text float30">
+    <li><a href="/html/13314/">暗黑的练金术士漫画百度云全集资源</a></li>
+<li><a href="/html/13313/">阿尔斯朗战记漫画下载分享</a></li>
+<li><a href="/html/13312/">爱的维他命漫画资源分享下载</a></li>
+<li><a href="/html/13311/">爱的拼图漫画百度云全集资源</a></li>
+<li><a href="/html/13310/">鼠辈怪盗漫画下载分享</a></li>
+<li><a href="/html/13309/">失落的碎片漫画下载分享</a></li>
+<li><a href="/html/13308/">美形研究社漫画下载分享</a></li>
+<li><a href="/html/13307/">美女恐龙妹DX漫画网盘资源下载</a></li>
+<li><a href="/html/13306/">邪神传说漫画百度云分享</a></li>
+<li><a href="/html/13305/">读与死漫画下载分享</a></li>
+<li><a href="/html/13304/">地狱游戏漫画百度云全集资源</a></li>
+<li><a href="/html/13303/">魔爱漫画百度云全集资源</a></li>
+<li><a href="/html/13302/">炒翻天漫画百度云分享</a></li>
+<li><a href="/html/13301/">春飞行-四记漫画全集百度云下载分享</a></li>
+<li><a href="/html/13300/">变身金童漫画资源分享下载</a></li>
+<li><a href="/html/13299/">仙曲漫画百度云分享</a></li>
+<li><a href="/html/13298/">吸血鬼娃娃漫画百度云下载</a></li>
+<li><a href="/html/13297/">魔界学园漫画百度云全集资源</a></li>
+<li><a href="/html/13296/">透明人间漫画网盘资源下载</a></li>
+<li><a href="/html/13295/">守护言巫女漫画百度云下载</a></li>
+<li><a href="/html/13294/">三王一后漫画资源分享下载</a></li>
+<li><a href="/html/13293/">扑杀天使漫画下载分享</a></li>
+<li><a href="/html/13292/">拇指罗曼史漫画下载分享</a></li>
+<li><a href="/html/13291/">迷失之夏漫画百度云下载</a></li>
+<li><a href="/html/13290/">魔童大牙漫画下载分享</a></li>
+<li><a href="/html/13289/">今日的5年2班漫画下载分享</a></li>
+<li><a href="/html/13288/">见习死神VS见习天使漫画网盘资源下载</a></li>
+<li><a href="/html/13287/">蜜X蜜DROPS漫画百度云全集资源</a></li>
+<li><a href="/html/13286/">东京80年代漫画网盘资源下载</a></li>
+<li><a href="/html/13285/">爱的枷锁漫画网盘资源下载</a></li>
+
+</td>
+  </tr>
+</tbody></table>
+
+
+<br>
+<div class="fontyh noa">友情链接: <a href="http://www.baidu.com" target="_blank">百度</a> <a href="https://webhome123.com/kanmh/" target="_blank">kanmh看漫画下载器</a> <a href="http://shandianruanjian.com" target="_blank">razer blade</a> <a href="http://akesu123.com" target="_blank">阿克苏信息网</a>
+</div >
+	</div>
+	</div>
+	</div>
+</div>
+        <div id="ft">
+		<div class="wrap">
+		<div class="yui-g">
+			<div class="yui-u first">
+                        
+<div id="HTMLBlock41" class="HTMLBlock">
+<div class="yui-gb">
+<h4>快速导航</h4>
+<div class="yui-u first fontyh  noa">
+<a href="/">个人主页首页</a><br>
+<a href="/gonggao/">官方公告文档</a><br>
+<a href="/muban/">个人主页模板</a><br>
+
+</div>
+<div class="yui-u fontyh noa">
+<a href="/member/index_do.php?fmdo=user&dopost=regnew">个人主页注册</a><br>
+<a href="/bangzhu/">使用帮助说明</a><br>
+<a href="/bizhi/">个人主页壁纸</a><br>
+</div>
+<div class="yui-u fontyh noa">
+<a href="/member/index.php">个人主页登陆</a><br>
+<a href="/html/">个人用户文档</a><br>
+<a href="/edit/web_edit.php">个人主页编辑</a><br>
+</div>
+</div></div>			</div>
+			<div class="yui-u right">
+	                        
+<div id="HTMLBlock63" class="HTMLBlock">
+<div class="fontyh">在微博上与我们交流</div>
+<div class="peeps tweet fontyh">
+<div class="gloss"><div><a href="#" onclick="javascript:location='http://t.qq.com/angkor1982?preview'" title="腾讯微博">@腾讯微博</a></div></div>
+<div class="gloss"><div><a href="#" onclick="javascript:location='http://t.163.com/webhome123'" title="网易微博">@网易微博</a></div></div>
+<div class="gloss"><div><a href="#" onclick="javascript:location='http://weibo.com/u/3001384232'" title="新浪微博">@新浪微博</a></div></div>
+<div class="gloss"><div><a href="#" onclick="javascript:location='http://blog.sina.com.cn/u/3001384232'" title="新浪博客">@新浪博客</a></div></div>
+<div class="gloss"><div><a href="#" onclick="javascript:location='http://hi.baidu.com/new/webhome123'" title="百度空间">@百度空间</a></div></div><br><br>
+<div class="gloss"><div><a href="#" title="个人主页贴吧" style="color: #000 !important">@个人主页贴吧</a></div></div>
+ 
+</div></div>				<span class="copy">
+                                
+<div id="HTMLBlock39" class="HTMLBlock">
+<br>Copyright &copy; 2012 <a href="http://webhome123.com/">个人主页网</a> http://webhome123.com 版权所有All Rights Reserved免责声明
+</div>				</span>
+			</div>
+		</div>
+		</div>
+        </div><span style="display:none;"><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff736367699304ebb069b531fb58d54d0' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</span >
+<script type="text/javascript" src="/images/jquery.js"></script>
+</body>
+</html>

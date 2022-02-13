@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const m = new Map();
+  m.set("name", "liqiming");
+  m.set("age", 24);
+  m.set("fn", function () {
+      console.log('That\'s one way to do it')
+  });
+  let key = {
+      name: "zhangsan",
+      age: 23
+  };
+  m.set(key, [1, 2, 4, 5]);
+  console.log(m.has("name"));
+  console.log(m.size);
+  console.log(m.get("name"));
+  console.log(m.get("fn")());
+  console.log(m);
+  let s = [...new Set(m)];
+  console.log(s[0][1]);
+  for (let v of m){
+      console.log(v);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				margin: 40px auto;
+				width: 200px;
+			}
+			#employeeTable td{
+				padding: 0;
+				border-style: solid;
+				text-align: center;
+			}
+			#employeeTable th{
+				padding: 0;
+				border-style: solid;
+				text-align: center;
+			}
+			#formDiv{
+				width: 200px;
+				border-style: solid;
+				margin: 50px;
+			}
+			#formDiv h4{
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var btn = document.getElementById("addEmpButton");
+				var tbody = document.getElementsByTagName("tbody")[0];
+				var name = document.getElementById("enpName");
+				var email = document.getElementById("email");
+				var salary = document.getElementById("salary");
+				//添加员工
+				btn.onclick = function(){
+					var tr = document.createElement("tr");
+					tr.innerHTML = "<td>"+name.value+"</td>"
+								+"<td>"+email.value+"</td>"
+								+"<td>"+salary.value+"</td>"
+								+"<td><a href = 'javascript:;' class='linke'>Delete</a></td>"
+					tbody.appendChild(tr)
+				}
+				//删除员工
+					tbody.onclick =function(event){
+						var classname = event.target.className;
+						var table = event.target.parentNode.parentNode.parentNode;
+						var tr = event.target.parentNode.parentNode;
+						var name = tr.children[0].innerHTML
+						if (classname == "linke") {
+							var qd = confirm("确定要删除"+name+"?");
+							if(qd){
+								table.removeChild(tr);		
+							}	
+						}
+						return false
+					};	
+			};		
+		</script>
+	</head>
+	<body>
+		<table id="employeeTable">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Salary</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr>
+				<td>Tom</td>
+				<td>tom@tom.com</td>
+				<td>5000</td>
+				<td><a href = "deleteEmp?id=001" class="linke">Delete</a></td>
+			</tr>
+			<tr>
+				<td>Jerry</td>
+				<td>jerry@tom.com</td>
+				<td>8000</td>
+				<td><a href = "deleteEmp?id=002" class="linke">Delete</a></td>
+			</tr>
+			<tr>
+				<td>Bob</td>
+				<td>bob@tom.com</td>
+				<td>10000</td>
+				<td><a href = "deleteEmp?id=003" class="linke">Delete</a></td>
+			</tr>
+		</table>
+		<div id="formDiv">
+			<h4>添加员工</h4>
+			
+			<table>
+				<tr>
+					<tb class="word">name:</tb>
+					<tb class="inp">
+						<input type="text" name="enpName" id="enpName"/>
+					</tb>
+				</tr>
+				<tr>
+					<tb class="word">email:</tb>
+					<tb class="inp">
+						<input type="text" name="email" id="email"/>
+					</tb>
+				</tr>
+				<tr>
+					<tb class="word">salary:</tb>
+					<tb class="inp">
+						<input type="text" name="salary" id="salary"/>
+					</tb>
+				</tr>
+				<tr>
+					<tb colspan="2" align="center">
+						<button id="addEmpButton" value ="abc">
+							Submit
+						</button>
+					</tb>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

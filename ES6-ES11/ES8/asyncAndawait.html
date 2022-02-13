@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>async&awint</title>
+</head>
+<body>
+<script>
+    let p = new Promise((resolve, reject) => {
+        resolve('successful!')
+        // reject('failing!')
+    })
+    //async function 返回的是一个promise
+    async function fn(){
+        //await 后面加的是一个promise 它的返回值是promise成功的的’值‘
+        /*let result = await p;
+        console.log(result);*/
+        //如果失败则抛出错误 使用try..catch来接收错误
+        try {
+            let result = await p
+            console.log(result);
+        }catch (err){
+            console.log(err);
+        }
+        //console.log('this is a function')
+    }
+    // let result = fn()
+    fn();
+    //console.log(result);
+    /* result.then(value => {
+         console.log(value);
+     },reason => {
+         console.log(reason);
+     })*/
+</script>
+</body>
+</html>

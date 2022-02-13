@@ -1,0 +1,95 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM 教程</title>
+    <style>  
+    </style>
+    <script type="text/javascript">
+    	window.onload=function(){
+//  		var a = document.querySelectorAll(".str ul li")
+//  		for(var i = 0 ; i < a.length ; i++){
+//  			console.log(a[i].innerHTML)
+//  		}
+//  		
+//  		var d = document.getElementsByTagName("*");
+//  		console.log(d);
+    		
+    		
+//  		var all = document.all;
+//  		for(var i = 0 ; i < all.length ; i++){
+//  			console.log(all[i].innerHTML)
+//  		}
+				//插入
+				var cr = document.getElementById("cr").onclick=function(){
+					var name =prompt("请输入要插入的内容：");
+					if (name == null) {
+						alert("输入违法")
+					}else{
+						var newli = document.createElement("li");
+						var newtext = document.createTextNode(name)
+						newli.appendChild(newtext);
+						var wo = document.getElementById("wo");
+						var io = document.getElementById("io")
+						wo.appendChild(newli)	
+					}
+				}
+				//替换
+				var th = document.getElementById("th").onclick=function(){
+					var name =prompt("请输入要替换的内容：");
+					if (name == null) {
+						alert("输入违法")
+					}else{
+						var newli = document.createElement("li");
+						var newtext = document.createTextNode(name)
+						newli.appendChild(newtext);
+						var wo = document.getElementById("wo");
+						var io = document.getElementById("io")
+						wo.replaceChild(newli,io)	
+					}
+				}
+				//删除
+				var sc = document.getElementById("sc").onclick=function(){
+					var io = document.getElementById("io")
+					io.parentNode.removeChild(io)
+				}
+				//插入老网
+				var cr2 =document.getElementById("cr2").onclick=function(){
+					var d =new Date();
+					var start =d.getTime();
+					var wo = document.getElementById("wo")
+					var li = document.createElement("li");
+					li.innerHTML="老王";
+					wo.appendChild(li);
+					var end =d.getTime();
+					console.log(end);
+					console.log(start)
+				}
+				//插入违法
+				var cr3 = document.getElementById("cr3").onclick = function(){
+					var d =new Date();
+					var start =d.getTime();
+					var wo = document.getElementById("wo");
+					wo.innerHTML+="<li>违法</li>"
+					var end =d.getTime();
+					console.log(end);
+					console.log(start)
+				}
+    };
+    </script>
+</head>
+<body>
+	<div class="str">
+		<ul id="wo">
+			<li id="io">张三</li>
+			<li>李四</li>
+			<li>王五</li>
+		</ul>
+		<button type="button" id="cr">点击插入</button>
+		<button type="button" id="th">点击替换</button>
+		<button type="button" id="sc">点击删除张三</button>
+		<button type="button" id="cr2">点击插入老王</button>
+		<button type="button" id="cr3">点击插入违法</button>
+	</div>
+</body>
+</html>

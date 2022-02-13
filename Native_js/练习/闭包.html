@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>测试一</button>
+<button>测试二</button>
+<button>测试三</button>
+<script type="text/javascript">
+    var btns = document.getElementsByTagName("button")
+    /*for (var i = 0 ,length = btns.length ;i <length;i++){
+        btns[i].index=i+1
+        btns[i].onclick=function (){
+            alert(this.index)
+        }
+    }*/
+   /* for (var i =0,length=btns.length;i<length;i++){
+        (function (i){
+            btns[i].onclick=function (){
+                alert(i+1)
+            }
+        })(i) 
+    }*/
+/*    function f() {
+        var a = 3
+        function f1() {
+            console.log(a)
+        }
+        /!*f1()*!/
+    }
+    f()*/
+
+    /*var name = "My Window";
+    var object = {
+        name:"My Object",
+        getNameFunc:function () {
+            return function (){
+                alert(this)
+                return this.name;
+            }
+        }
+    }
+    alert(object.getNameFunc()())*/
+/*    var name2 = "The Window";
+    var object2 = {
+        name2:"My Object",
+        getNameFunc:function (){
+            var that = this;
+            console.log(this)
+            return function (){
+                return that.name2;
+            }
+        }
+    }
+    alert(object2.getNameFunc()())*/
+    /*var obj = new Object();
+    obj.name="lqa"
+    obj.age=23;
+    obj.setName=function (){
+        this.name="lqm"
+    }
+    console.log(obj.name,obj.age)
+    obj.setName()
+    console.log(obj.name,obj.age)*/
+
+
+</script>
+</body>
+</html>

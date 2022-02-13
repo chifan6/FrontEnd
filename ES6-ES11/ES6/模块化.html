@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="module">
+    /*import * as m1 from "./js/m1.js"
+    console.log(m1)*/
+    // m1.default.b()
+    //解构赋值形式引入
+    //import {a,b} from "./js/m1.js";
+    // 如果出现变量名冲突的情况可以加as别名
+    // import {a as aa,b} from "./js/m1.js";
+    //默认暴露的引入
+    // import {default as d} from "./js/m1.js"
+
+
+    //针对默认暴露的引入形式
+    import m1 from "./js/m1.js"
+
+    m1.b();
+
+    /*console.log(a);
+    console.log(b);*/
+</script>
+</body>
+</html>

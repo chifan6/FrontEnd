@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box01 {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0;
+			}
+			
+			#box02 {
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+				left: 0;
+				top: 300px;
+			}
+			
+			#x {
+				left: 800px;
+				width: 1px;
+				height: 1000px;
+				background-color: black;
+				position: absolute;
+				top: 0;
+			}
+			
+			#box03 {
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				position: absolute;
+				left: 0;
+				top: 500px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var btn01 = document.getElementById("btn01");
+				var btn02 = document.getElementById("btn02");
+				var btn03 = document.getElementById("btn03");
+				var btn04 = document.getElementById("btn04");
+				var btn05 = document.getElementById("btn05");
+				var box01 = document.getElementById("box01");
+				var box02 = document.getElementById("box02");
+				var box03 = document.getElementById("box03");
+				var timer;
+
+				btn01.onclick = function() {
+					move(box01, "left", 800, 11)
+				};
+				btn03.onclick = function() {
+					move(box02, "left", 800, 11)
+				};
+
+				btn02.onclick = function() {
+					move(box01, "left", 0, 11)
+				};
+				btn04.onclick = function() {
+					move(box02, "left", 0, 11)
+				};
+				btn05.onclick = function() {
+					setInterval(function() {
+						move(box03, "left", 800, 11, function() {
+							move(box01, "left", 800, 11)
+							move(box03, "width", 800, 11, function() {
+								move(box01, "left", 300, 11)
+								move(box03, "height", 320, 11, function() {
+									move(box02, "left", 800, 11)
+									move(box03, "top", 195, 11, function() {
+										move(box03, "left", 0, 11, function() {
+											move(box01, "left", 0, 11)
+											move(box01, "left", 800, 11)
+											move(box03, "width", 100, 11, function() {
+												move(box03, "height", 100, 11)
+												move(box02, "left", 0, 11)
+												move(box01, "left", 0, 11,function(){
+													move(box03,"top",500,11)
+												})
+											})
+										})
+									})
+								})
+							})
+						})
+					}, 11000)
+				}
+
+				function move(obj, nr, mub, speed, callback) {
+					clearInterval(obj.timer);
+					var value = parseInt(getstyle(obj, nr))
+					if(value > mub) {
+						speed = -speed;
+					}
+					obj.timer = setInterval(function() {
+						var oldValue = parseInt(getstyle(obj, nr))
+						var newValue = oldValue + speed;
+						if(speed < 0 & newValue < mub || speed > 0 & newValue > mub) {
+							newValue = mub;
+						}
+						obj.style[nr] = newValue + "px";
+						if(newValue == mub) {
+
+							clearInterval(obj.timer);
+							callback && callback();
+						}
+					}, 30);
+				};
+
+				//css样式表查看
+				function getstyle(obj, name) {
+					if(window.getComputedStyle) {
+						return getComputedStyle(obj, null)[name];
+					} else {
+						return obj.currentStyle[name];
+					}
+				};
+			};
+		</script>
+	</head>
+
+	<body>
+		<button id="btn01">点击box01向右移动</button>
+		<button id="btn02">点击box01向左移动</button>
+		<button id="btn03">点击box02向右移动</button>
+		<button id="btn04">点击box02向左移动</button>
+		<button id="btn05">点击事件</button>
+		<br /><br /> <br /><br />
+		<div id="box01"></div>
+		<div id="box02"></div>
+		<div id="box03"></div>
+		<div id="box04"></div>
+		<div id="x"></div>
+	</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style type="text/css">
+    #result {
+        width: 200px;
+        height: 200px;
+        border: 3px solid pink;
+    }
+</style>
+<body>
+<button>点击发送请求</button>
+<br /><br />
+<div id="result"></div>
+</body>
+<script src="jQueryTest/js/jquery.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        let div = document.getElementById("result");
+        let btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function () {
+             const xhr = new XMLHttpRequest()
+            //设置自动的类型转换为json
+            xhr.responseType = 'json'
+            /*//设置超时2秒取消请求
+            xhr.timeout = 2000
+            //请求取消后提示
+            xhr.ontimeout = function (){
+                alert('请求超时！！')
+            }*/
+            //网络异常回调提示
+            /*xhr.onerror = function (){
+                 alert('傻逼你的网出问题了')
+            }*/
+            xhr.open("GET","http://127.0.0.1:8000/jQuery?t="+Date.now())
+
+            xhr.send()
+
+            xhr.onreadystatechange = function (){
+                 if (xhr.readyState === 4){
+                     if (xhr.status >= 200 & xhr.status < 300){
+                         div.innerText = xhr.response.name
+                     }
+                 }
+            }
+        }
+    };
+</script>
+</html>

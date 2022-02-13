@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rest</title>
+</head>
+<body>
+<script>
+  const obj = {
+      a:1,
+      b:2,
+      c:3
+  }
+  const obj1 = {
+      d:4,
+      e:5,
+  }
+  function fn({a,...num},{d,...num1}){
+      a=a;
+      b=num;
+      console.log(a);
+      console.log(b);
+
+      d=d;
+      e=num1
+      console.log(d);
+      console.log(e);
+  }
+  fn(obj,obj1)
+
+
+  //对象合并
+  const newobj = {...obj,...obj1}
+  console.log(newobj);
+  const arr = [1,2,3,4,5]
+  const newarr = [0,...arr]
+  console.log(newarr);
+
+
+  /*let qbj = {a:1}
+  qbj._proto_ =obj
+  let {...x} = qbj;
+  console.log(x);*/
+
+
+  const o = Object.create({ x: 1, y: 2 ,q :3});
+  o.z = 3;
+  console.log(o);
+  let { x, ...newObj } = o;
+  console.log('x=:'+x);
+  console.log(newObj);
+  let { y,q, z } = newObj;
+  console.log(`y=${y}`);
+  console.log(`z=${z}`);
+  console.log(`q=${q}`);
+
+  const obj2 = {
+      a: 1,
+      b: 2,
+      c: 3
+  }
+</script>
+</body>
+</html>

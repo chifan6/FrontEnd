@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>?.</title>
+</head>
+<body>
+<script>
+  function main(config){
+      //当没有传进config时报错
+      // let result = config && config.first && config.first.name;//config.first.name
+      //当没有传进config时输出undefined
+      let result = config?.first?.name;
+      console.log(result)
+  }
+  main()
+</script>
+</body>
+</html>

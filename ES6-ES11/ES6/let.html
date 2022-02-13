@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let</title>
+    <style>
+        .text{
+            font-size: 30px;
+            width: 200px;
+        }
+        .container > div:not(:first-child){
+            border: 2px solid black;
+            width: 150px;
+            height: 50px;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="text">点击切换颜色</div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+<script>
+    let itms =document.querySelectorAll(".container > div:not(:first-child)")
+
+        for (let i = 0 ; i < itms.length ; i ++){
+
+            itms[i].onclick = function (){
+                //进来先把全部图片设置成白色
+                for (let j = 0 ; j < itms.length ; j++){
+                    itms[j].style.backgroundColor = "#fff"
+                }
+                //然后将点击的图片变为黑色
+                itms[i].style.backgroundColor = "#000"
+            }
+        }
+</script>
+</html>

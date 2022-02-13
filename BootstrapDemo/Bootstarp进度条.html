@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        window.onload = function () {
+            var a = document.querySelector('.progress-bar');
+            var btn = document.getElementById('btn01')
+            var index = 0
+            var i
+            btn.onclick = function (){
+                clearInterval(i)
+                i = setInterval(function (){
+
+                    a.style.width = index + '%'
+                    a.innerHTML = index + '%'
+                    index++;
+                    console.log('1')
+                    if(index>=101){
+                        clearInterval(i)
+                        index--
+                    }
+                },100)
+            }
+            };
+    </script>
+</head>
+<style type="text/css">
+    .container {
+        background: pink;
+    }
+
+    div[class|=col] {
+        border: 1px solid;
+    }
+
+    .progress {
+        /*width: 1000px;*/
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 0;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6">test1</div>
+        <div class="col-lg-3 col-md-4 col-sm-6">test2</div>
+        <div class="col-lg-3 col-md-4 col-sm-6">test3</div>
+        <div class="col-lg-3 col-md-4 col-sm-6">test4</div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="background: black;margin-left: 0">
+            60%
+        </div>
+    </div>
+    <button id="btn01" class="btn btn-default center-block btn-xs" type="submit" >点击进度条开始运行</button>
+</div>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</body>
+</html>

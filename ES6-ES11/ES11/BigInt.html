@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BigInt</title>
+</head>
+<body>
+<script>
+  let b = 123n;
+  console.log(b,typeof b);
+
+
+  let b1 = 123;
+  console.log(BigInt(b1),typeof BigInt(b1));
+
+  let max = Number.MAX_SAFE_INTEGER;
+  console.log(max);
+  console.log(max + 1);
+  console.log(max + 2);
+
+  console.log("******");
+  let b2 = BigInt(max)
+  console.log(b2);
+  console.log(b2 + 1n);
+  console.log(b2 + 2n);
+</script>
+</body>
+</html>

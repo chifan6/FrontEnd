@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#box01{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+			}
+			#box02{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+				top: 100px;
+				left: 100px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+			var box01 = document.getElementById("box01");
+			var box02 = document.getElementById("box02");
+			var body = document.body;
+			var html = document.documentElement;
+			drag(box01);
+			drag(box02);
+			function drag(obj){
+			obj.onmousedown = function(event){
+				obj.setCapture && obj.setCapture();
+				event = event || window.event;
+				var sy1 = html.scrollTop || body.scrollTop;
+				var sx1 = html.scrollLeft || body.scrollLeft;
+				var ol = event.clientX + sx1 - obj.offsetLeft;
+				var ot = event.clientY + sy1 - obj.offsetTop;
+				console.log(sy1)
+				document.onmousemove=function(event){
+					var sy = html.scrollTop || body.scrollTop;
+					var sx = html.scrollLeft || body.scrollLeft;
+					event = event || window.event;
+					var x = event.clientX;
+					var y = event.clientY;
+					obj.style.left = x + sx - ol + "px";
+					obj.style.top = y + sy - ot  + "px";
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+					obj.releaseCapture && obj.releaseCapture();
+				}
+				}
+				return false
+			}
+			};
+		};
+		</script>
+	</head>
+	<body style="height: 2000px;width: 2000px;">
+		<div id="box01" ></div>
+		<div id="box02" ></div>
+	</body>
+</html>

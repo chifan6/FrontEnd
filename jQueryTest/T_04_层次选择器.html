@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<style type="text/css">
+    *{
+        background: pink;
+    }
+</style>-->
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+    $(function (){
+        /*$('ul').css("background","pink")*/
+        /*$('ul .box').css("background","pink")*/
+        $('.box+li').css("background","pink")
+        /* $('.box~*').css("background","pink")*/
+    })
+</script>
+<body>
+<ul>
+    <li>AAAA</li>
+    <li class="box">CCCC</li>
+    <li title="hello"><span>BBBB</span></li>
+    <li title="hello"><span class="box">BBBB</span></li>
+    <span>EEEEE</span>
+</ul>
+</body>
+</html>

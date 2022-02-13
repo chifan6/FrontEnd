@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>GET</button>
+<button>POST</button>
+<button>AJAX</button>
+<script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.js"></script>
+
+<script type="text/javascript">
+    let btn = document.querySelectorAll("button")
+    axios.defaults.baseURL = "http://127.0.0.1:8000"
+    btn[0].onclick = function (){
+        axios.get("/Axios",{
+            //url参数
+            params:{
+                id:100,
+                vip:7
+            },
+            //设置请求头
+            headers:{
+                name:"liqiming",
+                age:20
+            },
+            responseType: 'json'
+        }).then(function (data){
+            console.log(data.data)
+        })
+    }
+    btn[1].onclick = function (){
+        axios.post("/Axios",{
+            username:"admin",
+            password:"123456"
+        },{
+            responseType: 'json',
+            params:{
+                id:200,
+                vip:8
+            },
+            headers: {
+              name:'lqm',
+                age:33
+            },
+        })
+    }
+    btn[2].onclick = function (){
+        axios({
+            method:"POST",
+            url:"/Axios",
+            params:{
+                vip:10,
+                level:30
+            },
+            headers:{
+                a:100,
+                b:200
+            },
+            data:{
+                username:'admin',
+                password:'123456'
+            }
+        }).then(function (response){
+            console.log(response)
+            console.log(response.status);
+            console.log(response.statusText);
+            console.log(response.data.name , response.data.age);
+        })
+    }
+</script>
+</body>
+</html>

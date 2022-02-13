@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box01{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){ 
+				var box01 = document.getElementById("box01");
+				box01.onmousewheel = function(event){
+					event = event || window.event;
+					if (event.wheelDelta > 0 || event.detail < 0) {
+						box01.style.height = box01.clientHeight - 10 +"px";
+					} else{
+						box01.style.height = box01.clientHeight + 10 +"px";
+					}	
+					event.preventDefault && event.preventDefault();
+					return false
+				};
+				bind(box01,"DOMMouseScroll",box01.onmousewheel)
+			//bind绑定函数
+			function bind(obj,eventStr,callback){
+				if (obj.addEventListener) {
+					var reg = /^on/;
+					var eventStr = eventStr.replace(reg,'');
+					return obj.addEventListener(eventStr,callback,false);
+				}else{
+					return obj.attachEvent(eventStr,function(){
+						callback.call(obj);
+					});
+				}
+			}
+			}
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<div id="box01">
+			
+		</div>
+	</body>
+</html>

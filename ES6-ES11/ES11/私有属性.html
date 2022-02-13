@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>私有属性</title>
+</head>
+<body>
+<script>
+  class Person{
+      // 公有属性
+      name;
+      //私有属性
+      #age;
+      #weight;
+      constructor(name,age,weight) {
+          this.name=name;
+          this.#age = age;
+          this.#weight = weight;
+      }
+  }
+  let man = new Person('利旗明',22,"100")
+  console.log(man);
+
+</script>
+</body>
+</html>

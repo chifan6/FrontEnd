@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象方法的扩展</title>
+</head>
+<body>
+<script>
+  const obj = {
+      name: '西游记',
+      person:['孙悟空','猪八戒','沙僧','唐僧']
+  }
+  //获取对象中的键名(属性名)
+  console.log(Object.keys(obj));
+  //获取对象中的值
+  console.log(Object.values(obj));
+  // Object.entries()  该方法返回的是一个数组 可以配合Map使用
+  const result = new Map(Object.entries(obj))
+  console.log(result);
+
+  console.log(Object.entries(obj));
+
+  //自己实现Object.entries()
+  /*function* entries(obj) {
+      for (let key of Object.keys(obj)) {
+          yield [key, obj[key]];
+      }
+  }
+  let e = entries(obj)
+  console.log(e.next())
+  console.log(e.next())*/
+
+  /*function entries(obj) {
+      let arr = [];
+      for (let key of Object.keys(obj)) {
+          arr.push([key, obj[key]]);
+      }
+      return arr;
+  }
+
+  console.log(entries(obj));*/
+  console.log('*******');
+  console.log(result);
+  //Object.fromEntries() 将一个数组转换为一个对象 与Object.entries()相反
+  let arr = Object.fromEntries(result)
+  //console.log(arr);
+
+  const arr1 = [['name','Tom'],['age',19]]
+  let obj1 = Object.fromEntries(result)
+  console.log(obj1);
+
+  const obj2= {
+      name: "lqm",
+      age: 9
+  }
+  let text = Object.entries(obj2);
+  console.log(text);
+</script>
+</body>
+</html>

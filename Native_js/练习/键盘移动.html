@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload =function(){
+					//向上按键  38
+					//向下按键  40
+					//向左按键  37
+					//向右按键  39
+					var box = document.getElementById("box01");
+					var dir = 0;
+					var speed = 10;
+					setInterval(function(){
+						switch (dir){
+							case 38:
+							box.style.top = box.offsetTop - speed +"px";
+								break;
+							case 40:
+							box.style.top = box.offsetTop + speed +"px";
+								break;
+							case 37:
+							box.style.left = box.offsetLeft - speed +"px";
+								break;
+							case 39:
+							box.style.left = box.offsetLeft + speed +"px";
+								break;
+						}
+					},30)
+					
+					document.onkeydown=function(event){
+						event = event || window.event;
+						dir = event.keyCode;
+						if (event.ctrlKey) {
+							speed = 40;
+						} else {
+							speed = 10;
+						}
+					}
+					document.onkeyup = function(){
+						dir = 0 ;
+					};
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box01" style="width: 100px;height: 100px;background-color: red;position: absolute;"></div>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    /*const arr = [1,6,9,10,100.25];
+    const result = arr.filter((itme) => {
+        return itme % 2 === 0
+    });*/
+
+    //箭头函数没有arguments的属性
+   /* let fn = ()=>{
+        console.log(arguments);
+    }
+    fn("wef");*/
+
+    //箭头函数不能是构造函数
+/*    let Person = ()=>{
+        this.name = "lqm";
+        this.age =23;
+    }
+    let mam = new Person();*/
+
+    //当形参只有一个或者代码块只有一条语句时可以简写
+    // let fn = n => n * n;
+    // console.log(fn(2));
+
+    //使用解构对象可以按变量进行分配不用管理顺序和初始只设置的位置
+    /*function connect ({name,age=2,gender}){
+        console.log(name);
+        console.log(age);
+        console.log(gender);
+    }
+    connect({gender:"male",name:"liqiming"});*/
+
+    //rest参数
+    //rest参数跟arguments很相似  但rest参数返回的是一个数组可以使用数组的方法
+    // arguments返回的是一个伪数组
+    /*function rest (a,b,c,...arg){
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(arg);
+    }
+    rest(1,2,3,4,5,6,7,8)*/
+
+    //ES6的扩展符
+    //使用新扩展符进行数组合并
+   /* const arr =['黑笔','白字','红笔','黑字']
+    const arr1 =['lqm','zs','ls']
+    const arr12 = [...arr,...arr1]  //类似 arr12.push('黑笔','白字','红笔','黑字','lqm','zs','ls')
+    const arr122 = []
+    arr122.push('黑笔','白字','红笔','黑字','lqm','zs','ls')
+
+    console.log(arr12);
+    console.log(arr122);*/
+
+    let fn = (...arg)=>{
+        console.log(arg)
+    }
+    fn(1,2,3,4,5,6,7,8,9)
+  </script>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <!--<h2>点击两秒改变颜色</h2>
+    <div id="box1"></div>-->
+</body>
+<script >
+    window.onload = function (){
+       /* const box1 = document.getElementById("box1")
+        box1.onclick = function (){
+            setInterval(()=>{
+                //箭头函数的this是静态的  this为第一次定义出来的this 所以当前的this指向的是box1
+                this.style.backgroundColor = "pink"
+            },2000)
+        }*/
+
+
+        //将伪数组转为一个真正的数组
+      /*  const divs = document.querySelectorAll("div")
+        const divarr = [...divs]
+        console.log(divarr);*/
+    }
+</script>
+</html>

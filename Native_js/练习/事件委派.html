@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			var u1 = document.getElementById("u1");
+			var a = document.getElementsByTagName("a");
+			var btn01 = document.getElementById("btn01").onclick = function(){
+				var li = document.createElement("li");
+				li.innerHTML = "<a href='javascript:;' class='linke'>新建的超链接</a>";
+				u1.appendChild(li)
+			};
+			u1.onclick = function(event){
+				if(event.target.className){
+					alert(event.target.innerText)
+				}
+			}
+		};
+	</script>
+	<body>
+		<button id="btn01">创建新的超链接</button>
+		<ul id="u1" style="background-color: coral">
+			<li><a href="javascript:;" class="linke">超链接一</a></li>
+			<li><a href="javascript:;" class="linke">超链接二</a></li>
+			<li><a href="javascript:;" class="linke">超链接三</a></li>
+		</ul>
+	</body>
+</html>

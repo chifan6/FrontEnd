@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var btn01 = document.getElementById("btn01");
+				bind(btn01,"onclick",function(){alert(1)});
+				bind(btn01,"onclick",function(){alert(2)});
+				
+				//bind绑定函数
+				function bind(obj,eventStr,callback){
+					if (obj.addEventListener) {
+						var reg = /^on/;
+						var eventStr = eventStr.replace(reg,'');
+						return obj.addEventListener(eventStr,callback,false);
+					}else{
+						return obj.attachEvent(eventStr,function(){
+							callback.call(obj);
+						});
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<button id="btn01">按钮</button>
+	</body>
+</html>

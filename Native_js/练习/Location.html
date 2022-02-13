@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var box01 = document.getElementById("box01");
+				box01.onclick = function (){
+					/*location.reload(true);*/
+					location.assign("http://www.baidu.com")
+					/*alert(history.length);*/
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="box01">点击事件</button>
+		<br />
+		<input type="text" />
+	</body>
+</html>

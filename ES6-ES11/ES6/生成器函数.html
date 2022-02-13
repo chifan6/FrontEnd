@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成器函数</title>
+</head>
+<script>
+    /*function * gen(arg){
+        let one = yield 'aaa'
+        console.log(one);
+        yield 'ccc'
+    }
+    const iterator = gen("```")
+    console.log(iterator.next())
+    console.log(iterator.next('bbb'))*/
+
+    //案例一：1s输出111 ， 2s后输出222，三秒后输出333
+/*    function one (){
+        setTimeout(()=>{
+            console.log(111)
+            result.next()
+        },1000)
+    }
+    function two (){
+        setTimeout(()=>{
+            console.log(222)
+            result.next()
+        },1000)
+    }
+    function three (){
+        setTimeout(()=>{
+            console.log(333)
+        },1000)
+    }
+    function * gen(){
+        yield one()
+        yield two()
+        yield three()
+    }
+    let result = gen()
+    result.next()*/
+
+
+    //案例二:模拟获取  用户数据 订单数据 商品数据
+    function getUser(){
+        setTimeout(()=>{
+            let data = '用户数据'
+            //执行第二次next的方法,方法中的实参是第一个yield的返回值
+            result.next(data)
+        },1000)
+    }
+    function getOrders(){
+        setTimeout(()=>{
+            let data = '订单数据'
+            result.next(data)
+        },1000)
+    }
+
+    function getcomm(){
+        setTimeout(()=>{
+            let data = '商品数据'
+            result.next(data)
+        },1000)
+    }
+    function * gen(){
+        let one = yield getUser()
+        console.log(one);
+        let two = yield getOrders()
+        console.log(two);
+        let three = yield getcomm()
+        console.log(three);
+    }
+    let result = gen();
+    result.next();
+
+</script>
+<body>
+
+</body>
+</html>

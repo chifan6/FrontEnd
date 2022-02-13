@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串扩展</title>
+</head>
+<body>
+<script>
+    //String.prototype.matchAll()
+    //该方法使用在正则表达式
+    let str = `
+    <ul>
+        <li>
+            <a>肖生克的救赎</a>
+            <p>上映时间：1994-09-10</p>
+        </li>
+        <li>
+            <a>阿甘正传</a>
+            <p>上映时间：1994-09-10</p>
+        </li>
+    </ul>`
+    let reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>.*?<\/li>/sg
+    let result = str.matchAll(reg)
+    /*for (let v of result){
+        console.log(v);
+    }*/
+    console.log(result);
+    const arr = [...result]
+    console.log(arr);
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  /*class Phone {
+      static n = 'lqm'
+      constructor(brand,price) {
+          this.brand = brand;
+          this.price = price;
+          this.call = function (){
+              console.log('call up')
+          }
+      }
+      call(){
+          console.log("打电话")
+      }
+  }
+  let iphone = new Phone('iphone xs max','4999')
+  console.log(iphone);
+  console.log(Phone.n);*/
+
+
+  //ES6类的继承
+  /*class Phone {
+      constructor(brand,price) {
+          this.brand = brand;
+          this.price = price;
+      }
+      call(){
+          console.log('call up')
+      }
+  }
+  class SmartPhone extends Phone{
+      constructor(brand,price,size,color) {
+          super(brand,price); //Phone.call(this,brand,price)
+          this.size = size;
+          this.color = color;
+      }
+      Play() {
+          console.log('watch Video');
+      }
+      game(){
+          console.log('play game');
+      }
+  }
+  let xiaomi = new SmartPhone('xiaomi',3999,'5,5in','black')
+  console.log(xiaomi);*/
+
+  //ES5的继承
+  function Phone(brand,price){
+      this.brand = brand;
+      this.price = price;
+  }
+  Phone.prototype.call = function (){
+      console.log('I can call')
+  }
+  function SmartPhone(brand,price,size,color) {
+      Phone.call(this,brand,price);
+      this.size = size;
+      this.color = color;
+  }
+  //将子类的原型设置为父类的原型
+  SmartPhone.prototype = new Phone
+  //constructor指向自己 但SmartPhone.prototype = new Phone将constructor指向自己指向了父类
+  //所以需要将constructor矫正回来
+  SmartPhone.prototype.constructor = SmartPhone
+  SmartPhone.prototype.Play = function (){
+      console.log('watch Video')
+  }
+  SmartPhone.prototype.game = function (){
+      console.log('play game')
+  }
+  let iPhone = new SmartPhone('iphone xs max',4999,'6,5in','red')
+  console.log(iPhone);
+  // get and set
+  /*class Phone {
+      get price(){
+          console.log('读取了');
+          return 100
+      }
+      set price(newVal){
+          console.log('修改了')
+          return newVal
+      }
+  }
+  let a = new Phone()
+  a.price = 10000;
+  console.log(a)*/
+
+  //console.log();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise.allSettled</title>
+</head>
+<body>
+<script>
+    const p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("成功了")
+        }, 1000)
+    });
+    const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("失败了")
+        }, 1000)
+    });
+
+
+    //!必须传数组
+    //Promise.allSettled 方法返回的是一个成功Promise 返回的结果是
+    let result = Promise.allSettled([p1,p2]);
+
+    //Promise.all 方法返回的成功和失败取决于传入的Promise 有一个失败就失败 返回的结果是失败的Promise值
+    //必须全部成功Promise.all的状态才成功 返回的结果是Promise值
+    // let result = Promise.all([p1,p2]);
+    console.log(result);
+</script>
+</body>
+</html>

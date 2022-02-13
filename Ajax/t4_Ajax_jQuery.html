@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style type="text/css">
+    #result {
+        width: 200px;
+        height: 200px;
+        border: 3px solid pink;
+    }
+</style>
+<body>
+<button>点击发送请求</button>
+<br /><br />
+<div id="result"></div>
+</body>
+<script src="../jQueryTest/js/jquery.js"></script>
+<script type="text/javascript">
+    let result = document.getElementById("result")
+    $(function (){
+        $('button').eq(0).click(function (){
+            $.ajax({
+                //url
+                url:'http://127.0.0.1:8000/jQuery',
+                //参数
+                data:{a:100,b:200},
+                //请求类型
+                type:'GET',
+                //响应体格式
+                dataType:'json',
+                //超时时间
+                timeout:2000,
+                //失败的回调
+                error:function (){
+                    console.log('出错了！')
+                },
+                //成功的回调
+                success:function (data){
+                    result.innerText = data.name
+                    // console.log(data)
+                },
+                //头信息
+                header:{
+                    c:300,
+                    d:400
+                }
+            })
+            //Post请求
+            /*$.post('http://127.0.0.1:8000/jQuery',{a:100,b:100},function (data){
+                result.innerText = data.name
+            },'json')*/
+            //get请求
+            /*$.get('http://127.0.0.1:8000/jQuery',{a:100,b:100},function (data){
+
+            },'json')*/
+            //通用请求方法
+        })
+    })
+</script>
+</html>

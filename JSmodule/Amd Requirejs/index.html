@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--浏览器引入amd规范的方法-->
+<!--data-main="app.js 入口js  src = "require.js文件""-->
+<script data-main="./js/app.js" src="./js/require.js"></script>
+<!--
+    Amd模块化规范
+    定义暴露模块的方法
+    一、没有依赖的方法
+    define(function(){
+        return 要暴露的模块
+    })
+    二、有依赖的方法
+    define(["module1","module1"],function(m1,m2){
+        return 要暴露的模块
+    })
+
+
+    定义引入的方法
+    requirejs(["module1","module2"],function(m1,m2){
+        使用m1,m2
+    })
+-->
+</body>
+</html>

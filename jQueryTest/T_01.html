@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        window.onload = function (){
+            var btn01 = document.getElementById('btn01');
+            btn01.onclick = function (){
+                var text01 = document.getElementById('text01').value;
+                alert(text01);
+            }
+        }
+    </script>
+    <!--使用本地导入-->
+    <!--<script src="js/jquery.js"></script>-->
+    <!--使用CDN导入-->
+    <!--电脑需要联网-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $("#btn02").click(function (){
+                alert($("#text01").val());
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text" id="text01" value=""></input>
+<button id="btn01">原生js实现</button>
+<button id="btn02">jQuery实现</button>
+</body>
+</html>

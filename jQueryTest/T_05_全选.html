@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<form method="post" action="">
+			你爱好的运动是？<input type="checkbox" id="checkedAllBox" />全选/全不选
+			
+			<br />
+			<input type="checkbox" name="items" value="足球" />足球
+			<input type="checkbox" name="items" value="篮球" />篮球
+			<input type="checkbox" name="items" value="羽毛球" />羽毛球
+			<input type="checkbox" name="items" value="乒乓球" />乒乓球
+			<br />
+			<input type="button" id="checkAllBtn" value="全选"/>
+			<input type="button" id="checknoBtn" value="全不选"/>
+			<input type="button" id="checkrevlBtn" value="反选"/>
+			<input type="button" id="sendBtn" value="提交"/>
+		</form>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+	$(function (){
+		//获取全选、全不选复选框
+		var $checkdAllbox = $("#checkedAllBox")
+		//获取name属性为items的复选框
+		var $items = $("[name=items]")
+		//获取全选按钮并绑定点击监听
+		$("#checkAllBtn").click(function (){
+			//将所有爱好复选框checked属性设置为true
+			$items.prop("checked",true)
+			//复选框已经全部勾完所有将全选、不全选打勾
+			$checkdAllbox.prop("checked",true)
+		})
+		//获取全不选按钮并绑定点击监听
+		$("#checknoBtn").click(function (){
+			//将所有爱好复选框checked属性设置为false
+			$items.prop("checked",false)
+			//复选框全部不打勾所有将全选、不全选取消打勾
+			$checkdAllbox.prop("checked",false)
+		})
+		//获取反选按钮并绑定点击监听
+		$("#checkrevlBtn").click(function (){
+			//将items遍历
+			$items.each(function (){
+				//items的所有dom元素的checked属性取反
+				this.checked = !this.checked
+			})
+			//过滤checked状态为true的复选框
+			//console.log($items.filter(":checked"))
+			//再次过滤获得checked状态为false的复选框
+			//console.log($items.filter(":not(:checked)"))
+			//判断是否有0个的checked状态为false的复选框如果是0证明全部的复选框已经打上勾，则可以将全选.不全选的按钮打上勾
+			//console.log($items.filter(":not(:checked)").length===0)
+			$checkdAllbox.prop("checked",$items.filter(":not(:checked)").length===0)
+		})
+		//获取提交按钮并绑定点击监听
+		$("#sendBtn").click(function (){
+			//过滤items里面的dom元素为true的checked选项框并遍历出来
+			$items.filter(":checked").each(function (){
+				//输出dom元素的复选框的value值
+				alert(this.value)
+			})
+		})
+		//给全选、全不选复选框绑定点击监听事件
+		$checkdAllbox.click(function (){
+			//将爱好复选框设置成和全选、全不选复选框的checked状态一样，如果打勾则爱好全打勾，不打勾则安好全不打勾
+			//Set the preferences check box to the same state as all or none checked.
+			//If checked, preferences are checked all; if unchecked, all checked is not checked
+			$items.prop('checked',this.checked)
+		})
+		//点击某个爱好时,必要时更新'全选/全不选’的选中状态
+		$items.click(function (){
+			//详细注释请看56行
+			$checkdAllbox.prop("checked",$items.filter(":not(:checked)").length===0)
+		})
+	})
+	</script>
+</html>

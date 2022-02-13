@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>迭代器</title>
+</head>
+<script>
+    //执行三个条件
+    //在对象里面创建一个方法名为[Symbol.iterator]()
+    /*const banji = {
+        name:'jw1',
+        member:["lqm","zs","ls","ww"],
+        text(){
+            console.log("测试");
+        },
+        [Symbol.iterator](){
+            let i = 0;
+            let index = this.member.length
+            return{
+                next:()=>{
+                    if(i < index){
+                        let result = {value:this.member[i],done:false}
+                        i++;
+                        return result;
+                    }else {
+                        return {value:this.member[i],done:true}
+                    }
+
+                }
+            }
+    }
+    }
+    banji.text()
+    const arr = [1,2,3,4,5,6,7]
+    console.log(banji);
+    console.log(arr);
+    for (let i of banji){
+        console.log(i)
+    }
+
+
+
+
+
+
+    const obj1 = {
+        name:"zhangsan",
+        age:15,
+        [Symbol ]
+    }*/
+
+    const banji = {
+        name: "终极一班",
+        student: [
+            'xiaoming',
+            'xiaoning',
+            'xiaotian',
+            'knight'
+        ]
+    };
+    const arr = [1,2,3,4,5,6]
+    banji.student.forEach(function (item){
+        console.log(item)
+    })
+</script>
+<body>
+</body>
+</html>

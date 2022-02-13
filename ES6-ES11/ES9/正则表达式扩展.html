@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式扩展</title>
+</head>
+<body>
+<script>
+    //1、?<名字> 命名分组 （要在括号内部使用）
+    /*let str = "<a href='jQueryTest'>jquery</a>"
+    let reg = /<a (?<h>.*)='(?<url>.*)'>(?<text>.*)<\/a>/;
+    let result = reg.exec(str);
+    console.log(result);*/
+
+
+    //先行断言
+    /*let str = "www.a1q123qq.com";
+    let reg = /\d+(?=qq)/;
+    let result = reg.exec(str);
+    console.log(result);*/
+
+    //后行断言
+    /*let str = "www.a22qq33ww.com";
+    let reg = /(?<=q)\d+/
+    let result = reg.exec(str)
+    console.log(result);*/
+
+    //dotAll模式
+    let str = `
+    <ul>
+        <li>
+            <a>肖生克的救赎</a>
+            <p>上映时间：1994-09-10</p>
+        </li>
+        <li>
+            <a>阿甘正传</a>
+            <p>上映时间：1994-09-10</p>
+        </li>
+    </ul>`
+
+    //【.】获取除了换行符以外的内容（\n）在//后面加上s可以获取全部的内容包括换行符
+    // 不适用[.]dotAll
+    let reg = /<li>\s+<a>(.*)<\/a>\s+<p>(.*)<\/p>\s+<\/li>/g
+    //使用.dotAll
+    // let reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>.*?<\/li>/gs;
+    let result ;
+    let data = [];
+    while (result = reg.exec(str)){
+        console.log(result);
+        data.push({title:result[1],time:result[2]})
+    }
+    console.log(data);
+</script>
+</body>
+</html>
