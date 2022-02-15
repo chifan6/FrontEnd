@@ -5,10 +5,10 @@ git commit -m "这里写注释"  //添加单行注释
 git commit -a -m "这里写注释" ///跳过git add . 直接提交 前提是文件已经追踪
 git clone git仓库地址 //克隆仓库
 git push //将版本库提交到git仓库
-git push github master //将版本库提交到GitHub仓库
-git remote rm origin //
-git remote -v //
-git remote a dd github Git仓库地址 //
+git push 远程仓库别名 分支名 //将版本库提交到GitHub仓库
+git remote rm 远程仓库别名 //删除远程仓库别名
+git remote -v //查看所以远程仓库别名
+git remote add 远程仓库别名 远程仓库 //添加远程仓库
 git status //查看文件状态
 git config --global alias.别名 命令  //修改别名
 git config --global --list  //查看用户配置信息
@@ -20,12 +20,12 @@ git cat-file -t hash值 //查看文件类型
 git cat-file -p hash值 //查看文件信息
 git ls-files -s  //查看暂存区信息
 git branch //查看分支
-git branch Test  //创建Test分支
-git branch -d Test //删除Test分支-前提是Test已经合并或没进行操作
-git branch -D Test //强制删除TEst分支
-git branch Test Hash值 //创建分支并将文件放到Hash值提交对象的位置-Hash值要是一个提交对象git_lol
-git checkout Test //切换到Test分支
-git checkout -b Test //创建并切换到Test分支
+git branch 分支名  //创建分支名
+git branch -d 分支名 //删除分支名-前提是分支名已经合并或没进行操作
+git branch -D 分支名 //强制删除分支名
+git branch 分支名 Hash值 //创建分支并将文件放到Hash值提交对象的位置-Hash值要是一个提交对象git_lol
+git checkout 分支名 //切换到分支名
+git checkout -b 分支名 //创建并切换到分支名
 git stash //存储当前修改的信息
 git stash appley stash@{0}  //应用存储修改的信息
 git stash pop stash@{0} //应用并删除存储修改的信息
@@ -50,5 +50,12 @@ git tag 标签名 //在当前的HEAD上创建一个标签
 git checkout -b 分支名 标签 //转到标签的同时创建一分支
 git tag -d 标签名 //删除标签
 git tag 标签名 Hash值 //在指定的提交对象上打上标签
-
+###远程跟踪分支
+git branch -vv //查看本地分支跟踪了哪个远程跟踪分支
+git branch -u 远程跟踪分支 //将当前的本地分支跟踪一个远程跟踪分支
+git checkout -b 本地分支名 远程跟踪分支名  //创建一个本地分支并跟踪到远程跟踪分支
+git checkout --track 远程跟踪分支名 //创建一个本地分支并跟踪到远程跟踪分支
+git branch -d -r 远程跟踪分支 //删除远程跟踪分支
+###远程分支
+git push 远程仓库别名 --delete 远程分支名 //删除远程分支
 
