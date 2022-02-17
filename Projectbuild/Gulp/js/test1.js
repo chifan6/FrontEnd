@@ -4,5 +4,5 @@
         return result;
     };
 
-    console.log(add1(12, 123));
+    console.log(add1(102, 123));
 })();
