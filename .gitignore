@@ -1,5 +1,6 @@
 #files
 .babelrc
+.idea
 Gruntfile.js
 # Logs
 logs
