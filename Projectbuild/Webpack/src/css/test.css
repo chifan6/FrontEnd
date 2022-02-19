@@ -1,0 +1,9 @@
+body {
+  background-color: red;
+}
+#box1{
+  width: 200px;
+  height: 200px;
+  border: 1px black solid;
+  background-image: url("../img/2.jpg");
+}

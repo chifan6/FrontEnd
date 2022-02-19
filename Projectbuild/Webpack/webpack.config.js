@@ -2,11 +2,13 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./js/entry.js",
+  entry: "./src/js/entry.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    publicPath: "/dist/",
+    path: path.resolve(__dirname, "dist/js"),
     filename: "bundle.js",
   },
+
   module: {
     rules: [
       {
@@ -21,5 +23,11 @@ module.exports = {
         },
       },
     ],
+  },
+
+  devServer: {
+    static:{
+      directory:path.join("./dist")
+    }
   },
 };
