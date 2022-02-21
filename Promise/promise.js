@@ -28,15 +28,27 @@ function Promise(parameter) {
 }
 
 Promise.prototype.then = function (onResolveed, onRejected) {
+  let _this = this;
+
   return new Promise((resovle, reject) => {
-    if (this.PromiseState === "fulfilled") {
+    if (typeof onRejected !== "function") {
+      //如果then的第二个值没有传则将他设置为一个函数
+      //并且将自动传进来的错误抛出
+      onRejected = (reason) => {
+        throw reason;
+      };
+    }
+    if (typeof onResolveed !== "function") {
+      onResolveed = (value) => value;
+    }
+    let callback = (type) => {
       //p.then方法会返回一个Promise对象
       //返回的状态根据里面的内容来决定
       //如果是一个非Promise对象的话为成功
       //如果是一个Promise对象则安装Promise里面的状态来决定
       //方法的结果如果是一个非Promise对象
       try {
-        let result = onResolveed(this.PromiseResult);
+        let result = type(_this.PromiseResult);
         if (result instanceof Promise) {
           result.then(
             (value) => {
@@ -52,33 +64,96 @@ Promise.prototype.then = function (onResolveed, onRejected) {
       } catch (error) {
         reject(error);
       }
+    };
+    if (this.PromiseState === "fulfilled") {
+      callback(onResolveed);
     }
     if (this.PromiseState === "rejected") {
-      try {
-        let res = onRejected(this.PromiseResult);
-        if (res instanceof Promise) {
-          res.then(
-            (value) => {
-              resovle(value);
-            },
-            (reason) => {
-              reject(reason);
-            }
-          );
-        } else {
-          resovle(res);
-        }
-      } catch (error) {
-        reject(error);
-      }
+      callback(onRejected);
     }
     if (this.PromiseState === "pending") {
       //使用对象保存回调函数的话如果p指定了多个回调的话该方法不会保留多个结果而是替换掉原来的两个函数
       //所以应该使用数组的方法来保存
       this.callbacks.push({
-        onRejected,
-        onResolveed,
+        onResolveed: function () {
+          callback(onResolveed);
+        },
+        onRejected: function () {
+          callback(onRejected);
+        },
       });
+    }
+  });
+};
+
+Promise.prototype.catch = function (onRejected) {
+  return this.then(
+    (value) => {},
+    (reason) => {
+      onRejected(reason);
+    }
+  );
+};
+
+Promise.resolve = function (onResolveed) {
+  return new Promise((resolve, reject) => {
+    if (onResolveed instanceof Promise) {
+      onResolveed.then(
+        (value) => {
+          resolve(value);
+        },
+        (reason) => {
+          reject(reason);
+        }
+      );
+    } else {
+      resolve(onResolveed);
+    }
+  });
+};
+
+Promise.reject = function (reason) {
+  return new Promise((resolve, reject) => {
+    reject(reason);
+  });
+};
+
+Promise.all = function (promiseArr) {
+  //返回一个Promise对象
+  return new Promise((resolve, reject) => {
+    let count = 0;
+    const arr = [];
+    //闲将PromiseArr遍历
+    for (let i = 0; i < promiseArr.length; i++) {
+      const element = promiseArr[i];
+      element.then(
+        (value) => {
+          count++;
+          arr[i] = value;
+          if (count === promiseArr.length) {
+            resolve(arr);
+          }
+        },
+        (reason) => {
+          reject(reason);
+        }
+      );
+    }
+  });
+};
+
+Promise.race = function (promiseArr) {
+  return new Promise((resolve, reject) => {
+    for (let i = 0; i < promiseArr.length; i++) {
+      const element = promiseArr[i];
+      element.then(
+        (vlaue) => {
+          resolve(vlaue)
+        },
+        (reason) => {
+          reject(reason)
+        }
+      );
     }
   });
 };

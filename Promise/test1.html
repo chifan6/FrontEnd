@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <script src="./promise.js"></script> -->
+    <script src="./promise.js"></script>
   </head>
   <body>
     <script>
@@ -16,26 +16,69 @@
         }, 1000);
         // throw "error"
       });
-      let res = p.then(
-        (value) => {
-          return new Promise((resolve, reject) => {
-            resolve("s");
-          });
-        },
-        (reason) => {
-          throw "err";
-        }
-      );
-      console.log(res);
+      /* 异步执行时当p执行后定时器的resolve没用执行
+      当前p的状态为pending
+      let result = p
+        .then()
+        .then((value) => {
+          console.log(222);
+        })
+        .then((value) => {
+          console.log(333);
+        }) */
+      /* 测试p.catch方法
+        .catch((reason) => {
+          throw reason;
+        }); */
 
-      // console.log(p);
-      //   .then((value) => {
-      //     console.log(222);
-      //   })
-      //   .catch((reasoe) => {
-      //     //异常穿透 链式调用中如果失败的话会直接调用到这个函数
-      //     console.error(reasoe);
-      //   });
+      /* 测试Promise.resolve方法
+      let = result = Promise.resolve(new Promise((resolve, reject) => {})); */
+
+      /* 测试Promsie.reject方法
+      let result1 = Promise.reject("test");
+      let result = Promise.reject(
+        new Promise((resolve, reject) => {
+          resolve("successful");
+        })
+      );
+      console.log(result);
+      console.log(result1); */
+
+      /* 异常穿透
+        .then((value) => {
+          console.log(222);
+        })
+        .catch((reasoe) => {
+          //异常穿透 链式调用中如果失败的话会直接调用到这个函数
+          console.error(reasoe);
+        }); */
+
+      let p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("OK!");
+        }, 2000);
+      });
+      let p2 = new Promise((resolve, reject) => {
+        resolve("success!");
+      });
+      let p3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("成功！");
+        }, 1000);
+      });
+
+      /*//测试Promise.all对象
+      let result = Promise.all([p1, p2, p3]);
+      console.log(result); */
+
+      /* 测试Promise.race对象
+      该对象传的是一个Promise对象数组
+      该方法会将传入的Promise对象数组中最先改变状态的Promise来决定
+      Promise.race 的状态
+      (数组中谁先执行返回的结果就是谁)
+      let result1 = Promise.race([p1, p2, p3]);
+      console.log(result1);
+      */
     </script>
   </body>
 </html>
