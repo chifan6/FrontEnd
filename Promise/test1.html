@@ -10,22 +10,19 @@
   <body>
     <script>
       let p = new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve("OK!");
-          // reject("err");
-        }, 1000);
+        // setTimeout(() => {
+        resolve("OK!");
+        console.log(111);
+        // reject("err");
+        // }, 1000);
         // throw "error"
       });
-      /* 异步执行时当p执行后定时器的resolve没用执行
-      当前p的状态为pending
-      let result = p
-        .then()
-        .then((value) => {
-          console.log(222);
-        })
-        .then((value) => {
-          console.log(333);
-        }) */
+      // 异步执行时当p执行后定时器的resolve没用执行
+      // 当前p的状态为pending
+      let result = p.then((value) => {
+        console.log(222);
+      });
+      console.log(333);
       /* 测试p.catch方法
         .catch((reason) => {
           throw reason;
@@ -53,7 +50,7 @@
           console.error(reasoe);
         }); */
 
-      let p1 = new Promise((resolve, reject) => {
+      /* let p1 = new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve("OK!");
         }, 2000);
@@ -65,7 +62,7 @@
         setTimeout(() => {
           resolve("成功！");
         }, 1000);
-      });
+      }); */
 
       /*//测试Promise.all对象
       let result = Promise.all([p1, p2, p3]);

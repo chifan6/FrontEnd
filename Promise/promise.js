@@ -1,25 +1,35 @@
-function Promise(parameter) {
-  this.PromiseState = "pending";
-  this.PromiseResult = undefined;
-  this.callbacks = [];
-  let resolve = (data) => {
+class Promise {
+  constructor(parameter) {
+    this.PromiseState = "pending";
+    this.PromiseResult = undefined;
+    this.callbacks = [];
+  }
+  resolve(data) {
     if (this.PromiseState != "pending") return;
     this.PromiseResult = data;
     this.PromiseState = "fulfilled";
     // this.callback.onResolveed(data);
-    for (let i = 0; i < this.callbacks.length; i++) {
-      this.callbacks[i].onResolveed(data);
-    }
-  };
-  let reject = (data) => {
+    //设置为异步执行
+    setTimeout(() => {
+      for (let i = 0; i < this.callbacks.length; i++) {
+        this.callbacks[i].onResolveed(data);
+      }
+    });
+  }
+  reject(data) {
     if (this.PromiseState != "pending") return;
     this.PromiseResult = data;
     this.PromiseState = "rejected";
     // this.callback.onRejected(data);
-    for (let i = 0; i < this.callbacks.length; i++) {
-      this.callbacks[i].onRejected(data);
-    }
-  };
+    //设置为异步执行
+    setTimeout(() => {
+      for (let i = 0; i < this.callbacks.length; i++) {
+        this.callbacks[i].onRejected(data);
+      }
+    });
+  }
+}
+function Promise(parameter) {
   try {
     parameter(resolve, reject);
   } catch (error) {
@@ -66,14 +76,23 @@ Promise.prototype.then = function (onResolveed, onRejected) {
       }
     };
     if (this.PromiseState === "fulfilled") {
-      callback(onResolveed);
+      //在Promise中的then的方法是异步执行的
+      //所以这里应该要将方法设置为异步执行
+      //（加入队列中）
+      setTimeout(() => {
+        callback(onResolveed);
+      });
     }
     if (this.PromiseState === "rejected") {
-      callback(onRejected);
+      //设置为异步执行
+      setTimeout(() => {
+        callback(onRejected);
+      });
     }
     if (this.PromiseState === "pending") {
       //使用对象保存回调函数的话如果p指定了多个回调的话该方法不会保留多个结果而是替换掉原来的两个函数
       //所以应该使用数组的方法来保存
+      //这两个方法是在上面的resolve,reject 中执行
       this.callbacks.push({
         onResolveed: function () {
           callback(onResolveed);
@@ -148,10 +167,10 @@ Promise.race = function (promiseArr) {
       const element = promiseArr[i];
       element.then(
         (vlaue) => {
-          resolve(vlaue)
+          resolve(vlaue);
         },
         (reason) => {
-          reject(reason)
+          reject(reason);
         }
       );
     }
