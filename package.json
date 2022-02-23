@@ -43,6 +43,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "fs": "^0.0.1-security",
     "jquery": "^3.6.0",
     "uniq": "^1.0.1"
