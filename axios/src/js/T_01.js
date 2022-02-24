@@ -1,15 +1,31 @@
 function Axios(config){
     this.defaults = {};
     this.interceptors = {
-        require: {},
-        response: {},
+        request: new InterceptorManager(),
+        response: new InterceptorManager(),
     };
 }
 Axios.prototype.request = function (config){
     let promise = Promise.resolve(config);
     let chains = [dispatchRequest, undefined];
-    let result = promise.then(chains[0], chains[1]);
-    return result;
+    this.interceptors.request.handlers.forEach(value => {
+        //请求拦截器顺序问题出现在这里
+        //先将第一个拦截器添加到了前面
+        //然后在将第二个拦截器添加到了第一个的前面
+        //使用导致了第二个拦截器先运行的情况
+        chains.unshift(value.fulfilled, value.rejected)
+    });
+    this.interceptors.response.handlers.forEach(value=>{
+        //将响应拦截器从handlers中添加到chains中
+        //使用push不会导致和请求拦截器的顺序问题
+        chains.push(value.fulfilled,value.rejected)
+    })
+
+    while (chains.length){
+        promise = promise.then(chains.shift(), chains.shift());
+
+    }
+    return promise;
 }
 Axios.prototype.get = function (config){
     return this.request(config)
@@ -17,6 +33,15 @@ Axios.prototype.get = function (config){
 Axios.prototype.post = function (config){
     return this.request(config)
 }
+
+function InterceptorManager(config){
+    this.handlers = [];
+}
+InterceptorManager.prototype.use = function (fulfilled,rejected){
+    //该方法主要是将两个回调函数传进handles的数组中
+    this.handlers.push({fulfilled, rejected});
+}
+
 
 function createInstance(config){
     //这里是Axios上this的方法
@@ -69,6 +94,52 @@ function xhrAdapter(config){
 }
 
 let axios = createInstance()
+// console.dir(axios);
+axios.interceptors.request.use(function (config) {
+    // 在发送请求之前做些什么
+    //config.data = {"test":"修改成功"}
+    console.log("one")
+    return config;
+}, function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+});
+axios.interceptors.request.use(function (config) {
+    // 在发送请求之前做些什么
+    //config.data = {"test":"修改成功"}
+    console.log("two")
+    return config;
+}, function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
+});
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) {
+    // 2xx 范围内的状态码都会触发该函数。
+    // 对响应数据做点什么
+    //response.data = {"cancal":"删除数据"}
+    console.log("response one")
+    return response;
+}, function (error) {
+    // 超出 2xx 范围的状态码都会触发该函数。
+    // 对响应错误做点什么
+    console.log("error")
+    return Promise.reject(error);
+});
+axios.interceptors.response.use(function (response) {
+    // 2xx 范围内的状态码都会触发该函数。
+    // 对响应数据做点什么
+    console.log("response two")
+    //response.data = {"cancal":"删除数据"}
+    return response;
+}, function (error) {
+    // 超出 2xx 范围的状态码都会触发该函数。
+    // 对响应错误做点什么
+    console.log("error")
+    return Promise.reject(error);
+});
+
+
 axios({
     method: "GET",
     url: "http://localhost:3000/posts/1",
