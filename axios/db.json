@@ -2,13 +2,28 @@
   "posts": [
     {
       "id": 1,
-      "title": "skiers",
+      "title": "使用json-server --watch db.json 执行此文件",
       "author": "利旗明"
     },
     {
       "id": 2,
       "title": "saa",
       "author": "李四"
+    },
+    {
+      "test": "修改成功",
+      "id": 3
+    },
+    {
+      "test": "修改成功",
+      "id": 4
+    },
+    {
+      "test": "修改成功",
+      "id": 5
+    },
+    {
+      "id": 6
     }
   ],
   "comments": [
