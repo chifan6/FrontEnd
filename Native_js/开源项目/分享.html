@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link href="https://cdn.bootcdn.net/ajax/libs/social-share.js/1.0.9/css/share.min.css" rel="stylesheet">
+<body>
+<ol>
+  <li class="row">
+    <div class="social-share" data-sites="weibo,qq,tencent"></div>
+  </li>
+</ol>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/social-share.js/1.0.14/js/jquery.share.min.js"></script>
+</body>
+
+<script>
+  $('#share-1').share();
+  $('#share-2').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+  $('#share-3').share();
+  $('#share-4').share();
+</script>
+</html>
