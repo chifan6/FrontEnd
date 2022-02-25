@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* 浮动本身意义是用来做文字怀尧的
+      使用P标签不会跑到浮动元素的下面 */
+    .box1 {
+      width: 100px;
+      height: 100px;
+      border: 5px rebeccapurple solid;
+      /* 轮廓大小不会改变宽和高 */
+      /* outline: 5px rebeccapurple solid; */
+      background-color: #bfa;
+      /* content-box 默认设置  会改变原有的可见框大小 宽度和高度加上内边距加上边框大小为盒子大小
+        border-box 不会改变原有的可见框大小 宽度和高度就是盒子的大小
+      */
+      box-sizing: content-box;
+      /* 必需要设置三个参数
+         下面第三个参数为模糊*/
+      box-shadow: 0px 0px 30px black;
+      /* 设置浮动 设置后box1将会离开文档流 下面的box就会上来 */
+      float: left;
+      /* 设置圆角 */
+      border-radius: 50%;
+    }
+    .box2 {
+      width: 100px;
+      height: 100px;
+      border: 5px rebeccapurple solid;
+      /* 轮廓大小不会改变宽和高 */
+      /* outline: 5px rebeccapurple solid; */
+      background-color: #bfa;
+      /* content-box 默认设置  会改变原有的可见框大小 宽度和高度加上内边距加上边框大小为盒子大小
+        border-box 不会改变原有的可见框大小 宽度和高度就是盒子的大小
+      */
+      box-sizing: content-box;
+      /* 必需要设置三个参数
+         下面第三个参数为模糊*/
+      box-shadow: 0px 0px 30px black;
+      /* 设置浮动 */
+      float: left;
+    }
+    .box3 {
+      width: 100px;
+      height: 100px;
+      border: 5px rebeccapurple solid;
+      /* 轮廓大小不会改变宽和高 */
+      /* outline: 5px rebeccapurple solid; */
+      background-color: #bfa;
+      /* content-box 默认设置  会改变原有的可见框大小 宽度和高度加上内边距加上边框大小为盒子大小
+        border-box 不会改变原有的可见框大小 宽度和高度就是盒子的大小
+      */
+      box-sizing: content-box;
+      /* 必需要设置三个参数
+         下面第三个参数为模糊*/
+      box-shadow: 0px 0px 30px black;
+      /* 设置浮动 */
+      float: left;
+    }
+    .box4 {
+      width: 100px;
+      height: 100px;
+      border: 5px rebeccapurple solid;
+      /* 轮廓大小不会改变宽和高 */
+      /* outline: 5px rebeccapurple solid; */
+      background-color: #bfa;
+      /* content-box 默认设置  会改变原有的可见框大小 宽度和高度加上内边距加上边框大小为盒子大小
+        border-box 不会改变原有的可见框大小 宽度和高度就是盒子的大小
+      */
+      box-sizing: content-box;
+      /* 必需要设置三个参数
+         下面第三个参数为模糊*/
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+      /* 设置浮动 */
+      float: left;
+      /* 设置圆角 */
+      border-radius: 50%;
+    }
+    /* 元素脱离文档流以后 行内元素就和块元素脱离文档流一样
+    可以设置宽高   元素会被内容撑开 */
+    .s1 {
+      background-color: #bfa;
+      float: left;
+      width: 100px;
+      height: 100px;
+    }
+    .s2 {
+      background-color: yellowgreen;
+    }
+  </style>
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <span class="s1">脱离文档流</span>
+    <!-- <span class="s2">脱离文档流</span> -->
+  </body>
+</html>
