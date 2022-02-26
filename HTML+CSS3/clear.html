@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      .box1 {
+        border: 10px red solid;
+      }
+      /* .box1::after { */
+      /* 使用::after必须加content */
+      /* content: ""; */
+      /* clear: both; */
+      /* 将行内元素转换为块元素 
+        行内元素不会独占一行 会在box2的旁边*/
+      /* display: block; */
+      /* } */
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        float: left;
+      }
+
+      .box3 {
+        /* 可以使用该方法解决高度塌陷的问题
+        原理是使用box3清除浮动后撑开box1父元素 */
+        /* clear: both; */
+
+        width: 150px;
+        height: 150px;
+        background-color: black;
+        float: left;
+      }
+      .box4 {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        float: left;
+        margin-top: 50px;
+      }
+      /* 这个属性可以解决外边距重叠和高度塌陷的问题 */
+      .clearfix::after,
+      .clearfix::before {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1 clearfix">
+      <div class="box2"></div>
+      <div class="box3 clearfix">
+        <div class="box4"></div>
+      </div>
+    </div>
+  </body>
+</html>
