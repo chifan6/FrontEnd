@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        border: 10px red solid;
+        /* 下面三种方法可以开启BFC */
+        overflow: hidden;
+        /* float: left; */
+        /* display: inline-block; */
+      }
+      .text {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        /* 如果父元素header没有开启BFC将导致高度坍陷 */
+        float: left;
+      }
+
+      footer {
+        width: 200px;
+        /* 开启BFC后 子元素和父元素的边距不会重叠 */
+        overflow: hidden;
+        height: 200px;
+        background-color: rebeccapurple;
+      }
+      .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <header>
+      <div class="text"></div>
+    </header> -->
+    <footer>
+      <div class="box1"></div>
+    </footer>
+  </body>
+</html>
