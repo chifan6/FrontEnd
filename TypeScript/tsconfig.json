@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    //使用哪种模块化规范
+    "module": "commonjs",
+    //打包编译为哪个版本
+    "target": "es6",
+    //文件打包编译后输出的路径
+    "outDir": "./dist/js/",
+    //当编译出现错误时不会生成编译后的文件
+    "noEmitOnError": true,
+    //allowJs 打包编译检查到的js文件到指定目录
+    //checkJs js文件使用ts中的检测
+    //下面这两个选项时成对出现的
+    "allowJs": true,
+    "checkJs": true,
+    //出现隐式的any类型就会报错
+    "noImplicitAny": true,
+    //出现不明确的this类型就会报错（需要给this指定一个类型this: windows）
+    "noImplicitThis": true,
+    //严格模式总开关
+    "strict": true,
+    //严格检查null和undefined
+    "strictNullChecks": true
+  },
+  "include": ["./src/*"],
+  "exclude": [
+    "node_modules"
+  ]
+}
