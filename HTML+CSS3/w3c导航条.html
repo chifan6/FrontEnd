@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>导航条练习</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+  </head>
+  <style>
+    .nav {
+      width: 1210px;
+      height: 48px;
+      margin: 100px auto;
+      background-color: #e8e7e3;
+    }
+    .nav li {
+      float: left;
+    }
+    .nav li:last-child {
+      padding: 0 3px 0 4px;
+    }
+    .nav a {
+      /* 设置为块元素  这样会撑满父元素li */
+      display: block;
+      /* 设置字体颜色 */
+      color: #848484;
+      /* 设置字体大小 */
+      font-size: 19px;
+      /* 设置行高 */
+      line-height: 48px;
+      /* 清除下划线 */
+      text-decoration: none;
+      padding: 0 37px;
+    }
+    .nav li:hover {
+      background-color: #3f3f3f;
+      color: #e1e0dc;
+    }
+  </style>
+  <body>
+    <ul class="nav">
+      <li><a href="javascript:;">HTML/CSS</a></li>
+      <li><a href="javascript:;">Browser Side</a></li>
+      <li><a href="javascript:;">Server Side</a></li>
+      <li><a href="javascript:;">Proframming</a></li>
+      <li><a href="javascript:;">XHL</a></li>
+      <li><a href="javascript:;">Web Building</a></li>
+      <li><a href="javascript:;">Reference</a></li>
+    </ul>
+  </body>
+</html>
