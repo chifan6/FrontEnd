@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定位</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-size: 60px;
+        height: 2000px;
+      }
+      .box1 {
+        width: 150px;
+        height: 150px;
+        background-color: pink;
+      }
+      .box2 {
+        width: 200px;
+        height: 200px;
+        background-color: #bfa;
+        /* relative相对定位 移动的参照物是自己在文档流中的位置 
+        开启定位后可以使用偏移量 top left right bottom
+        */
+        /* position: relative; */
+
+        /* absolute 绝对定位 移动的按照物是离它最近开启了定位的祖先元素
+         如果它的祖先元素都没有开启定位 则会参照根元素(html标签)进行定位
+         没有设置偏移量的话元素会在它文档流中的原位置
+         
+         1、设置了绝对定位后元素会脱离文档流 行内元素变成块元素
+         2、脱离文档流后元素的大小会被内容撑开（前提是没有指定大小）
+         3、绝对定位会使元素提高一个层级
+         4、绝对定位会先对于其的包含块进行定位
+
+         包含块( containing block )
+            -正常情况下:
+            包含块就是离当前元素最近的祖先块元素
+            <div> <div</div> </div>
+            <div><span><em>hello</em></span></div>
+            -绝对定位的包含块:
+            包含块就是离它最近的开启了定位的祖先元素，
+            如果所有的祖先元素都没有开启定位则根元素就是它的包含块
+            - html（根元素、初始包含块)
+         */
+        position: absolute;
+
+        /* fixed 固定地位的特点大部分都和绝对定位一样的
+                固定定位移动的参照物永远都是浏览器的视口
+        */
+        /* position: fixed; */
+
+        /* 粘滞定位 */
+        /* position: sticky; */
+
+        /* 水平布局：
+        如果开启了定位水平地位的等式将由7个变为9个(添加了left 和right)  
+          等式不成立并且9个值里面没有auto的话浏览器会调整right的值*/
+        /* left 和 right 默认值为auto  将这两个值设置为0可以进行居中的效果 */
+
+        /* 垂直布局：
+          和水平布局一样
+          top 和 bottom 默认值为auto  等式变成了9个
+         */
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      .box3 {
+        width: 250px;
+        height: 250px;
+        background-color: orange;
+        /* position: relative;
+        top: 200px; */
+      }
+
+      .box4 {
+        width: 300px;
+        height: 300px;
+        background-color: rebeccapurple;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">1</div>
+    <div class="box3">3</div>
+    <div class="box4">
+      <div class="box2">2</div>
+    </div>
+  </body>
+</html>
