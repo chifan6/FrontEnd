@@ -12,11 +12,11 @@ let h = function (a: number,b: number): number {
 }
 // console.log(h(1,2));
 let i: unknown;
-i = 1;
+i = "hello";
 //类型断言 可以用来告诉解释器变量的实际类型
 // c = i   不能使用 因为i的类型是unknown 需要使用类似断言
 c1 = <string>i;
-c1 = i as string
+c1 = i as string;
 //也可以使用判断类型的方式赋值
 if (typeof i === "string"){
     c1 = i
