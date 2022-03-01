@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link
+    href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    html{
+      font-size: 30px;
+    }
+    /* 添加一个字体 */
+    @font-face {
+      font-family: MyFont;
+      src: url("./font/slideyouran-Regular.ttf");
+    }
+    p {
+      /* serif 衬线字体
+        sans-serif 非衬线字体
+        monospace 等宽字体
+        */
+      /* 会优先使用第一个字体 */
+      font-family: MyFont, "微软雅黑", serif;
+      font-size: 19px;
+    }
+  </style>
+  <body>
+    <div style="font-size: 1rem">
+      <div>
+        <i class="fas fa-angle-right fa-fw fa-spin" style="background: rgba(0, 0, 0, 0)"></i> Home
+      </div>
+      </div>
+    </div>
+    <div>
+      <p>你好,world!</p>
+    </div>
+  </body>
+</html>
