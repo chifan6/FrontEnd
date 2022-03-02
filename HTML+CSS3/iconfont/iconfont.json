@@ -1,0 +1,65 @@
+{
+  "id": "3215283",
+  "name": "FontEnd",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "284379",
+      "name": "支付宝",
+      "font_class": "zhifubao",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "27804856",
+      "name": "@我",
+      "font_class": "a-wo",
+      "unicode": "100ab",
+      "unicode_decimal": 65707
+    },
+    {
+      "icon_id": "27804857",
+      "name": "公文包",
+      "font_class": "gongwenbao",
+      "unicode": "100ac",
+      "unicode_decimal": 65708
+    },
+    {
+      "icon_id": "27804858",
+      "name": "存储",
+      "font_class": "cunchu",
+      "unicode": "100ad",
+      "unicode_decimal": 65709
+    },
+    {
+      "icon_id": "27804859",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "100ae",
+      "unicode_decimal": 65710
+    },
+    {
+      "icon_id": "27804866",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "100af",
+      "unicode_decimal": 65711
+    },
+    {
+      "icon_id": "27804867",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "100b0",
+      "unicode_decimal": 65712
+    },
+    {
+      "icon_id": "27804869",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "100b1",
+      "unicode_decimal": 65713
+    }
+  ]
+}

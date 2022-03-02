@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      /* line-throug  删除线
+         overline 上划线
+         underline 下划线*/
+      width: 300px;
+      text-decoration: underline;
+      /* nowrap 单行显示
+         */
+      white-space: nowrap;
+      overflow: hidden;
+      /* 在文本隐藏后面添加... */
+      text-overflow: ellipsis;
+    }
+    .text {
+      font-size: 20px;
+    }
+
+    .box1 {
+      margin-top: 100px;
+      width: 500px;
+      line-height: 200px;
+      text-align: center;
+      border: 1px red solid;
+    }
+    .text1 {
+      vertical-align: -10px;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <span class="text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+        repellendus non dignissimos saepe. Eaque dolorum molestias saepe est
+        vitae perferendis.
+      </span>
+    </div>
+    <div class="box1">
+      Lorem ipsum <span class="text1">dolor sit amet.</span>
+  </body>
+</html>
