@@ -1,0 +1,70 @@
+/* 解决高度塌陷的问题 */
+.clearfix::after,
+.clearfix::before {
+  content: "";
+  /* 清除左右浮动 */
+  clear: both;
+  /* 设置为table元素 */
+  display: table;
+}
+
+body {
+  /* 设置字体 */
+  font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB,
+    "\5B8B\4F53", sans-serif;
+  /* 设置颜色 */
+  color: #999;
+}
+.nav_outer {
+  /* 设置宽度 */
+  width: 100%;
+  /* 设置行高 */
+  line-height: 30px;
+  /* 设置背景 */
+  background-color: #e3e4e5;
+}
+.nav_core {
+  /* 设置宽度 */
+  width: 1190px;
+  /* 居中对齐 */
+  margin: 0 auto;
+}
+.nav_core a {
+  white-space: pre;
+  text-decoration: none;
+  color: #999;
+}
+.highlight {
+  color: #e33333 !important;
+  font-weight: bold;
+}
+.nav_core a:hover {
+  color: #e33333;
+}
+
+.nav_left {
+  /* 左浮动 */
+  float: left;
+}
+.nav_left .fas {
+  /* 设置字体大小 */
+  font-size: 14px;
+  /* 设置字体颜色 */
+  color: #f10215;
+}
+.line {
+  width: 1px;
+  height: 11px;
+  background-color: rgb(172, 172, 172);
+  margin: 10px;
+}
+.nav_right {
+  /* 右浮动 */
+  float: right;
+}
+.nav_right li {
+  float: left;
+}
+.fa-angle-down {
+  font-size: 8px;
+}

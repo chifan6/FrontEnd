@@ -3,15 +3,15 @@
 * [name(名字可以顺便设置):string]:any 表示变量名是一个字符串(变量名本身就是一个字符串)
 * :any 表示任意类型
 * */
-let a2: {name:string,age?:number,[name:string]:any};
-a2 = {name:"Flag",b:"hello",age:20}
+let a2: { name: string, age?: number, [name: string]: any; };
+a2 = {name: "Flag", b: "hello", age: 20};
 
-/*b为一个函数并且函数必须要有两个参数且返回值为number
+/*b2是一个函数并且函数必须要有两个参数且返回值为number
 * */
-let b2: (name:string,age:number) => string;
-b2 = (name:string,age:number):string=>{
-    return name+age;
-}
+let b2: (name: string, age: number) => string;
+b2 = (name: string, age: number): string => {
+    return name + age;
+};
 // console.log(b(a.name, a.age));
 
 /*定义一个数字数组*/
@@ -21,10 +21,10 @@ let d2: string[];
 
 /*元组就是一个固定长度的数组*/
 let e2: [string, number];
-e2 = ["Flag",21]
+e2 = ["Flag", 21];
 
 /*枚举*/
-enum NameT{
+enum NameT {
     liqiming,
     zhangsan,
     lisi,

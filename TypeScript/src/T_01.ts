@@ -5,6 +5,7 @@ let b1 = true;
 let c1 = 'test';
 let d1 = {};//对象可以重新赋值其他类型
 let e1 = [];
+let arr:number[] = [];
 let f1 = Symbol();
 let g = BigInt(123234435345345);
 let h = function (a: number,b: number): number {
