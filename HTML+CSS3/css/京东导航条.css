@@ -12,8 +12,6 @@ body {
   /* 设置字体 */
   font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB,
     "\5B8B\4F53", sans-serif;
-  /* 设置颜色 */
-  color: #999;
 }
 .nav_outer {
   /* 设置宽度 */
@@ -34,23 +32,35 @@ body {
   text-decoration: none;
   color: #999;
 }
-.highlight {
-  color: #e33333 !important;
-  font-weight: bold;
-}
-.nav_core a:hover {
-  color: #e33333;
-}
-
 .nav_left {
   /* 左浮动 */
   float: left;
+  width: 51px;
+  height: 31px;
+  box-sizing: border-box;
+  border: 1px transparent solid;
 }
-.nav_left .fas {
-  /* 设置字体大小 */
-  font-size: 14px;
-  /* 设置字体颜色 */
-  color: #f10215;
+.current-city > i {
+  color: #e33333;
+  margin: 0 3px;
+}
+.current-city > a:hover {
+  color: #e33333;
+}
+.nav_left:hover {
+  background-color: white;
+  border: 1px #cccccc solid;
+  border-bottom: none;
+}
+.nav_left:hover .city_list {
+  display: block;
+}
+.city_list {
+  border: 1px 0 solid #cccccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 402px;
+  height: 580px;
+  display: none;
 }
 .line {
   width: 1px;
@@ -65,6 +75,13 @@ body {
 .nav_right li {
   float: left;
 }
+.nav_right a:hover {
+  color: #e33333;
+}
 .fa-angle-down {
   font-size: 8px;
+}
+.highlight {
+  color: #e33333 !important;
+  font-weight: bold;
 }
