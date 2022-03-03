@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <title>模板网页</title>
 </head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    #box1{
-        width: 100px;
-        height: 100px;
-        background-color: rebeccapurple;
-    }
-</style>
 <body>
-<div id="box1">1</div>
+    <!--主页面-->
+    <div id="main">
+        <!--    游戏舞台-->
+        <div id="stage">
+            <!--食物-->
+            <div id="food">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <!--蛇-->
+            <div id="snake">
+                <div></div>
+            </div>
+        </div>
+         <!--计分系统-->
+        <div id="scoring">
+            <div id="SCORE">SCORE:<span id="scoreS">0</span></div>
+            <div id="LEVEL">LEVEL:<span id="levelS">1</span></div>
+        </div>
+    </div>
 </body>
-<script src="./T_06.js"></script>
-<script type="text/javascript">
-    window.onload = function (){
-
-    }
-</script>
 </html>

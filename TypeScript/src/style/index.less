@@ -1,0 +1,59 @@
+@bg-color:#b7d4a8;
+*{
+  margin: 0;
+  padding: 0;
+}
+#main{
+  width: 360px;
+  height: 420px;
+  border: black 10px solid;
+  border-radius: 20px;
+  margin: 1px auto;
+  box-sizing: border-box;
+  background-color: @bg-color;
+
+  #stage{
+    width: 304px;
+    height: 304px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin: 10px auto;
+    position: relative;
+    #food{
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+    }
+    #food > div{
+      width: 5px;
+      height: 5px;
+      background-color: black;
+      border: 1px solid @bg-color;
+      float: left;
+      box-sizing: border-box;
+    }
+    #snake{
+      position: absolute;
+      z-index: 1;
+    }
+    #snake > div{
+      width: 10px;
+      height: 10px;
+      background-color: black;
+    }
+
+  }
+  #scoring{
+    width: 304px;
+    font: bold 20px Courier;
+    margin: 40px auto;
+    &>#SCORE{
+      float: left;
+    }
+    &>#LEVEL{
+      float: right;
+    }
+  }
+}

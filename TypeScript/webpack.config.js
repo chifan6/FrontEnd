@@ -11,6 +11,7 @@ module.exports = {
         environment: {
             //告诉webpack不要使用箭头函数
             arrowFunction: false,
+            const:false,
         }
     },
 
@@ -19,6 +20,31 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"],
+            },
+            {
+                test:/\.less$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    {
+                        loader: "postcss-loader",
+                        options:{
+                            postcssOptions:{
+                                plugins: [
+                                    [
+                                        //使用插件
+                                        "postcss-preset-env",
+                                        //兼容到哪个版本
+                                        {
+                                            browsers:'last 2 versions'
+                                        }
+                                    ]
+                                ]
+                            }
+                        }
+                    },
+                    "less-loader"
+                ]
             },
             {
                 test: /\.ts$/,

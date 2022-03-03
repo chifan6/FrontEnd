@@ -3,7 +3,7 @@
     //使用哪种模块化规范
     "module": "commonjs",
     //打包编译为哪个版本
-    "target": "es6",
+    "target": "es5",
     //文件打包编译后输出的路径
 //    "outDir": "./dist/js/",
     //当编译出现错误时不会生成编译后的文件
@@ -19,11 +19,12 @@
     //"noImplicitThis": true,
     //严格模式总开关
     "strict": false,
-/*    //严格检查null和undefined
-    "strictNullChecks": true*/
+    //严格检查null和undefined
+    "strictNullChecks": true
   },
-//  "include": ["./src/*"],
-//  "exclude": [
-//    "node_modules"
-//  ]
+  "include": ["./src/**/*"],
+  "exclude": [
+    "node_modules",
+    "代码"
+  ]
 }
