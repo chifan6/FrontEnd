@@ -91,7 +91,6 @@ module.exports = {
     plugins: [
         // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: "test",
             //引入一个网页模板来生成
             template: "./src/index.html"
         })

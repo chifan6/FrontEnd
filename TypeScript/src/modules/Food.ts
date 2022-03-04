@@ -5,8 +5,11 @@ class Food {
     constructor() {
         this.element = document.getElementById("food")!
     }
-    get left(){
-        return this.element.offsetLeft
+    get X(){
+        return this.element.offsetLeft;
+    }
+    get Y(){
+        return this.element.offsetTop;
     }
     chang(){
         let left = Math.round(Math.random() * 29) * 10;

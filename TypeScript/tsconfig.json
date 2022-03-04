@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     //使用哪种模块化规范
-    "module": "commonjs",
+//    "module": "commonjs",
     //打包编译为哪个版本
-    "target": "es5",
+    "target": "es6",
     //文件打包编译后输出的路径
 //    "outDir": "./dist/js/",
     //当编译出现错误时不会生成编译后的文件
@@ -25,6 +25,5 @@
   "include": ["./src/**/*"],
   "exclude": [
     "node_modules",
-    "代码"
   ]
 }

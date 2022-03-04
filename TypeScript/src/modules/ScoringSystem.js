@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /*分数系统类*/
-var ScoringSystem = /** @class */ (function () {
-    function ScoringSystem(maxLevel) {
-        if (maxLevel === void 0) { maxLevel = 10; }
+class ScoringSystem {
+    constructor(maxLevel = 10) {
         this.score = 0;
         this.level = 1;
         this.scoreEle = document.getElementById("scoreS");
@@ -11,11 +8,11 @@ var ScoringSystem = /** @class */ (function () {
         this.maxLevel = maxLevel;
     }
     //修改分数
-    ScoringSystem.prototype.ModifyScore = function () {
+    ModifyScore() {
         this.scoreEle.innerHTML = ++this.score + "";
         //设置多少分升一级
         switch (this.score) {
-            case 10:
+            case 2:
                 this.ModifyLevel();
                 break;
             case 30:
@@ -46,13 +43,12 @@ var ScoringSystem = /** @class */ (function () {
                 this.ModifyLevel();
                 break;
         }
-    };
+    }
     //修改等级
-    ScoringSystem.prototype.ModifyLevel = function () {
+    ModifyLevel() {
         if (this.level < this.maxLevel) {
             this.levelEle.innerHTML = ++this.level + "";
         }
-    };
-    return ScoringSystem;
-}());
-exports.default = ScoringSystem;
+    }
+}
+export default ScoringSystem;

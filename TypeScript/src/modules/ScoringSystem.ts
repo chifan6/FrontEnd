@@ -1,7 +1,7 @@
 /*分数系统类*/
 class ScoringSystem{
-    private score = 0;
-    private level = 1;
+    score = 0;
+    level = 1;
     scoreEle: HTMLElement;
     levelEle: HTMLElement;
     //最高能升到多少级
@@ -16,7 +16,7 @@ class ScoringSystem{
         this.scoreEle.innerHTML = ++this.score + "";
         //设置多少分升一级
         switch (this.score) {
-            case 10:
+            case 2:
                 this.ModifyLevel();
                 break;
             case 30:
