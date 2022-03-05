@@ -2,7 +2,6 @@ class Snake {
     constructor() {
         this.snake = document.getElementById("snake");
         this.head = this.snake.querySelector("div");
-        console.log(this.head);
         this.bodies = this.snake.getElementsByTagName("div");
     }
     get X() {
@@ -21,6 +20,7 @@ class Snake {
         else {
             throw new Error("GAME OVER");
         }
+        this.moveBody(this.X, this.Y);
     }
     set Y(value) {
         if (this.Y === value) {
@@ -32,9 +32,18 @@ class Snake {
         else {
             throw new Error("GAME OVER");
         }
+        this.moveBody(this.X, this.Y);
     }
     addBodies() {
         this.snake.insertAdjacentHTML("beforeend", "<div></div>");
+    }
+    moveBody(X, Y) {
+        for (let i = this.bodies.length - 1; i > 0; i--) {
+            //获取到当前元素前面的元素位置
+            let X = this.bodies[i - 1].offsetLeft;
+            let Y = this.bodies[i - 1].offsetTop;
+            //如果当前元素的位置和前面的不一样则将其设置为前面的位置
+        }
     }
 }
 export default Snake;
