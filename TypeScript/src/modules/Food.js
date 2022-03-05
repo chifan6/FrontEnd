@@ -16,7 +16,4 @@ class Food {
         this.element.style.left = left + "px";
     }
 }
-// const t = new Food()
-// console.log(t.left);
-// t.chang()
 export default Food;

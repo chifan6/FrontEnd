@@ -9,6 +9,7 @@ class GameControl {
         this.ScoringSystem = new ScoringSystem();
         this.Snake = new Snake();
         this.init();
+        this.Food.chang();
     }
     init() {
         document.addEventListener("keydown", this.keyboard.bind(this));
