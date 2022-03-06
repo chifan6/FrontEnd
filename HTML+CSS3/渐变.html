@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background-image: linear-gradient(
+        120deg,
+        rgb(240, 147, 251) 0%,
+        rgb(245, 87, 108) 100%
+      );
+      background-repeat: no-repeat;
+      height: 900px;
+    }
+    .box1 {
+      width: 200px;
+      height: 200px;
+      float: left;
+      /* 线性渐变 */
+      /* background-image: linear-gradient(180deg, red 50px, pink); */
+      /* 从上往下渐变 */
+      /* background-image: linear-gradient(
+         to bottom,
+        red 50px,
+        pink
+      ); */
+      background: linear-gradient(
+          90deg,
+          rgba(255, 0, 0, 0.8),
+          rgba(255, 0, 0, 0) 70.71%
+        ),
+        linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+        linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+    }
+    .box2 {
+      width: 200px;
+      height: 200px;
+      float: right;
+      /* 径向渐变 */
+      /* background-image: radial-gradient(closest-side, red, pink); */
+      /* background-image: repeating-radial-gradient(red, pink); */
+      background: repeating-radial-gradient(
+        circle,
+        #333,
+        #333 10px,
+        #eee 10px,
+        #eee 20px
+      );
+    }
+  </style>
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </body>
+</html>

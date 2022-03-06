@@ -1,0 +1,41 @@
+body {
+  background: #fcfffc;
+  color: #8e908d;
+}
+.outer {
+  width: 240px;
+  margin: 30px auto;
+}
+.title {
+  margin: 14px;
+  margin-top: 10px;
+}
+.title h3 {
+  margin: 10px;
+  margin-left: 0;
+  font-size: 13px;
+}
+.title h3 i {
+  margin-right: 8px;
+}
+.title p {
+  font-size: 13px;
+  line-height: 15px;
+}
+.header {
+  border-top: 1px #eaedea solid;
+  margin: 14px;
+}
+.content {
+  margin-top: 15px;
+  position: relative;
+}
+.star > span {
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  color: #d3d6d3;
+}
+.linght {
+  color: #b9c240;
+}
