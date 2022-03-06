@@ -22,13 +22,19 @@ class Snake {
         if (this.X === value) {
             return;
         }
-        this.moveBody(this.X,this.Y);
-
-        if (value >= 0 && value <= 290){
-            this.head.style.left = value + "px"
-        }else{
+        if (value < 0 || value > 290) {
             throw new Error("GAME OVER")
         }
+        if(this.bodies[1] && (this.bodies[1] as HTMLElement).offsetLeft === value){
+            if(value > this.X){
+                value = this.X - 10;
+            }else {
+                value = this.X + 10;
+            }
+        }
+        this.moveBody();
+        this.head.style.left = value + "px"
+        this.checkCollide()
     }
 
     set Y(value) {
@@ -36,35 +42,47 @@ class Snake {
         if (this.Y === value) {
             return;
         }
-        this.moveBody(this.X,this.Y);
-
-        if (value >= 0 && value <= 290){
-            this.head.style.top = value + "px"
-        }else{
+        if (value < 0 || value > 290) {
             throw new Error("GAME OVER")
         }
+        if(this.bodies[1] && (this.bodies[1] as HTMLElement).offsetTop === value){
+            if(value > this.Y){
+                value = this.Y - 10;
+            }else {
+                value = this.Y + 10;
+            }
+        }
+        this.moveBody();
+        this.head.style.top = value + "px"
+        this.checkCollide()
     }
+
     addBodies() {
         this.snake.insertAdjacentHTML("beforeend", "<div></div>")
-        this.moveBody(this.X,this.Y);
+        this.moveBody()
     }
-    moveBody(left:number,right:number){
-        for (let i = this.bodies.length -1;i > 0 ;i--) {
+
+    moveBody() {
+        for (let i = this.bodies.length - 1; i > 0; i--) {
             //获取到当前元素前面的元素位置
             let X = (this.bodies[i - 1] as HTMLElement).offsetLeft;
             let Y = (this.bodies[i - 1] as HTMLElement).offsetTop;
-            //获取当前元素的位置
-            let currX = (this.bodies[i] as HTMLElement).offsetLeft;
-            let currY = (this.bodies[i] as HTMLElement).offsetTop;
 
             //如果当前元素的位置和前面的不一样则将其设置为前面的位置
-            if(X != currX){
-                (this.bodies[i] as HTMLElement).style.left = X + "px"
-            }
-            if(Y != currY){
-                (this.bodies[i] as HTMLElement).style.top = Y + "px"
+            (this.bodies[i] as HTMLElement).style.left = X + "px";
+            (this.bodies[i] as HTMLElement).style.top = Y + "px";
+
+        }
+    }
+    checkCollide(){
+        //
+        for (let i = 1 ; i < this.bodies.length ; i++){
+            let db = this.bodies[i] as HTMLElement
+            if (this.X === db.offsetLeft && this.Y === db.offsetTop){
+                throw new Error();
             }
         }
     }
 }
+
 export default Snake

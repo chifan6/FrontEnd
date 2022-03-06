@@ -51,7 +51,7 @@ class GameControl {
             this.Snake.X = X;
             this.Snake.Y = Y;
         }catch (e) {
-            alert("You Die !")
+            alert("Die!")
             this.inLive = false
         }
 

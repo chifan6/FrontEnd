@@ -16,7 +16,7 @@ class ScoringSystem{
         this.scoreEle.innerHTML = ++this.score + "";
         //设置多少分升一级
         switch (this.score) {
-            case 2:
+            case 10:
                 this.ModifyLevel();
                 break;
             case 30:

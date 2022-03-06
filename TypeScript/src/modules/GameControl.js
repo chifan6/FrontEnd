@@ -42,7 +42,7 @@ class GameControl {
             this.Snake.Y = Y;
         }
         catch (e) {
-            alert("You Die !");
+            alert("Die!");
             this.inLive = false;
         }
         if (this.checkEat(X, Y)) {
