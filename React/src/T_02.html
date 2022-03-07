@@ -12,21 +12,17 @@
 <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 <script type="text/babel">
 
-    const arr = ["Angular","React","Vue"]
-    const obj = {name1:"Angular",name2:"React",name3:"Vue"}
+    const arr = ["Angular", "React", "Vue"]
+    const obj = {name1: "Angular", name2: "React", name3: "Vue"}
     const VDOM = (
         <div>
             <h1>前端框架</h1>
             <ul>
                 {arr.map((item, index) => <li key={index}>{item}</li>)}
-                {
-                    // <div>{Object.keys(obj)}
-                    // </div>
-                }
             </ul>
         </div>
     );
-    ReactDOM.render(VDOM,document.getElementById("test"))
+    ReactDOM.render(VDOM, document.getElementById("test"))
 </script>
 </body>
 </html>

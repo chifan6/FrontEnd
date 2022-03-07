@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    table {
+      background-color: pink;
+      /* border-spacing  缩小边框之间的距离  但不会消失到只剩一条线（会重叠）*/
+      /* border-spacing: 0px; */
+      /* border-collapse  将边框合并 */
+      border-collapse: collapse;
+      border: black 2px solid;
+    }
+    /* even 双数 也可以使用2n的方法算出双数的值
+       odd 单数  也可以使用2n+1的方法算出单数的值 */
+    tbody > tr:nth-child(even) {
+      border: red 1px solid;
+    }
+    tbody {
+      height: 400px;
+      text-align: center;
+      vertical-align: bottom;
+    }
+
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: #bfa;
+      /* 将box1设置为单元格 */
+      display: table-cell;
+      /* 设置为单元格以后box1可以使用vertical-align 将内容进行垂直排列 */
+      /* 这也算是一种元素居中的一个方法 */
+      vertical-align: middle;
+    }
+    .box2 {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      margin: 0 auto;
+    }
+  </style>
+  <body>
+    <div class="box1">
+      <div class="box2"></div>
+    </div>
+    <table border="3" width="50%" align="center">
+      <!-- thead、tbody、tfoot
+           这三个便签使用的顺序没有要求
+          thead 会在前面
+          tbody 会在中间
+          tfoot 会在下面
+        
+        ！如果表格中没有使用值三个标签浏览器会自动添加一个tbody的标签上去
+        所有使用 > 选择器是要选择到tr的话要使用tbody > tr 
+        因为table不是tr的父元素 是tr的祖先元素
+        
+        -->
+      <thead>
+        <tr>
+          <th colspan="2">******</th>
+          <th colspan="2">@@@</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A1</td>
+          <td>B1</td>
+          <td>C1</td>
+          <td>D1</td>
+        </tr>
+        <tr>
+          <td>A2</td>
+          <td rowspan="2">B2</td>
+          <td>C2</td>
+          <td>D2</td>
+        </tr>
+        <tr>
+          <td>A3</td>
+          <td>C3</td>
+          <td>D3</td>
+        </tr>
+        <tr>
+          <td>A4</td>
+          <td>B4</td>
+          <td colspan="2">C4</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr align="right">
+          <td colspan="2">!!</td>
+          <td colspan="2">()</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
