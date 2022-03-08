@@ -27,7 +27,7 @@
         使用name 来关联其他的单选框 
         使用value 来判断交的内容
         使用checked 来将一个单选框设置为选中的状态-->
-      <input type="radio" name="test" value="one" checked />
+      <input type="radio" name="test" value="one" disabled />
       <input type="radio" name="test" value="two" />
       <input type="radio" name="test" value="three" />
       <br />
@@ -37,11 +37,22 @@
         value中的值为提交到服务器是识别的内容
         option中的内容是给用户进行选择的 
         selected 是默认选址的下拉列表-->
-      <select name="hello">
+      <select name="hello" style="width: 100px">
         <option value="one">选项一</option>
         <option value="two" selected>选项二</option>
         <option value="three">选项三</option>
       </select>
+      <br />
+      <br />
+      <input type="checkbox" name="复选框一" value="10" />
+      <input type="checkbox" name="复选框二" disabled />
+      <input type="checkbox" name="复选框二" />
+
+      <button type="submit" aria-checked="true">按钮</button>
+      <br />
+      <br />
+      <br />
+      <input type="date" name="jdt" />
     </form>
   </body>
 </html>
