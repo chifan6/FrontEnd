@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件化</title>
+    <style>
+        .tab {
+            border: 1px red solid;
+            border-collapse: collapse;
+            /*border-spacing: 50px;*/
+        }
+        .tab td{
+            width: 100px;
+            height: 30px;
+            border: 5px pink solid;
+            text-align: center;
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+</body>
+<script src="./js/react.development.js"></script>
+<script src="./js/react-dom.development.js"></script>
+<script src="./js/babel.min.js"></script>
+<script type="text/babel">
+    //使用函数式组件
+    // function Demo(){
+    //     return <h2>this is function</h2>
+    // }
+    const VDOM = (
+        <div>
+            <table className="tab">
+                <tbody>
+                    <tr>
+                        <td>A1</td>
+                        <td>B2</td>
+                        <td>C3</td>
+                        <td>D4</td>
+                    </tr>
+                    <tr>
+                        <td>A1</td>
+                        <td>B2</td>
+                        <td>C3</td>
+                        <td>D4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    )
+    //使用类式组件
+    class Demo extends React.Component{
+        render(){
+            return VDOM
+        }
+    }
+    ReactDOM.render(<Demo />,document.getElementById("test"))
+</script>
+</html>
