@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>函数式组件</title>
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+  <!--引入React核心文件-->
+  <script src="./js/react.development.js"></script>
+  <!--引入ReactDOM扩展-->
+  <script src="./js/react-dom.development.js"></script>
+  <!--引入prop-types用来对组件标签属性进行限制-->
+  <script src="./js/prop-types.js"></script>
+  <!--引入babel文件-->
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    //在函数中因为没有this
+    //所有不能使用到state ref 这两个属性
+    //当函数可以接收到参数可以使用到props的功能
+    //prop限制标签属性是添加到组件中使用的 使用函数也可以使用得到prop标签属性限制的功能
+    //同时也可以使用默认属性
+    function Person(props){
+      const {name,age,sex} = props
+      return (
+          <ul>
+            <li>姓名：{name}</li>
+            <li>年龄：{age}</li>
+            <li>性别：{sex}</li>
+          </ul>
+      )
+    }
+    Person.propTypes ={
+      name: PropTypes.string.isRequired,
+      age: PropTypes.number,
+      sex: PropTypes.string
+    }
+    Person.defaultProps ={
+      age: 18,
+      sex: 'male'
+    }
+    const Tom = {name:'Tom'}
+    ReactDOM.render(<Person {...Tom}/>,document.getElementById('test'))
+  </script>
+</html>

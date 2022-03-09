@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>状态和this指向的问题简写</title>
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    class Test extends React.Component {
+      //state修改的值实例上的值
+      state = {isTrue: true,weather:'It\'s a nice day today'}
+      render() {
+        return (
+          <h1 onClick={this.demo}>
+            This is {this.state.isTrue ? "true" : "false"},{this.state.weather}
+          </h1>
+        );
+      }
+      //箭头函数没有this
+      //使用demo的this是实例对象Test
+      //使用箭头函数也可以解决使用回调函数时this的指向问题
+      //因为使用的是赋值操作
+      //demo是在实例上而不是在Test的原型中
+      demo = () => {
+        const State = this.state.isTrue;
+        this.setState({isTrue: !State});
+      };
+    }
+
+    ReactDOM.render(<Test />, document.getElementById("test"));
+  </script>
+</html>

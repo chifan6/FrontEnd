@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>props标签属性限制</title>
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+  </body>
+  <!--引入React核心文件-->
+  <script src="./js/react.development.js"></script>
+  <!--引入ReactDOM扩展-->
+  <script src="./js/react-dom.development.js"></script>
+  <!--引入prop-types用来对组件标签属性进行限制-->
+  <script src="./js/prop-types.js"></script>
+  <!--引入babel文件-->
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+      class Person extends React.Component{
+        //在Person类中添加一个标签属性限制
+        static propTypes = {
+          //isRequired 必须要有改属性
+          //fnc 函数
+          name: PropTypes.string.isRequired,
+          age: PropTypes.number,
+          sex: PropTypes.string,
+
+        }
+        //在Person类中添加一个标签属性的默认值 当改属性没有设置值的时候使用默认值
+        static defaultProps = {
+          age: 18,
+          sex: "male",
+        };
+          render(){
+            const {name,age,sex} = this.props
+            return (
+                <ul>
+                  <li>姓名：{name}</li>
+                  <li>年龄：{age +1}</li>
+                  <li>性别：{sex}</li>
+                </ul>
+            )
+          }
+      }
+      const tES = {name:"tES",age:20,sex:'male'}
+      ReactDOM.render(<Person name="Tom" age ={23} sex = "male"/>,document.getElementById('test1'))
+      ReactDOM.render(<Person name="jerry" age ={21} sex = "male"/>,document.getElementById('test2'))
+      //...扩展只能在标签属性中使用 ...对象 的方法
+      ReactDOM.render(<Person {...tES}/>,document.getElementById('test3'))
+  </script>
+</html>

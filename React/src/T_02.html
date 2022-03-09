@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>T_02</title>
-</head>
-<body>
-<div id="test"></div>
-<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-<!-- 生产环境中不建议使用 -->
-<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-<script type="text/babel">
-
-    const arr = ["Angular", "React", "Vue"]
-    const obj = {name1: "Angular", name2: "React", name3: "Vue"}
-    const VDOM = (
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- 生产环境中不建议使用 -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type="text/babel">
+      const arr = ["Angular", "React", "Vue"];
+      const obj = { name1: "Angular", name2: "React", name3: "Vue" };
+      const VDOM = (
         <div>
-            <h1>前端框架</h1>
-            <ul>
-                {arr.map((item, index) => <li key={index}>{item}</li>)}
-            </ul>
+          <h1>前端框架</h1>
+          <ul>
+            {arr.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
         </div>
-    );
-    ReactDOM.render(VDOM, document.getElementById("test"))
-</script>
-</body>
+      );
+      ReactDOM.render(VDOM, document.getElementById("test"));
+    </script>
+  </body>
 </html>

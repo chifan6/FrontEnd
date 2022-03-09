@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>状态和this指向的问题</title>
-</head>
-<body>
-<div id="test"></div>
-</body>
-<script src="./js/react.development.js"></script>
-<script src="./js/react-dom.development.js"></script>
-<script src="./js/babel.min.js"></script>
-<script type="text/babel">
+    <link rel="icon" href="../favicon2.ico" />
+  </head>
+  <body>
+    <div id="test"></div>
+  </body>
+  <script src="./js/react.development.js"></script>
+  <script src="./js/react-dom.development.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
     class Test extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {isTrue: true};
-            //将指向当前实例对象的this指向保存
-            //bind会将this指向调整并返回一个新的函数
-            //使用该方法可以将完整的this.demo赋值给onClick
-            //从而用来解决this的问题
-            this.demo1 = this.demo.bind(this)
-        }
+      constructor(props) {
+        super(props);
+        this.state = { isTrue: true };
+        //将指向当前实例对象的this指向保存
+        //bind会将this指向调整并返回一个新的函数
+        //使用该方法可以将完整的this.demo赋值给onClick
+        //从而用来解决this的问题
+        this.demo1 = this.demo.bind(this);
+      }
 
-        render() {
-            return (
-                //如果在onClick中执行函数时加了小括号的话会被立即执行
-                //因为那是赋值操作 React会执行掉这个函数得到它得返回值
-                //又因为是赋值得操作onClick就会变成赋值后的内容
-                //this.demo得意思是将当前的Test的demo赋值给onClick 而不是将this.demo赋值给onClick
-                //调用用会直接调用demo而不是this.demo从而导致了this指向了全局对象window
-                //又因为类中得局部遍历会自动开启严格模式
-                //严格模式会将指向了window得this设置为undefined
-                <h1 onClick={this.demo1}>This is {this.state.isTrue ? 'true' : 'false'}</h1>
-            )
-        }
-        demo() {
-            const State = this.state.isTrue;
-            //使用this.setState()方法可以修改实例对象的状态
-            //该方法是在React中
-            //类中继承了React的方法使用可以访问到该方法
-            this.setState({isTrue:!State})
+      render() {
+        return (
+          //如果在onClick中执行函数时加了小括号的话会被立即执行
+          //因为那是赋值操作 React会执行掉这个函数得到它得返回值
+          //又因为是赋值得操作onClick就会变成赋值后的内容
+          //this.demo得意思是将当前的Test的demo赋值给onClick 而不是将this.demo赋值给onClick
+          //调用用会直接调用demo而不是this.demo从而导致了this指向了全局对象window
+          //又因为类中得局部遍历会自动开启严格模式
+          //严格模式会将指向了window得this设置为undefined
+          <h1 onClick={this.demo1}>
+            This is {this.state.isTrue ? "true" : "false"}
+          </h1>
+        );
+      }
+      demo() {
+        const State = this.state.isTrue;
+        //使用this.setState()方法可以修改实例对象的状态
+        //该方法是在React中
+        //类中继承了React的方法使用可以访问到该方法
+        this.setState({ isTrue: !State });
 
-            //不能直接修改状态
-            //下面为错误的写法
-            // this.state.isTrue = !State;
-        }
+        //不能直接修改状态
+        //下面为错误的写法
+        // this.state.isTrue = !State;
+      }
     }
 
-    ReactDOM.render(<Test/>, document.getElementById('test'))
-</script>
+    ReactDOM.render(<Test />, document.getElementById("test"));
+  </script>
 </html>
