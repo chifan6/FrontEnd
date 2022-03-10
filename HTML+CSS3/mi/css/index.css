@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+.topNav {
+  height: 40px;
+  background-color: #333333;
+  font-size: 12px;
+}
+.leftNav {
+  float: left;
+}
+.blackNav {
+  width: 1226px;
+  margin: 0 auto;
+}
+.blackNav a {
+  text-decoration: none;
+  color: #b0b0b0;
+  display: inline-block;
+  line-height: 40px;
+}
+.blackNav .spa {
+  color: #424242;
+  margin: 0 0.3em;
+}
+.rightNav {
+  float: right;
+}
+.rightNav > .shopping_cart {
+  float: right;
+  width: 120px;
+  height: 40px;
+  background-color: #424242;
+  margin-left: 20px;
+}
+.shopping_cart a {
+  padding-left: 20px;
+  width: 120px;
+}
