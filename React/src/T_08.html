@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>refs的使用</title>
+    <link rel="icon" href="../favicon.ico"/>
+</head>
+<body>
+<div id="StrRefs"></div>
+<div id="CallRefs"></div>
+<div id="ClassRefs"></div>
+<div id="CreateRefs"></div>
+</body>
+<!--引入React核心文件-->
+<script src="./js/react.development.js"></script>
+<!--引入ReactDOM扩展-->
+<script src="./js/react-dom.development.js"></script>
+<!--引入prop-types用来对组件标签属性进行限制-->
+<script src="./js/prop-types.js"></script>
+<!--引入babel文件-->
+<script src="./js/babel.min.js"></script>
+<script type="text/babel">
+    //使用字符串形式的refs
+    class StrRefs extends React.Component {
+        showStrDate = () => {
+            const {input1} = this.refs;
+            alert(input1.value);
+        };
+        showStrDate2 = () => {
+            const {input2} = this.refs
+            alert(input2.value)
+        };
+
+        render() {
+            return (
+                <div style={{border: "5px pink solid", width: "200px", float: "left", height: "300px",}}>
+                    <h2>使用字符串类型的refs</h2>
+                    <input ref="input1" type="text" placeholder="输入内容" />
+                    <br/>
+                    <button onClick={this.showStrDate}>点击显示文本框的内容</button>
+                    <br/>
+                    <br/>
+                    <input onBlur={this.showStrDate2} ref="input2" type="text" placeholder="离开焦点" />
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<StrRefs/>, document.getElementById("StrRefs"));
+
+    //使用回调形式的refs
+    class CallRefs extends React.Component {
+        showDate1 = () => {
+            const {input1} = this;
+            alert(input1.value)
+        };
+
+
+        state = {isTrue: true};
+
+        change = () => {
+            const {isTrue} = this.state
+            this.setState({isTrue: !isTrue})
+        }
+
+        render() {
+            return (
+                <div
+                    style={{
+                        width: "200px",
+                        height: "300px",
+                        border: "5px red solid",
+                        float: "right"
+                    }}
+                >
+                    <h2>回调函数refs</h2>
+                    <h3>This is {this.state.isTrue ? "true" : "false"}</h3>
+                    <button onClick={this.change}>点击切为{this.state.isTrue ? "false" : "true"}</button>
+                    <br/>
+                    <br/>
+
+                    {/*将当前的节点给放在实例对象上
+              问题：
+                  在进行页面渲染(render)的时候会出现一次赋值为null的结果
+                  这个回调函数在渲染时会被执行两次 第一次会赋值一个null 第二次才会赋值当前的节点
+                  使用上面的切换状态可以说明这个问题
+              */}
+                    <input ref={(curredNode) => {
+                        this.input1 = curredNode;
+                        console.log("---直接使用回调的方法会出现null---")
+                        console.log(curredNode)
+
+                    }} type="text" placeholder="点击显示内容"/>
+                    <br/>
+                    <button onClick={this.showDate1}>点击显示文本框的内容</button>
+                    <br/>
+                    <br/>
+                    <input type="text" placeholder="离开焦点显示内容"/>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<CallRefs/>, document.getElementById("CallRefs"));
+
+    //ref 的回调函数定义成 class 的绑定函数的方式
+    class ClassRefs extends React.Component {
+        element = (curr) => {
+            console.log("---将回调函数定义成class的绑定函数不会出现null")
+            console.log(curr)
+            //将ref传送过来的内容节点放到实例对象的身上
+            this.input3 = curr;
+        };
+        showDate = () => {
+            //处理绑定事件
+            alert(this.input3.value)
+        };
+        currNode = (curr) => {
+            this.input4 = curr
+        };
+        showDate1 = () => {
+            alert(this.input4.value)
+        };
+        state = {isTrue: true};
+        cutState = () => {
+            const {isTrue} = this.state;
+            this.setState({isTrue: !isTrue})
+        }
+
+        render() {
+            return (<div
+                style={{width: "200px", height: "300px", border: "5px #bfa solid", float: "left", marginTop: "20px"}}>
+                <h3>ref的回调函数定义成 class 的绑定函数</h3>
+                <h4>This is {this.state.isTrue ? "true" : "false"}</h4>
+                <button onClick={this.cutState}>点击切换状态</button>
+                <br/>
+                <br/>
+                {/*将refDOM节点引用存储到this.element上*/}
+                <input ref={this.element} type="text" placeholder="输入内容" />
+                <button onClick={this.showDate}>点击显示文本框的内容</button>
+                <br/>
+                <br/>
+                <input ref={this.currNode} onBlur={this.showDate1} type="text" placeholder="离开焦点显示内容" />
+            </div>)
+        }
+    }
+
+    ReactDOM.render(<ClassRefs/>, document.getElementById('ClassRefs'))
+
+    //使用createRef方法处理ref
+    class Create extends React.Component {
+        state = {isTure: true};
+        cut = () => {
+            const {isTure} = this.state
+            this.setState({isTure: !isTure})
+        }
+        //使用React.createRef 将输入框元素添加到实例对象中
+        ele = React.createRef()
+        showDate = () => {
+            const {current} = this.ele;
+            alert(current.value)
+        }
+        elem = React.createRef();
+        showDate1 = () => {
+            const {current} = this.elem
+            // console.log(current.value)
+            alert(current.value)
+        }
+
+        render() {
+            return (
+                <div style={{
+                    width: "200px",
+                    float: "right",
+                    border: "5px yellow solid",
+                    marginTop: "20px",
+                    height: "300px"
+                }}>
+                    <h3>使用createRef方法处理ref</h3>
+                    <h4>This is {this.state.isTure ? "true" : "false"}</h4>
+                    <button onClick={this.cut}>点击切换状态</button>
+                    <br/>
+                    <br/>
+                    <input ref={this.ele} type="text" placeholder="输入内容"/>
+                    <button onClick={this.showDate}>点击显示文本框内容</button>
+                    <br/>
+                    <br/>
+                    <input ref={this.elem} onBlur={this.showDate1} type="text" placeholder="离开焦点显示内容"/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Create/>, document.getElementById('CreateRefs'))
+</script>
+</html>
