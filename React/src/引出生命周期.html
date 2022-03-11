@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>引出生命周期</title>
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <body>
+    <div id="demo"></div>
+    <div id="test"></div>
+  </body>
+  <!--引入React核心文件-->
+  <script src="./js/react.development.js"></script>
+  <!--引入ReactDOM扩展-->
+  <script src="./js/react-dom.development.js"></script>
+  <!--引入prop-types用来对组件标签属性进行限制-->
+  <script src="./js/prop-types.js"></script>
+  <!--引入babel文件-->
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+      class Demo extends React.Component{
+        state = {opacity:1}
+        unmount = ()=>{
+            //卸载组件
+            ReactDOM.unmountComponentAtNode(document.getElementById('demo'))
+        }
+        //组件渲染后React会执行一次这个方法
+        componentDidMount() {
+          this.timeTag = setInterval(()=>{
+            let {opacity} = this.state;
+            opacity -= 0.1
+            if(opacity <= 0 ){
+              opacity = 1
+            }
+            this.setState({opacity})
+          },200)
+        }
+        //组件卸载前React会执行一次这个方法
+        componentWillUnmount(){
+          //组件卸载前关闭定时器
+          clearInterval(this.timeTag)
+        }
+        render(){
+          return (
+              <div>
+                <h2 style={{opacity:this.state.opacity}}>It's hard to learn</h2>
+                <button onClick={this.unmount}>Don't live</button>
+              </div>
+          )
+        }
+      }
+      ReactDOM.render(<Demo/>,document.getElementById('demo'))
+      class Color extends React.Component{
+        state = {color:''}
+        componentDidMount = () => {
+          const colors = ['red','yellow','pink','orange','black']
+          let index = 0
+          this.timeTag = setInterval(()=>{
+            index++;
+            if (index === 4){
+              index = 0
+            }
+            this.setState({color:colors[index]})
+          },200)
+        };
+        stop = () => {
+          //关闭定时器
+          clearInterval(this.timeTag)
+        };
+        start = () => {
+          const colors = ['red','yellow','pink','orange','black']
+          let index = 0
+          //关闭上一个开启的定时器
+          clearInterval(this.timeTag)
+          this.timeTag = setInterval(()=>{
+            index++;
+            if (index === 4){
+              index = 0
+            }
+            this.setState({color:colors[index]})
+          },200)
+        };
+          render(){
+            return (
+              <div>
+                <br/>
+                <h2 style={{color:this.state.color}}>Automatic color switching</h2>
+                <button onClick={this.stop}>Don't flash</button>
+                <button onClick={this.start} style={{marginLeft:"40px"}}>start</button>
+              </div>
+            )
+          }
+      }
+      //挂载组件
+      ReactDOM.render(<Color/>,document.getElementById('test'))
+  </script>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>旧版生命周期</title>
+    <link rel="icon" href="../favicon.ico"/>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+<!--引入React核心文件-->
+<script src="./js/react.development.js"></script>
+<!--引入ReactDOM扩展-->
+<script src="./js/react-dom.development.js"></script>
+<!--引入prop-types用来对组件标签属性进行限制-->
+<script src="./js/prop-types.js"></script>
+<!--引入babel文件-->
+<script src="./js/babel.min.js"></script>
+<script type="text/babel">
+    class Count extends React.Component {
+        constructor(props) {
+            console.log('constructor')
+            super(props);
+            this.state = {count: 0, degree: 0}
+        }
+
+        //求和加1
+        add = () => {
+            const {count, degree} = this.state
+            this.setState({count: count + 1, degree: degree + 1})
+        };
+        //删除组件
+        delete = () => {
+            ReactDOM.unmountComponentAtNode(document.getElementById('demo'))
+        }
+
+        //强制进行数据更新
+        force = () => {
+            const {count} = this.state
+            this.forceUpdate(() => {
+                const {count} = this.state
+                this.setState({count: count + 1})
+            })
+        };
+
+        //即将完成挂载时钩子
+        componentWillMount() {
+            console.log('componentWillMount')
+        }
+
+        //完成挂载后钩子
+        componentDidMount() {
+            console.log('componentDidMount')
+        }
+
+        //是否进行更新数据的钩子
+        shouldComponentUpdate() {
+            console.log('shouldComponentUpdate')
+            //写了这个方法必须有一个返回值
+            // ture:进行数据更新
+            // false：进行数据更新
+            // 不写默认返回ture
+            return true
+        }
+
+        //即将更新数据的钩子
+        componentWillUpdate() {
+            console.log('componentWillUpdate')
+        }
+
+        //完成数据更新后的钩子
+        componentDidUpdate() {
+            console.log('componentDidUpdate')
+        }
+
+        //即将删除时钩子
+        componentWillUnmount() {
+            console.log('componentWillUnmount')
+        }
+
+        //完成数据更新后的钩子
+        render() {
+            console.log('render')
+            return (
+                <div>
+                    <h2>当前求和为：{this.state.count}</h2>
+                    <Degree degree={this.state.degree}/>
+                    <br/>
+                    <button onClick={this.add}>点击+1</button>
+                    <button onClick={this.force} style={{marginLeft: '20px'}}>强制进行修改</button>
+                    <button onClick={this.delete} style={{margin: "0 20px"}}>delete</button>
+                </div>
+            )
+        }
+    }
+
+    class Degree extends React.Component {
+        //即将进行挂载钩子
+        componentWillMount(){
+            console.log('@ componentWillMount')
+        }
+
+        //收到父组件传过来的标签属性时的钩子
+        componentWillReceiveProps() {
+            console.log('@ componentWillReceiveProps')
+        }
+
+        //是否进行更新数据的钩子
+        shouldComponentUpdate() {
+            console.log('@ shouldComponentUpdate')
+            //写了这个方法必须有一个返回值
+            // ture:进行数据更新
+            // false：进行数据更新
+            // 不写默认返回ture
+            return true
+        }
+
+        //即将更新数据的钩子
+        componentWillUpdate() {
+            console.log('@ componentWillUpdate')
+        }
+
+        //完成数据更新后的钩子
+        componentDidUpdate() {
+            console.log('@ componentDidUpdate')
+        }
+
+        render() {
+            console.log('@ render')
+            return (
+                <div>总共进行非强制求和的次数为{this.props.degree}次</div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Count/>, document.getElementById('demo'))
+</script>
+</html>

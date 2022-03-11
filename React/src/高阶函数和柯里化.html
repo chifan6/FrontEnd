@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>高阶函数和柯里化方式</title>
+    <link rel="icon" href="../favicon.ico"/>
+</head>
+<body>
+<div id="test"></div>
+</body>
+<!--引入React核心文件-->
+<script src="./js/react.development.js"></script>
+<!--引入ReactDOM扩展-->
+<script src="./js/react-dom.development.js"></script>
+<!--引入prop-types用来对组件标签属性进行限制-->
+<script src="./js/prop-types.js"></script>
+<!--引入babel文件-->
+<script src="./js/babel.min.js"></script>
+<script type="text/babel">
+    //受控组件优化将保存的元素都统一在一个方法中处理
+    //减少代码量
+    class Demo extends React.Component {
+        state = {username: '', password: ''}
+        handleSubmit = (event) => {
+            //取消默认行为
+            event.preventDefault();
+            const {username, password} = this.state
+            alert(`你输入的用户名为 ${username}，密码为${password}`)
+        };
+        /*下面使用高阶函数和函数的柯里化的方式
+        *   高阶函数：
+        *       1、方法中传入的参数是一个函数
+        *       2、方法中返回的结果是一个函数
+        *   柯里化函数：
+        *       1、方法里面套用方法并传入参数未处理
+        *           随后在最后一个套用的函数中进行统一处理
+        * */
+        saveELe = (typeDate) => {
+            return (event) => {
+                const {value} = event.target
+                this.setState({[typeDate]: value})
+            }
+        }
+        //不使用高级函数和函数的柯里化的方式
+        saveElement = (event, typeDate) => {
+            const {value} = event.target
+            this.setState({[typeDate]: value})
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    {/*username：<input type="text" autoComplete="off" onChange={this.saveELe("username")}/>*/}
+                    username：<input type="text" autoComplete="off" onChange={(event) => {
+                    this.saveElement(event, 'username')
+                }}/>
+                    <br/>
+                    <br/>
+                    {/*password：<input type="password" onChange={this.saveELe("password")}/>*/}
+                    password：<input type="password" onChange={(event) => {
+                    this.saveElement(event, 'password')
+                }}/>
+                    <br/>
+                    <br/>
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById('test'))
+</script>
+</html>
