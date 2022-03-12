@@ -40,11 +40,22 @@
             }, 1000)
         }
 
+        //更新状态之前的快照需配合componentDidUpdate使用
+        //该钩子返回的快照会传给componentDidUpdate第三个参数
+        //快照的类似随意不区分
+        //接收两个参数：
+        //          第一个：组件标签属性
+        //          第二个：当前的状态
         getSnapshotBeforeUpdate(props,state) {
             const {list} = this.refs
             return list.scrollHeight
         }
 
+        //组件完成更新的钩子
+        //接收三个参数
+        //      1、上一个标签属性
+        //      2、上一个状态
+        //      3、getSnapshotBeforeUpdate返回的快照
         componentDidUpdate(prevProps,prevState,snapShoot) {
             const {list} = this.refs;
             list.scrollTop += list.scrollHeight - snapShoot

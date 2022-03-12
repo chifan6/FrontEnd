@@ -23,6 +23,34 @@
   color: #424242;
   margin: 0 0.3em;
 }
+.blackNav > .leftNav > a:hover,
+.blackNav > .rightNav > a:hover {
+  color: aliceblue;
+}
+.shopping_cart {
+  position: relative;
+}
+.shopping_cart a:hover {
+  color: #ff6700;
+  background-color: white;
+}
+.shopping_cart a {
+  padding-left: 20px;
+  width: 120px;
+}
+.shopping-list {
+  display: none;
+  width: 316px;
+  position: absolute;
+  right: 0;
+  color: #000;
+  line-height: 80px;
+  text-align: center;
+  box-shadow: 0 3px 5px #aaa;
+}
+.shopping_cart:hover .shopping-list {
+  display: block;
+}
 .rightNav {
   float: right;
 }
@@ -33,7 +61,41 @@
   background-color: #424242;
   margin-left: 20px;
 }
-.shopping_cart a {
-  padding-left: 20px;
-  width: 120px;
+.download {
+  font-size: 15px;
+  color: #000;
+  display: none;
+  margin-left: -35px;
+}
+.T-download {
+  position: relative;
+}
+.T-download:hover > div {
+  display: block;
+}
+.downloadApp {
+  text-align: center;
+  display: block;
+  width: 124px;
+  position: absolute;
+  box-shadow: 0 1px 5px #aaa;
+}
+.downloadApp img {
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+/* 三角形 */
+.trangle {
+  position: absolute;
+  top: 24px;
+  left: 13px;
+  width: 0;
+  border: 8px solid #000;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: #fff;
+  border-right-color: transparent;
 }
