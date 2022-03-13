@@ -9,3 +9,11 @@ body {
   font: 14px/1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
     Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
 }
+.w {
+  width: 1226px;
+  margin: 0 auto;
+}
+a {
+  color: #424242;
+  text-decoration: none;
+}

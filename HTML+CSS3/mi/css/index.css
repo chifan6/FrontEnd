@@ -10,15 +10,16 @@
   float: left;
 }
 .blackNav {
-  width: 1226px;
-  margin: 0 auto;
+  position: relative;
 }
+/* 导航选项样式 */
 .blackNav a {
   text-decoration: none;
   color: #b0b0b0;
   display: inline-block;
   line-height: 40px;
 }
+/* 分割线 */
 .blackNav .spa {
   color: #424242;
   margin: 0 0.3em;
@@ -27,33 +28,38 @@
 .blackNav > .rightNav > a:hover {
   color: aliceblue;
 }
-.shopping_cart {
-  position: relative;
-}
+/* 购物车鼠标经过事件 */
 .shopping_cart a:hover {
   color: #ff6700;
   background-color: white;
 }
+/* 购物车选项样式 */
 .shopping_cart a {
   padding-left: 20px;
   width: 120px;
 }
+/* 购物车列表样式 */
 .shopping-list {
-  display: none;
   width: 316px;
   position: absolute;
   right: 0;
+  height: 0px;
+  overflow: hidden;
   color: #000;
   line-height: 80px;
   text-align: center;
   box-shadow: 0 3px 5px #aaa;
+  transition: height 0.3s;
 }
+/* 购物车列表的过渡 */
 .shopping_cart:hover .shopping-list {
-  display: block;
+  height: 80px;
 }
+/* 右边的导航 */
 .rightNav {
   float: right;
 }
+/* 购物车 */
 .rightNav > .shopping_cart {
   float: right;
   width: 120px;
@@ -61,25 +67,35 @@
   background-color: #424242;
   margin-left: 20px;
 }
+/* 下载app */
 .download {
   font-size: 15px;
   color: #000;
-  display: none;
   margin-left: -35px;
+  position: absolute;
+  z-index: 9999;
+  width: 124px;
+  height: 0px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px #aaa;
+  transition: height 0.3s;
+  background-color: #fff;
 }
-.T-download {
-  position: relative;
+/* 下载图片过渡 */
+.T-download:hover > .download {
+  height: 145px;
 }
-.T-download:hover > div {
+/* 显示三角 */
+.T-download:hover > .trangle {
   display: block;
 }
+
+/* 小米下载 */
 .downloadApp {
   text-align: center;
   display: block;
-  width: 124px;
-  position: absolute;
-  box-shadow: 0 1px 5px #aaa;
 }
+/* 小米下载图片 */
 .downloadApp img {
   width: 90px;
   height: 90px;
@@ -89,13 +105,114 @@
 }
 /* 三角形 */
 .trangle {
-  position: absolute;
-  top: 24px;
-  left: 13px;
-  width: 0;
+  display: none;
+  margin-top: -16px;
+  margin-left: 14px;
+  width: 10px;
   border: 8px solid #000;
   border-top-color: transparent;
   border-left-color: transparent;
   border-bottom-color: #fff;
   border-right-color: transparent;
+}
+
+/* 中间模块 */
+
+/* 中间导航 */
+.middle {
+  height: 100px;
+  position: relative;
+}
+
+.logoOuter {
+  width: 56px;
+  height: 56px;
+}
+/* logo样式 */
+.logo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+  background-color: #ff6700;
+  border-radius: 20px;
+}
+.logo img {
+  width: 55px;
+}
+.middleNav {
+  width: 850px;
+  position: absolute;
+  left: 77px;
+  right: 0;
+  top: 6px;
+  margin: auto;
+}
+.middleNav li a {
+  float: left;
+  padding: 0 10px;
+  font-size: 16px;
+  color: #333;
+  line-height: 88px;
+  transition: color 0.2s;
+}
+.middleNav ul li a:hover {
+  color: #ff6700;
+}
+/* 搜索主体 */
+.query {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  bottom: 0;
+  margin-top: 25px;
+}
+/* 搜索框 */
+.query input {
+  height: 50px;
+  width: 250px;
+  border: 0px;
+  border: 1px #e0e0e0 solid;
+  position: absolute;
+  right: 52.6px;
+  transition: border 0.3s;
+  box-sizing: border-box;
+}
+/* 搜索图标 */
+.query a {
+  position: absolute;
+  font-size: 20px;
+  right: 0;
+  text-align: center;
+  line-height: 46.5px;
+  width: 52px;
+  border: 1px #e0e0e0 solid;
+  z-index: 1;
+  border-left: none;
+  transition: border 0.3s;
+}
+.query i {
+  font-size: 25px;
+}
+.query a:hover {
+  background-color: #ff6700;
+  color: #fff;
+}
+.query:hover a {
+  border: 1px #b0b0b0 solid;
+  border-left: none;
+}
+.query:hover input {
+  border: 1px #b0b0b0 solid;
+}
+.query input:focus-visible {
+  /* 去除输入框默认轮廓边框 */
+  outline: none;
+  border: #ff6700 1px solid;
+}
+.query input:focus-visible + a {
+  border: #ff6700 1px solid;
+  border-left: none;
 }
