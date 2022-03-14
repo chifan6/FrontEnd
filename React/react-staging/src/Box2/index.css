@@ -1,0 +1,20 @@
+.box2{
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    float: right;
+    transition: all 3s;
+}
+.box22{
+    height: 0;
+    width: 100%;
+    background-color: red;
+    transition: height 2s;
+    clear: both;
+}
+.box2:hover{
+    width: 1000px;
+}
+.box2:hover + .box22{
+    height: 500px;
+}
