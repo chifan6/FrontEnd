@@ -50,6 +50,8 @@
   text-align: center;
   box-shadow: 0 3px 5px #aaa;
   transition: height 0.3s;
+  z-index: 2;
+  background-color: white;
 }
 /* 购物车列表的过渡 */
 .shopping_cart:hover .shopping-list {
@@ -138,9 +140,18 @@
   height: 56px;
   background-color: #ff6700;
   border-radius: 20px;
+  overflow: hidden;
 }
 .logo img {
   width: 55px;
+}
+.mi-home {
+  position: absolute;
+  left: 56px;
+  transition: left 0.3s;
+}
+.logo:hover .mi-home {
+  left: 0;
 }
 .middleNav {
   width: 850px;
