@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 import "./index.css";
 
 export default class Header extends Component {
+  /* 对属性进行限制 */
+  static propType = {
+    addTodo: PropTypes.func.isRequired,
+  };
+
   handleKey = (event) => {
     const itme = event.target;
     const { addTodo } = this.props;

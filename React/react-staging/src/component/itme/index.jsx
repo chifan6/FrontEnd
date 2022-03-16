@@ -1,8 +1,13 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import "./index.css";
 
 export default class Itme extends Component {
+  static propTypes = {
+    key: PropTypes.isRequired,
+    changeChecked: PropTypes.func,
+  };
+
   //定义一个flag状态用来标志鼠标是否移入到元素上
   //默认为未移入
   state = { flag: false };
@@ -14,7 +19,10 @@ export default class Itme extends Component {
       this.setState({ flag });
     };
   };
-
+  changeCheckbox = (event) => {
+    const { id, changeChecked } = this.props;
+    changeChecked(id, event.target.checked);
+  };
   render() {
     const { name, done } = this.props;
     const { flag } = this.state;
@@ -28,7 +36,11 @@ export default class Itme extends Component {
           {/* 
           Checked 该属性为只读不能使用状态进行更新
           defaultChecked 可以修改 */}
-          <input type="checkbox" defaultChecked={done} />
+          <input
+            type="checkbox"
+            defaultChecked={done}
+            onChange={this.changeCheckbox}
+          />
           <span>{name}</span>
         </label>
         <button
