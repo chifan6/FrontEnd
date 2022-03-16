@@ -11,11 +11,18 @@ export default class List extends Component {
   };
   /* 挂载组件 */
   render() {
-    const { todos, changeChecked } = this.props;
+    const { todos, changeChecked, deleteTodo } = this.props;
     return (
       <ul className="todo-main">
         {todos.map((itme) => {
-          return <Itme key={itme.id} {...itme} changeChecked={changeChecked} />;
+          return (
+            <Itme
+              key={itme.id}
+              {...itme}
+              changeChecked={changeChecked}
+              deleteTodo={deleteTodo}
+            />
+          );
         })}
       </ul>
     );

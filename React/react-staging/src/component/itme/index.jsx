@@ -4,7 +4,6 @@ import "./index.css";
 
 export default class Itme extends Component {
   static propTypes = {
-    key: PropTypes.isRequired,
     changeChecked: PropTypes.func,
   };
 
@@ -19,12 +18,20 @@ export default class Itme extends Component {
       this.setState({ flag });
     };
   };
-  changeCheckbox = (event) => {
-    const { id, changeChecked } = this.props;
-    changeChecked(id, event.target.checked);
+  //更改选择框的选中状态回调
+  changeCheckbox = (id, changeChecked) => {
+    return (event) => {
+      changeChecked(id, event.target.checked);
+    };
+  };
+  //删除todo的回调
+  deleteTodo = (id) => {
+    return () => {
+      this.props.deleteTodo(id);
+    };
   };
   render() {
-    const { name, done } = this.props;
+    const { id, name, done, changeChecked } = this.props;
     const { flag } = this.state;
     return (
       <li
@@ -39,11 +46,12 @@ export default class Itme extends Component {
           <input
             type="checkbox"
             defaultChecked={done}
-            onChange={this.changeCheckbox}
+            onChange={this.changeCheckbox(id, changeChecked)}
           />
           <span>{name}</span>
         </label>
         <button
+          onClick={this.deleteTodo(id)}
           className="btn btn-danger"
           style={{ display: flag ? "block" : "none" }}
         >

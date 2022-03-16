@@ -43,6 +43,23 @@ export default class App extends Component {
     });
     this.setState({ todos: newTodo });
   };
+  //处理删除Todo的回调
+  deleteTodo = (id) => {
+    const { todos } = this.state;
+    // 过滤掉要删除的todo（id）
+    const newTodo = todos.filter((todoObj) => {
+      //判断是否是要删除的id
+      //不等于返回 随后进行dif算法
+      //等于则不返回
+      if (todoObj.id !== id) {
+        return todoObj;
+      } else {
+        return null;
+      }
+    });
+    //将不用删除的todo更新状态
+    this.setState({ todos: newTodo });
+  };
   render() {
     return (
       <div className="todo-container">
@@ -50,7 +67,11 @@ export default class App extends Component {
           {/* 给子组件绑定一个方法来接收子组件要给父元素传递的参数 */}
           <Header addTodo={this.addTodo} />
           {/* 向list传递状态来进行页面的展示 */}
-          <List todos={this.state.todos} changeChecked={this.changeChecked} />
+          <List
+            todos={this.state.todos}
+            changeChecked={this.changeChecked}
+            deleteTodo={this.deleteTodo}
+          />
           <Footer />
         </div>
       </div>
