@@ -9,7 +9,7 @@ export default class List extends Component {
     todos: PropTypes.array.isRequired,
     changeChecked: PropTypes.func.isRequired,
   };
-
+  /* 挂载组件 */
   render() {
     const { todos, changeChecked } = this.props;
     return (
