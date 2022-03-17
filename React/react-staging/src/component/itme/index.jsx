@@ -45,7 +45,7 @@ export default class Itme extends Component {
           defaultChecked 可以修改 */}
           <input
             type="checkbox"
-            defaultChecked={done}
+            checked={done}
             onChange={this.changeCheckbox(id, changeChecked)}
           />
           <span>{name}</span>

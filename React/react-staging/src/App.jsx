@@ -15,11 +15,14 @@ export default class App extends Component {
   state = {
     todos: [],
   };
+  //添加一个Todo的回调
   addTodo = (todoObj) => {
     // 将头部传送过来的对象进行处理
     const todos = this.state.todos;
     this.setState({ todos: [todoObj, ...todos] });
   };
+  
+  //修改itme元素选择框的选择状态
   changeChecked = (id, done) => {
     const { todos } = this.state;
     /* 
@@ -28,7 +31,7 @@ export default class App extends Component {
     map方法返回一个新的状态    
     */
 
-    /* 不能使用gilter方法
+    /* 不能使用filter方法
         使用的话会导致只显示一个结果 */
     const newTodo = todos.map((itme) => {
       if (itme.id === id) {
@@ -40,6 +43,7 @@ export default class App extends Component {
         return itme;
       }
     });
+    //修改状态
     this.setState({ todos: newTodo });
   };
   //处理删除Todo的回调
@@ -61,6 +65,24 @@ export default class App extends Component {
       this.setState({ todos: newTodo });
     }
   };
+  //处理全选的回调
+  allChecked = (Checkedstate)=> {
+    const { todos } = this.state;
+    const newTodo = todos.map((itme)=>{
+      return {...itme,done:Checkedstate}
+    })
+    this.setState({todos:newTodo})
+  }
+  //删除完成的Todo
+  delDoneTodo = ()=>{
+    const {todos} = this.state
+    const newTodos = todos.filter((todoObj)=>{
+      if (todoObj.done === false) {
+        return todoObj
+      }
+    })
+    this.setState({todos:newTodos})
+  }
   render() {
     return (
       <div className="todo-container">
@@ -73,7 +95,7 @@ export default class App extends Component {
             changeChecked={this.changeChecked}
             deleteTodo={this.deleteTodo}
           />
-          <Footer todos={this.state.todos} />
+          <Footer todos={this.state.todos} allChecked = {this.allChecked} delDoneTodo = {this.delDoneTodo}/>
         </div>
       </div>
     );
