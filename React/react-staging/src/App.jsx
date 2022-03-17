@@ -9,8 +9,7 @@ export default class App extends Component {
     将状态保存在APP父类组件中
     子类需要修改状态的话可以将状态给父类
     父类再将状态传给其他的子类元素
-
-
+    
     状态在哪里就得在哪里进行操作
   */
   state = {
