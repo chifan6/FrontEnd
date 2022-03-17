@@ -44,21 +44,23 @@ export default class App extends Component {
     this.setState({ todos: newTodo });
   };
   //处理删除Todo的回调
-  deleteTodo = (id) => {
+  deleteTodo = (id, name) => {
     const { todos } = this.state;
-    // 过滤掉要删除的todo（id）
-    const newTodo = todos.filter((todoObj) => {
-      //判断是否是要删除的id
-      //不等于返回 随后进行dif算法
-      //等于则不返回
-      if (todoObj.id !== id) {
-        return todoObj;
-      } else {
-        return null;
-      }
-    });
-    //将不用删除的todo更新状态
-    this.setState({ todos: newTodo });
+    if (window.confirm(`确实要删除${name}吗?`)) {
+      // 过滤掉要删除的todo（id）
+      const newTodo = todos.filter((todoObj) => {
+        //判断是否是要删除的id
+        //不等于返回 随后进行dif算法
+        //等于则不返回
+        if (todoObj.id !== id) {
+          return todoObj;
+        } else {
+          return null;
+        }
+      });
+      //将不用删除的todo更新状态
+      this.setState({ todos: newTodo });
+    }
   };
   render() {
     return (
@@ -72,7 +74,7 @@ export default class App extends Component {
             changeChecked={this.changeChecked}
             deleteTodo={this.deleteTodo}
           />
-          <Footer />
+          <Footer todos={this.state.todos} />
         </div>
       </div>
     );

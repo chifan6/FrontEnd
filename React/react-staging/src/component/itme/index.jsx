@@ -25,9 +25,9 @@ export default class Itme extends Component {
     };
   };
   //删除todo的回调
-  deleteTodo = (id) => {
+  deleteTodo = (id, name) => {
     return () => {
-      this.props.deleteTodo(id);
+      this.props.deleteTodo(id, name);
     };
   };
   render() {
@@ -51,7 +51,7 @@ export default class Itme extends Component {
           <span>{name}</span>
         </label>
         <button
-          onClick={this.deleteTodo(id)}
+          onClick={this.deleteTodo(id, name)}
           className="btn btn-danger"
           style={{ display: flag ? "block" : "none" }}
         >
