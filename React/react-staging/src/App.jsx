@@ -2,33 +2,33 @@ import React, { Component } from "react";
 import axios from "axios";
 
 export default class App extends Component {
-  getStudentData = () => {
+  //处理获取学生的回调
+  getStudents = () => {
     axios.get("http://localhost:3000/api1/students").then(
-      (response) => {
-        console.log("成功了", response.data);
+      (respone) => {
+        console.log(respone.data);
       },
-      (error) => {
-        console.log("失败了", error);
+      (renson) => {
+        throw renson;
       }
     );
   };
-
-  getCarData = () => {
+  //处理获取汽车的回调
+  getCars = () => {
     axios.get("http://localhost:3000/api2/cars").then(
-      (response) => {
-        console.log("成功了", response.data);
+      (respone) => {
+        console.log(respone.data);
       },
-      (error) => {
-        console.log("失败了", error);
+      (renson) => {
+        throw renson;
       }
     );
   };
-
   render() {
     return (
       <div>
-        <button onClick={this.getStudentData}>点我获取学生数据</button>
-        <button onClick={this.getCarData}>点我获取汽车数据</button>
+        <button onClick={this.getStudents}>点击获取学生信息</button>
+        <button onClick={this.getCars}>点击获取汽车信息</button>
       </div>
     );
   }
