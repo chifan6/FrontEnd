@@ -57,6 +57,7 @@
   "dependencies": {
     "axios": "^0.26.0",
     "fs": "^0.0.1-security",
+    "http-proxy-middleware": "^2.0.4",
     "jquery": "^3.6.0",
     "uniq": "^1.0.1"
   },
