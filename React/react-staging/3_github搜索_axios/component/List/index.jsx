@@ -1,23 +1,10 @@
 import React, { Component } from "react";
-import PubSub from "pubsub-js";
 import "./index.css";
 
 export default class index extends Component {
-  //初始化状态
-  //用户信息，是否是第一次加载，是否加载中，报错信息
-  state = { users: [], isFirst: true, isLoading: false, err: "" };
-
-  //接收订阅消息
-  componentDidMount() {
-    this.token = PubSub.subscribe("usersInfo", (msg, users) => {
-      this.setState(users);
-    });
-  }
-  componentWillUnmount() {
-    PubSub.unsubscribe(this.token);
-  }
   render() {
-    const { users, isFirst, isLoading, err } = this.state;
+    const { users, isFirst, isLoading, err } = this.props;
+    console.log();
     return (
       <div className="row">
         {isFirst ? (

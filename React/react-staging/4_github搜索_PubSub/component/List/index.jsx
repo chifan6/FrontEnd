@@ -10,6 +10,7 @@ export default class index extends Component {
   //接收订阅消息
   componentDidMount() {
     this.token = PubSub.subscribe("usersInfo", (msg, users) => {
+      console.log(users);
       this.setState(users);
     });
   }
@@ -18,6 +19,7 @@ export default class index extends Component {
   }
   render() {
     const { users, isFirst, isLoading, err } = this.state;
+    // console.log(users);
     return (
       <div className="row">
         {isFirst ? (
