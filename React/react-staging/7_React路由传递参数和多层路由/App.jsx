@@ -4,7 +4,6 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import MyNavLink from "./component/MyNavLink";
 import Test from "./pages/Test";
-import Header from "./component/Header";
 
 export default class App extends Component {
   render() {
@@ -12,7 +11,9 @@ export default class App extends Component {
       <div>
         <div className="row">
           <div className="col-xs-offset-2 col-xs-8">
-            <Header />
+            <div className="page-header">
+              <h2>React Router Demo</h2>
+            </div>
           </div>
         </div>
         <div className="row">
