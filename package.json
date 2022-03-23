@@ -8,7 +8,7 @@
     "int-test": "mocha --require babel-core/register --recursive test",
     "lint": "eslint --ext .js --ext .jsx client/"
   },
-  "author": "",
+  "author": "Flag <1649823510@qq.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.17.0",
@@ -63,8 +63,5 @@
     "react-router-dom": "^5.3.0",
     "uniq": "^1.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gitee.com/imng696/front-end.git"
-  }
+  "repository": "https://gitee.com/imng696/front-end.git"
 }
