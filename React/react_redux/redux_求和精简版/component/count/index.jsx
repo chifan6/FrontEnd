@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Button, Select } from "antd";
 import "antd/dist/antd.less";
-import store from "../../redux/store";
-import { plus, minus } from "../../redux/count_action";
+import store from "../../redux/store.js";
 const { Option } = Select;
 
 export default class Count extends Component {
@@ -16,27 +15,26 @@ export default class Count extends Component {
   //加
   plus = () => {
     const { userValue } = this.state;
-    //将action提前写好然后引入
-    store.dispatch(plus(+userValue));
+    store.dispatch({ type: "plus", date: +userValue });
   };
   //减
   minus = () => {
     const { userValue } = this.state;
-    store.dispatch(minus(+userValue));
+    store.dispatch({ type: "minus", date: +userValue });
   };
   //当求和结果未奇数时添加的回调
   plusOdd = () => {
     const { userValue } = this.state;
     const count = store.getState();
     if (count % 2 !== 0) {
-      store.dispatch(plus(+userValue));
+      store.dispatch({ type: "plus", date: +userValue });
     }
   };
   //异步加的回调
   plusAsyn = () => {
     const { userValue } = this.state;
     setTimeout(() => {
-      store.dispatch(plus(+userValue));
+      store.dispatch({ type: "plus", date: +userValue });
     }, 500);
   };
   //清除求和回调
