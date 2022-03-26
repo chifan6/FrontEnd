@@ -35,9 +35,7 @@ export default class Count extends Component {
   //异步加的回调
   plusAsyn = () => {
     const { userValue } = this.state;
-    // setTimeout(() => {
     store.dispatch(asynPlus(+userValue, 500));
-    // }, 500);
   };
   //清除求和回调
   clearCount = () => {
