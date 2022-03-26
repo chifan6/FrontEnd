@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Select } from "antd";
 import "antd/dist/antd.less";
 import store from "../../redux/store";
-import { plus, minus } from "../../redux/count_action";
+import { plus, minus, asynPlus } from "../../redux/count_action";
 const { Option } = Select;
 
 export default class Count extends Component {
@@ -35,9 +35,9 @@ export default class Count extends Component {
   //异步加的回调
   plusAsyn = () => {
     const { userValue } = this.state;
-    setTimeout(() => {
-      store.dispatch(plus(+userValue));
-    }, 500);
+    // setTimeout(() => {
+    store.dispatch(asynPlus(+userValue, 500));
+    // }, 500);
   };
   //清除求和回调
   clearCount = () => {
