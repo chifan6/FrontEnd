@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Button, Select } from "antd";
 import "antd/dist/antd.less";
-import store from "../../redux/store";
-import { plus, minus, asynPlus } from "../../redux/count_action";
 const { Option } = Select;
 
 export default class Count extends Component {
@@ -16,40 +14,41 @@ export default class Count extends Component {
   //加
   plus = () => {
     const { userValue } = this.state;
-    //将action提前写好然后引入
-    store.dispatch(plus(+userValue));
+    this.props.plus(+userValue);
   };
   //减
   minus = () => {
     const { userValue } = this.state;
-    store.dispatch(minus(+userValue));
+    this.props.minus(+userValue);
   };
   //当求和结果未奇数时添加的回调
   plusOdd = () => {
     const { userValue } = this.state;
-    const count = store.getState();
+    //解构赋值父组件传递过来的redux状态
+    const { count } = this.props;
     if (count % 2 !== 0) {
-      store.dispatch(plus(+userValue));
+      this.props.plus(+userValue);
     }
   };
   //异步加的回调
   plusAsyn = () => {
     const { userValue } = this.state;
-    store.dispatch(asynPlus(+userValue, 500));
+    this.props.asynPlus(+userValue, 500);
   };
   //清除求和回调
   clearCount = () => {
-    store.dispatch({ type: "clear" });
+    this.props.clear();
   };
   render() {
+    // 解构赋值从父组件传入的props
+    const { count } = this.props;
     return (
       <div>
-        <h1>当前求和为：{store.getState()}</h1>
+        <h1>当前求和为：{count}</h1>
         <Select
           style={{ width: 120 }}
           onChange={this.handleCheange}
           defaultValue="1"
-          ref={(c) => (this.selectNumber = c)}
         >
           <Option value="1">1</Option>
           <Option value="2">2</Option>
