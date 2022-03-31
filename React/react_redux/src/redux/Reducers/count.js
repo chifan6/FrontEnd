@@ -1,5 +1,5 @@
 // 引入type防止写错
-import { PLUS, MINUS } from "./constate";
+import { PLUS, MINUS } from "../constate";
 
 export default function countReducer(preState, action) {
   const { type, date } = action;
