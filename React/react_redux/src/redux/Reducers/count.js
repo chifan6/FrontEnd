@@ -1,7 +1,8 @@
 // 引入type防止写错
 import { PLUS, MINUS } from "../constate";
 
-export default function countReducer(preState, action) {
+let init = 0;
+export default function countReducer(preState = init, action) {
   const { type, date } = action;
   switch (type) {
     case PLUS:
@@ -10,6 +11,6 @@ export default function countReducer(preState, action) {
       return preState - date;
     default:
       //设置初始化
-      return 0;
+      return preState;
   }
 }

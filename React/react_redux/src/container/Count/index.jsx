@@ -37,16 +37,12 @@ class Count extends Component {
     const { userValue } = this.state;
     this.props.asynPlus(+userValue, 500);
   };
-  //清除求和回调
-  clearCount = () => {
-    this.props.clear();
-  };
   render() {
     // 解构赋值从父组件传入的props
     const { count } = this.props;
     return (
       <div>
-        <h1>Count组件</h1>
+        <h1>Count组件,下方组件的人数为:{this.props.person.length}</h1>
         <h3>当前求和为：{count}</h3>
         <Select
           style={{ width: 120 }}
@@ -74,10 +70,6 @@ class Count extends Component {
           异步加
         </Button>
         &nbsp;
-        <Button type="primary" onClick={this.clearCount}>
-          清除求和
-        </Button>
-        &nbsp;
         <hr></hr>
       </div>
     );
@@ -91,7 +83,7 @@ class Count extends Component {
 export default connect(
   (state) =>
     //返回一个状态对象
-    ({ count: state }),
+    ({ count: state.count, person: state.person }),
   {
     plus,
     minus,
