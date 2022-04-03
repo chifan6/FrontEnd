@@ -1,0 +1,15 @@
+.A {
+  width: 600px;
+  background-color: pink;
+  padding: 8px;
+}
+.B {
+  width: 100%;
+  background-color: red;
+  padding: 8px;
+}
+.C {
+  width: 100%;
+  background-color: skyblue;
+  padding: 8px;
+}

@@ -1,19 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
+function del() {
+  root.unmount();
+}
 const container = document.getElementById("root");
-// const root = ReactDOM.createRoot(container);
-/* root.render(
+const root = ReactDOM.createRoot(container);
+root.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>
-); */
-
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  container
 );
+
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>,
+//   container
+// );
