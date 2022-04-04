@@ -5,8 +5,8 @@ import { NavLink, Switch, Route } from "react-router-dom";
 //使用懒加载的方式导入组件
 //lazy是个函数 函数的返回值是一个导入的组件
 //加载用来提示加载中的组件时不能使用懒加载需使用原来的加载方式
-const About = lazy(() => import("../about"));
-const Home = lazy(() => import("../home"));
+const About = lazy(() => import("./about"));
+const Home = lazy(() => import("./home"));
 
 export default class Lazy extends Component {
   render() {
