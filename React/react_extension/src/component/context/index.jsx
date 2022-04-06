@@ -18,6 +18,7 @@ export default function A() {
 }
 
 class B extends Component {
+  // 接收父组件的context
   static contextType = MyContext;
   render() {
     return (
