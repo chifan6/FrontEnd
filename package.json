@@ -60,7 +60,6 @@
     "http-proxy-middleware": "^2.0.4",
     "jquery": "^3.6.0",
     "pubsub-js": "^1.9.4",
-    "react-router-dom": "^5.3.0",
     "uniq": "^1.0.1"
   },
   "repository": "https://gitee.com/imng696/front-end.git"

@@ -1,0 +1,15 @@
+.Parent{
+    padding: 8px;
+    width: 500px;
+    background-color: yellow;
+}
+.A{
+    padding: 8px;
+    width: 100%;
+    background-color: red;
+}
+.B{
+    padding: 8px;
+    width: 100%;
+    background-color: pink;
+}

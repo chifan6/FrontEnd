@@ -15,6 +15,7 @@ export default class index extends Component {
     });
   }
   componentWillUnmount() {
+    //关闭订阅
     PubSub.unsubscribe(this.token);
   }
   render() {
