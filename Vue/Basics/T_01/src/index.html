@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T_01</title>
+</head>
+<script src="../js/vue.js"></script>
+<style>
+    a {
+        color: black;
+        text-decoration: none;
+    }
+</style>
+<body>
+<div id="root">
+    <h1>Hello,{{title}}</h1>
+    <a v-bind:href="url">点击跳转到百度</a>
+    <br>
+    <br>
+    <input type="text" name="text" v-model="text">
+    <br>
+    <input type="text" name="text" v-model:value="text">
+</div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    /*
+        const vm = new Vue({
+            // el: "#root",
+            // data:{
+            //     title:"World!",
+            //     url:"http://www.baidu.com",
+            //     text:"text123"
+            // }
+            data() {
+                return {
+                    title: "World!",
+                    url: "http://www.baidu.com",
+                    text: "text123"
+                }
+            }
+        });
+        vm.$mount("#root")*/
+
+    const obj = {
+        name: "dom",
+        age: 10,
+        sex: "male"
+    }
+    Object.defineProperty(obj, "address", {
+        /*
+        *   1.configurable:表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性，默认值为true。
+
+            2.enumerable：表示能否通过for in循环访问属性，默认值为true
+
+            3.writable：表示能否修改属性的值。默认值为true。
+
+            4.value：包含这个属性的数据值。默认值为undefined。
+        * */
+
+        // value: "test",  //
+        // configurable: true,
+        // writable: true,
+        // enumerable: true,
+        get() {
+            console.log("访问了address")
+            return "china"
+        },
+        set(v) {
+            console.log("修改了address")
+            obj.address = v
+        }
+    });
+    obj.address = "test"
+    // console.log();
+</script>
