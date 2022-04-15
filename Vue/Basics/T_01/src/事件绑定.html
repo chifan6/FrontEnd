@@ -5,9 +5,30 @@
     <title>事件绑定</title>
     <script src="../js/vue.js"></script>
 </head>
+<style>
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: #00aa00;
+        overflow: auto;
+    }
+    .box2{
+        width: 150px;
+        height: 500px;
+        background-color: red;
+        margin: 0 auto;
+    }
+</style>
 <body>
 <div id="root">
+    <!--事件绑定和事件修饰符-->
+<!--    事件只会触发一次-->
     <button v-on:click.once="showInfo">点击测试</button>
+
+    <!-- 不用等事件执行完成就将滚动条滚动-->
+    <div class="box1" v-on:wheel.passive="scrollS">
+        <div class="box2"></div>
+    </div>
 </div>
 </body>
 <script>
@@ -18,9 +39,13 @@
             name: "test",
         },
         methods:{
-            showInfo(event){
-                // alert("test");
+            showInfo(event) {
                 console.log(event.target);
+            },
+            scrollS(){
+                for (let i = 0 ; i < 100000; i++){
+                    console.log("@")
+                }
             }
         }
     });
