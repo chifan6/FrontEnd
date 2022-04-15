@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../js/vue.js"></script>
+<body>
+  <h1 id="root">My Name is {{name}}</h1>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue(
+        {
+            el: "#root",
+            data(){
+                return {
+                    name: "Test",
+                }
+            }
+        }
+    );
+
+    //正常的数据代理
+    // const obj1 = {
+    //     name: "l",
+    //     age: 20,
+    // };
+    // const obj2 = {
+    //     name: "q",
+    // };
+    //
+    // Object.defineProperty(obj2, "age", {
+    //     get() {
+    //         return obj1.age
+    //     },
+    //    set(v){
+    //         obj1.age = v
+    //    }
+    // });
+
+    console.log(vm);
+</script>
+</html>

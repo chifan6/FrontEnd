@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <button v-on:click.once="showInfo">点击测试</button>
+</div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "test",
+        },
+        methods:{
+            showInfo(event){
+                // alert("test");
+                console.log(event.target);
+            }
+        }
+    });
+</script>
+</html>

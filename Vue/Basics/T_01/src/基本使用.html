@@ -42,16 +42,16 @@
         });
         vm.$mount("#root")*/
 
+    let num = 19;
     const obj = {
         name: "dom",
-        age: 10,
         sex: "male"
     }
-    Object.defineProperty(obj, "address", {
+    Object.defineProperty(obj, "age", {
         /*
         *   1.configurable:表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性，默认值为true。
 
-            2.enumerable：表示能否通过for in循环访问属性，默认值为true
+            2.enumerable：表示能否通过for in循环访问属性，默认值为false
 
             3.writable：表示能否修改属性的值。默认值为true。
 
@@ -63,14 +63,17 @@
         // writable: true,
         // enumerable: true,
         get() {
-            console.log("访问了address")
-            return "china"
+            console.log("访问了age")
+            return num
         },
         set(v) {
-            console.log("修改了address")
-            obj.address = v
+            console.log("修改了age")
+            num = v
         }
     });
-    obj.address = "test"
-    // console.log();
+     // obj.age = "test"
+    console.log(obj);
+    // for (const i in obj) {
+    //     console.log(i);
+    // }
 </script>
