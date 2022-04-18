@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气案例</title>
+</head>
+<script src="../js/vue.js"></script>
+<body>
+<div id="root">
+    <h1>今天天气很{{IsWeather}}</h1>
+    <button v-on:click="ChangeWeather">点击修改天气,{{number}}</button>
+</div>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        // el: "#root",
+        data: {
+            weather: true,
+            number: 1,
+        },
+        computed: {
+            IsWeather() {
+                this.number++
+                return this.weather ? "炎热" : "凉爽";
+            }
+        },
+        methods: {
+            ChangeWeather() {
+                this.weather = !this.weather;
+            }
+        },
+        /*watch: {
+            weather: {
+                //当被监听到时触发handler函数
+                // immediate : true,
+                //当weather被修改是触发此函数
+                handler(newValue, oldValue) {
+                    console.log("weather被修改了", newValue, oldValue)
+                }
+            },
+            //正常的方式进行监测
+            /!*number: {
+                //深度监测 deep默认为false
+                /!* Vue中默认是可以进行深度监测的，
+                    只是在watch中进行了限制(不允许进行深度限制)这样能对性能有很好的提高*!/
+                deep: true,
+                handler(newValue, oldValue) {
+                    console.log("number被修改了")
+                }
+            }*!/
+            //当只使用到handler的时候可以进行简写
+            number(newValue, oldValue){
+                console.log("number被修改了",newValue, oldValue)
+            }
+        },*/
+    });
+    vm.$mount("#root");
+    //只是用到handler所有可以使用简写的方式，如果需要使用其他的配置需要写成对象的形式
+    vm.$watch("number",function (){
+        console.log("test")
+    })
+</script>
+</body>
+</html>

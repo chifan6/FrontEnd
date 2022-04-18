@@ -11,24 +11,41 @@
     名：<input type="text" v-model="lastName"><br><br>
 <!--    当需要使用更多的方法时 Vue不推荐模板中使用下面的案例-->
 <!--    全名：{{`${firstName.slice(0,3)} - ${lastName.slice(0,3)}`}}-->
-<!--应该使用更简洁的方式-->
-    全名:{{fullName()}}
+<!--    使用更简洁的方式-->
+<!--    全名:{{fullName()}}-->
+<!--    使用计算属性的方式-->
+    全名：{{fullName}}
 </div>
 </body>
 <script>
     Vue.config.productionTip = false;
-    new Vue({
+    const vm = new Vue({
         el: "#root",
         data: {
             firstName: "张",
             lastName: "三"
         },
-        methods:{
+        /*methods:{
             fullName(){
                 const {firstName,lastName} = this
                 return `${firstName.slice(0,3)}-${lastName.slice(0,3)}`
             }
+        }*/
+        /*计算属性*/
+        computed:{
+            fullName:{
+                get(){
+                    // console.log(this)
+                    const {firstName,lastName} = this
+                    return `${firstName.slice(0,3)}-${lastName.slice(0,3)}`
+                },
+                set(v){
+                    const arr = v.split("-");
+                    this.firstName = arr[0];
+                    this.lastName = arr[1];
+                }
+            }
         }
-    })
+    });
 </script>
 </html>

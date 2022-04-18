@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定样式</title>
+</head>
+<script src="../js/vue.js"></script>
+<style>
+    .basic {
+        width: 200px;
+        height: 200px;
+        border: 1px black solid;
+    }
+    .happy{
+        background-color: mediumvioletred;
+    }
+    .normal{
+        background-color: rebeccapurple;
+    }
+    .feelSorry{
+        background-color: #00aa00;
+    }
+    .liqim1{
+        border-radius: 10px;
+    }
+    .liqim2{
+        border-color: red;
+        font-weight: bold;
+    }
+    .liqim3{
+        color: pink;
+    }
+</style>
+<body>
+<div id="root">
+    <p class="basic" :class="classObj" :style="styleObj">{{name}}</p>
+</div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "Jack",
+            //绑定一个属性的class
+            // className:"happy normal"
+            //绑定数组类型的class属性
+            // classArr:["happy","liqim1","liqim2","lciqim3"]
+            //绑定对象类型的class属性
+            classObj:{"happy":false,normal:false,"liqim1":false,feelSorry:false,"liqim2":true,"liqim3":false},
+            //绑定style样式
+            styleObj:{"backgroundColor":"pink"}  //如果需要使用的是数组来写style，则是在数组中写一个一个对象
+        },
+    })
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+</head>
+<script src="../js/vue.js"></script>
+<body>
+<div id="root">
+    <!--    v-if、v-else-if、v-else-->
+    <button v-on:click="number++">点击number++</button>
+    <h1>{{name}}</h1>
+    <h3 v-if="number % 4 === 1">Angular</h3>
+    <h3 v-else-if="number % 4 === 2">React</h3>
+    <h3 v-else-if="number % 4 === 3">Vue</h3>
+    <h3 v-else>test</h3>
+
+    <!--
+            v-for
+            该方法可以遍历数组、对象、字符串、和遍历次数
+            遍历数组使用的最多
+    -->
+    <ul>
+        <li v-for="(p,index) in personArr" :key="p.id">
+            {{p.name}}--{{p.age}}--{{index}}
+        </li>
+        <!--        <li v-for="i in 8">{{i}}</li>-->
+    </ul>
+</div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "三大框架",
+            number: 0,
+            personArr: [
+                {id: "001", name: "test1", age: 18},
+                {id: "002", name: "test2", age: 19},
+                {id: "003", name: "test3", age: 20}
+            ],
+            personObj: {
+                test1: {id: "001", age: 18},
+                test2: {id: "002", age: 20},
+                test3: {id: "003", age: 22}
+            }
+        },
+    })
+</script>
+</html>
