@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>列表排序</title>
+    <script src="../js/vue.js"></script>
 </head>
 <body>
-
+<div id="root">
+    <h1>人员列表</h1>
+    <input type="text" placeholder="请输入名字" v-model="keyword">
+    <button @click="isSort = 1">升序排序</button>
+    <button @click="isSort = 2">降序排序</button>
+    <button @click="isSort = 0">原顺序</button>
+    <h4 v-for="p in filPersons" :key="p.id">{{p.name}}-{{p.age}}-{{p.sex}}</h4>
+</div>
 </body>
+<script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            keyword: "",
+            //判断是否要排序 0 代表原顺序 == 1 代表升序 == 2 代表降序
+            isSort: 0,
+            persons:
+                [
+                    {id: "001", name: "马冬梅", age: 37, sex: "女"},
+                    {id: "002", name: "周冬雨", age: 30, sex: "女"},
+                    {id: "003", name: "周杰伦", age: 98, sex: "男"},
+                    {id: "004", name: "温兆伦", age: 88, sex: "男"},
+                ],
+        },
+        computed: {
+            filPersons() {
+                const arr = this.persons.filter((personObj) => {
+                    //再indexOf方法中每个字符串中都是存在的
+                    return personObj.name.indexOf(this.keyword) !== -1
+                })
+                //判断是否需要排序
+                return arr.sort((a, b) => {
+                    if (this.isSort) {
+                        return this.isSort === 1 ? a.age - b.age : b.age - a.age
+                    }
+                })
+            }
+        }
+    })
+</script>
 </html>
