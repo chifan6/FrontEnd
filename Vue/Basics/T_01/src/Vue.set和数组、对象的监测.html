@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>列表排序</title>
+    <title>Vue.set</title>
     <script src="../js/vue.js"></script>
 </head>
 <body>
 <div id="root">
     <h1>人员列表</h1>
     <input type="text" placeholder="请输入名字" v-model="keyword">
+    <br>
     <button @click="isSort = 1">升序排序</button>
+    <br>
     <button @click="isSort = 2">降序排序</button>
+    <br>
     <button @click="isSort = 0">原顺序</button>
+    <br>
+    <button @click="changemdm">点击修改马冬梅</button>
+    <br>
+    <button @click="addEnd">点击添加结束标签</button>
+    <br>
     <h4 v-for="p in filPersons" :key="p.id">{{p.name}}-{{p.age}}-{{p.sex}}</h4>
+    <h1 v-if="endl.one">结束{{endl.one}}</h1>
 </div>
 </body>
 <script>
     Vue.config.productionTip = false;
-
     const vm = new Vue({
         el: "#root",
         data: {
@@ -32,6 +40,10 @@
                     {id: "003", name: "周杰伦", age: 98, sex: "男"},
                     {id: "004", name: "温兆伦", age: 88, sex: "男"},
                 ],
+            endl:{
+                //当忘记添加属性时可以使用Vue.set和this.$set添加一个属性
+                //不能直接添加属性，不然没有进行数据代理(添加get和set的方法)导致Vue不能监测到
+            }
         },
         computed: {
             filPersons() {
@@ -45,6 +57,15 @@
                         return this.isSort === 1 ? a.age - b.age : b.age - a.age
                     }
                 })
+            }
+        },
+        methods: {
+            changemdm() {
+                //对数组的修改要使用Vue包装过后的7中方法来修改不能直接使用数组[索引]=xxx的方式修改或添加一个属性
+                this.persons.splice(0, 1, {id: "001", name: "test", age: 37, sex: "女"})
+            },
+            addEnd(){
+                this.$set(this.endl,"one","!!!")
             }
         }
     })
