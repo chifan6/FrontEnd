@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>内置命令</title>
-  <script src="../js/vue.js"></script>
+    <script src="../js/vue.js"></script>
 </head>
 <body>
 <div id="root">
-<!--    v-text 命令-->
-    <h1 v-text="name"></h1>
+    <!--    v-text 不会解析模板-->
+    <h2 v-text="name"></h2>
+    <!--    v-html 会解析模板 在用户需要进行输入信息的代码中会出现安全的问题(关于cookie的安全问题)-->
+    <h2 v-html="name"></h2>
+    <!--    v-cloak(没有值)  当Vue加载出来的时候会被删除 可以使用css（display:none）来配合使用-->
+    <h2 v-cloak></h2>
+    <!--    v-once 只动态渲染一次之后就不会进行渲染-->
+    <h2 v-once>初始化的数值为：{{once}}</h2>
+    <h2>当前的数值为：{{once}}</h2>
+    <button @click="once++">点我加1</button>
+    <!--    v-pre(没有值) 直接跳过模板的解析 可以使用在不需要插值语法和指令的标签-->
+    <a v-pre :href="ClickPer"></a>
 </div>
 <script>
     Vue.config.productionTip = false;
     const vm = new Vue({
-        el: "#root",
-        data:{
-            name:"test"
-        }
+        data: {
+            name: "<h3>command</h3>",
+            //v-once测试数据
+            once: 1,
+            //v-pre测试数据
+            ClickPer: "http://www.baidu.com",
+            pre: "TestPre",
+        },
     })
+    vm.$mount("#root")
 </script>
 </body>
 </html>

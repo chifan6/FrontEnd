@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h2>当前的数值<span v-text="n"></span></h2>
+    <h2>当前数值的十倍<span v-big="n" v-text="n"></span></h2>
+    <button @click="n++">点击数值加1</button>
+</div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            n: 0,
+        },
+        //自定义指令
+        directives: {
+            big(element, binding) {
+                element.innerText = binding.value * 10;
+            }
+        }
+    })
+</script>
+</html>
