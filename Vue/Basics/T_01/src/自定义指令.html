@@ -7,13 +7,20 @@
 </head>
 <body>
 <div id="root">
-    <h2>当前的数值<span v-text="n"></span></h2>
-    <h2>当前数值的十倍<span v-big="n" v-text="n"></span></h2>
+    <h2>当前的数值：<span v-text="n"></span></h2>
+    <h2>当前数值的十倍：<span v-big="n" v-text="n"></span></h2>
     <button @click="n++">点击数值加1</button>
+    <br>
+    <br>
+    <input type="text" v-focus-big="n">
 </div>
 </body>
 <script>
     Vue.config.productionTip = false;
+    //添加公共的指令
+    Vue.directive("big", function (element, binding) {
+        element.innerText = binding.value * 10;
+    });
 
     const vm = new Vue({
         el: "#root",
@@ -21,9 +28,36 @@
             n: 0,
         },
         //自定义指令
+        /*
+        * 指令进行更新时的时机：
+        *     使用 xxx(){}的方式时：
+        *           1、指令第一次绑定到元素时调用
+        *           2、当数据被更新的时候重新解析模板的时候调用一次
+        *     不使用 xxx(){}的方式时：
+        *           bind(){}:
+        *                   指令第一次绑定到元素时调用
+        *           inserted(){}:
+        *                       被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+        *           update(){}:
+        *                     当数据被更新的时候重新解析模板的时候调用一次
+        * */
         directives: {
-            big(element, binding) {
-                element.innerText = binding.value * 10;
+            //当绑定的元素需要获取焦点时不能使用（元素还未出现在其的父元素）
+            /*fbig(ele,binding){
+                ele.value = binding.value
+                ele.focus()
+            }*/
+            'focus-big': {
+                bind(el, binding) {
+                    el.value = binding.value
+                },
+                inserted(el, binding) {
+                    el.value = binding.value;
+                    el.focus();
+                },
+                update(el, binding) {
+                    el.value = binding.value * 10;
+                }
             }
         }
     })

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue生命周期</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el: "#root",
+        template: `
+          <div>
+          <h1>Vue</h1>
+          <h3 :style={opacity}>{{ test }}</h3>
+          <h3>当前的数值为：{{n}}</h3>
+          <button @click="n++">点击数值加1</button>
+          <button @click="destroyVm">别谋害我</button>
+          </div>
+        `,
+        data: {
+            test: "This is a string",
+            opacity: 1,
+            n:0
+        },
+        methods:{
+            destroyVm(){
+                this.$destroy();
+            }
+        },
+        //数据侦听和事件/侦听器的配置之前同步调用 此时data和watch的属性还没有生成
+        beforeCreate() {
+            console.log("beforeCreate")
+        },
+        //在实例创建完成后被立即同步调用 此时data和watch上的属性已经生成
+        created() {
+            console.log("created")
+        },
+        //在挂载之前调用 此时Vue已经在内存中生成了虚拟DOM还没有将真实的DOM渲染到页面上
+        beforeMount() {
+            console.log("beforeMount")
+        },
+        //在挂载后调用 此时Vue已经将真实的DOM渲染到页面上
+        //使用mounted生命周期钩子开启一个定时器
+        mounted() {
+            console.log("mounted")
+            this.timer = setInterval(() => {
+                this.opacity -= 0.01;
+                if (this.opacity <= 0) {
+                    this.opacity = 1;
+                }
+            }, 16)
+        },
+        //更新数据之前调用 此时Vue的数据是新的但页面没有渲染出来(页面的内容和数据不同步)
+        beforeUpdate(){
+            // console.log("beforeUpdate")
+        },
+        //更新数据后调用 此时页面已经渲染完成(页面的内容和数据同步)
+        updated(){
+            // console.log("updated")
+        },
+        //销毁vm（this.$destroy()）之前调用该钩子 可以在该钩子中关闭定时器、取消订阅... 不能在该钩子中修改数据
+        //销毁之前的数值都是可以使用的
+        beforeDestroy(){
+            clearInterval(this.timer)
+        },
+        //销毁vm之后调用 该钩子很少使用
+        destroyed(){
+            console.log("destroyed");
+        }
+    })
+</script>
+</body>
+</html>
