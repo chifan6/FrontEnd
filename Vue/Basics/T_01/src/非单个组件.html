@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非单个组件</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>{{name}}</h1>
+    <weather></weather>
+</div>
+<script>
+    Vue.config.productionTip = false
+
+    const weather = Vue.extend({
+        template:`
+        <div>
+          <h2>{{weather}}</h2>
+        </div>
+        `,
+        data(){
+            return {
+                weather: "rainy ",
+                time:"thirteen"
+            }
+        }
+    });
+    const time = Vue.extend({
+        data(){
+            return {
+
+            }
+        }
+    })
+    new Vue({
+        el: "#root",
+        data:{
+            name:"test"
+        },
+        components:{
+            weather
+        }
+    });
+</script>
+</body>
+</html>
