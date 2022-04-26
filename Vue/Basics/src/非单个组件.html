@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非单个组件</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h2>{{name}}</h2>
+    <date></date>
+    <weather></weather>
+    <mood></mood>
+</div>
+<script>
+    Vue.config.productionTip = false
+    Vue.component("mood", {
+        template: `
+          <div>
+          <h3>Mood：{{ mood }}</h3>
+          </div>
+        `,
+        data() {
+            return {
+                mood: "anxiety"
+            }
+        }
+    })
+
+    const weather = Vue.extend({
+        template: `
+          <div>
+          <h3>Weather：{{ weather }}</h3>
+          </div>
+        `,
+        data() {
+            return {
+                weather: "rainy ",
+                time: "thirteen"
+            }
+        }
+    });
+    const date = Vue.extend({
+        template: `
+          <div>
+          <h3>Date:{{ date }}</h3>
+          </div>
+        `,
+        data() {
+            return {
+                date: "2022/4/26"
+            }
+        }
+    })
+    new Vue({
+        el: "#root",
+        data: {
+            name: "DIARY"
+        },
+        components: {
+            weather,
+            date
+        }
+    });
+</script>
+</body>
+</html>
