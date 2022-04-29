@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件嵌套</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <school></school>
+</div>
+<script>
+    Vue.config.productionTip = false;
+
+    //定义student组件
+    const student = {
+        name: "student",
+        template: `
+        <div>
+        <h2>Student:{{name}}</h2>
+        </div>
+        `,
+        data() {
+            return {
+                name: `jock`
+            }
+        }
+    }
+    //定义school组件
+    const school = Vue.extend({
+        template: `
+          <div>
+          <h1>School:{{ name }}</h1>
+          <student></student>
+          </div>
+        `,
+        data() {
+            return {
+                name: "glnc"
+            }
+        },
+        components: {
+            student
+        }
+    })
+
+
+    const vm = new Vue({
+        el: "#root",
+        components: {
+            school
+        }
+    })
+
+    function Person(){
+        this.x = 1
+    }
+    Person.prototype.T = "test"
+    const p = new Person()
+    console.log(p)
+    console.dir(Person)
+</script>
+</body>
+</html>
