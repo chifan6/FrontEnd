@@ -2,7 +2,6 @@
   <div>
     <School/>
     <Student/>
-    <button @click="showMsg">点击事件</button>
   </div>
 </template>
 
@@ -16,11 +15,6 @@ export default {
     School,
     Student
   },
-  methods:{
-    showMsg(){
-      console.log(this)
-    }
-  }
 }
 </script>
 

@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-import plugin from "./plugin";
+import {mixin} from "./mixins"
+
 
 Vue.config.productionTip = false
-Vue.use(plugin);
+Vue.mixin(mixin)
 
 new Vue({
     el: "#app",

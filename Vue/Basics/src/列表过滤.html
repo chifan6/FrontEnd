@@ -43,7 +43,7 @@
         computed:{
             filPersons(){
                 return this.persons.filter((personObj) => {
-                    //再indexOf方法中每个字符串中都是存在的
+                    //在indexOf方法中每个字符串中的空格都是存在的
                     return personObj.name.indexOf(this.keyword) !== -1
                 })
             }
