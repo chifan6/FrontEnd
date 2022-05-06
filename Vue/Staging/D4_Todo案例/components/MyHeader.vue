@@ -18,7 +18,7 @@ export default {
     GetUserMsg() {
       if (!this.title) return
       const todoObj = {id:nanoid(),title:this.title,done:false}
-      this.$emit("AddTodo",todoObj)
+      this.AddTodo(todoObj)
       this.title = "";
     }
   }

@@ -2,12 +2,9 @@
   <div>
     <div class="todo-container">
       <div class="todo-wrap">
-        <!--        使用事件绑定(子向父传递参数)-->
-        <!--        <MyHeader @AddTodo="AddTodo"/>-->
-        <!--        使用ref(子向父传递参数)-->
-        <MyHeader ref="AddTodo"/>
+        <MyHeader :AddTodo="AddTodo"/>
         <List :todos="todos" :ChangeDone="ChangeDone" :delTodo="delTodo"/>
-        <MyFooter :todos="todos" @changeAll="changeAll" @ClearDone="ClearDone"/>
+        <MyFooter :todos="todos" :changeAll="changeAll" :ClearDone="ClearDone"/>
       </div>
     </div>
   </div>
@@ -53,8 +50,8 @@ export default {
       })
     },
     //清除已完成的todo
-    ClearDone() {
-      this.todos = this.todos.filter((todo) => {
+    ClearDone(){
+      this.todos = this.todos.filter((todo)=>{
         return todo.done === false
       })
     }
@@ -69,22 +66,15 @@ export default {
 
   watch: {
     //watch默认不进行深度监测,需要使用完整的形式
-    todos: {
+    todos:{
       //开启深度监视
       deep: true,
-      handler(value) {
+      handler(value){
         //localStorage.setItem("Todos")将数据存放到浏览器中，浏览器存储只识别字符串
         //需要使用JSON.stringify()将数组转化为字符串
         localStorage.setItem("Todos", JSON.stringify(value))
       }
     }
-  },
-
-  mounted() {
-    //使用ref的方式能够更灵活
-    setTimeout(()=>{
-      this.$refs.AddTodo.$on("AddTodo", this.AddTodo)
-    },3000)
   }
 };
 </script>

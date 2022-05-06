@@ -2,12 +2,9 @@
   <div>
     <div class="todo-container">
       <div class="todo-wrap">
-        <!--        使用事件绑定(子向父传递参数)-->
-        <!--        <MyHeader @AddTodo="AddTodo"/>-->
-        <!--        使用ref(子向父传递参数)-->
-        <MyHeader ref="AddTodo"/>
+        <MyHeader :AddTodo="AddTodo"/>
         <List :todos="todos" :ChangeDone="ChangeDone" :delTodo="delTodo"/>
-        <MyFooter :todos="todos" @changeAll="changeAll" @ClearDone="ClearDone"/>
+        <MyFooter :todos="todos" :changeAll="changeAll" :ClearDone="ClearDone"/>
       </div>
     </div>
   </div>
@@ -53,38 +50,20 @@ export default {
       })
     },
     //清除已完成的todo
-    ClearDone() {
-      this.todos = this.todos.filter((todo) => {
+    ClearDone(){
+      this.todos = this.todos.filter((todo)=>{
         return todo.done === false
       })
     }
   },
   data() {
     return {
-      //localStorage.getItem("Todos")获取回来的是一个字符串，字符串中没有数组中的方法
-      //需要使用JSON.parse()将字符串转化为数组
-      todos: JSON.parse(localStorage.getItem("Todos")) || []
+      todos: [
+        {id: "001", title: "title_1", done: true},
+        {id: "002", title: "title_2", done: false},
+        {id: "003", title: "title_3", done: true}
+      ]
     }
-  },
-
-  watch: {
-    //watch默认不进行深度监测,需要使用完整的形式
-    todos: {
-      //开启深度监视
-      deep: true,
-      handler(value) {
-        //localStorage.setItem("Todos")将数据存放到浏览器中，浏览器存储只识别字符串
-        //需要使用JSON.stringify()将数组转化为字符串
-        localStorage.setItem("Todos", JSON.stringify(value))
-      }
-    }
-  },
-
-  mounted() {
-    //使用ref的方式能够更灵活
-    setTimeout(()=>{
-      this.$refs.AddTodo.$on("AddTodo", this.AddTodo)
-    },3000)
   }
 };
 </script>

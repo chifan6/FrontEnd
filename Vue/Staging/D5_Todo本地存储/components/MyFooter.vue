@@ -13,7 +13,7 @@
 <script>
 export default {
   name: "Footer",
-  props: ["todos"],
+  props: ["todos","changeAll","ClearDone"],
   computed: {
     //todo的总数
     Total() {
@@ -29,19 +29,14 @@ export default {
         return this.Total === this.DoneTotal
       },
       set(value) {
-        this.$emit("changeAll",value)
+        this.changeAll(value)
       }
     }
   },
   methods:{
     //删除已完成的任务
     ChangeDone(){
-      //判断是否有已完成的todo
-      if(this.DoneTotal){
-        if (confirm("确定要清除已完成的任务吗?")) this.$emit("ClearDone")
-      }else {
-        alert("没有已完成的任务哦!")
-      }
+      if (confirm("确定要清除已完成的任务吗?")) this.ClearDone()
     }
   }
 };
