@@ -6,7 +6,7 @@
         <!--        <MyHeader @AddTodo="AddTodo"/>-->
         <!--        使用ref(子向父传递参数)-->
         <MyHeader ref="AddTodo"/>
-        <List :todos="todos" :ChangeDone="ChangeDone" :delTodo="delTodo"/>
+        <List :todos="todos"/>
         <MyFooter :todos="todos" @changeAll="changeAll" @ClearDone="ClearDone"/>
       </div>
     </div>
@@ -82,9 +82,9 @@ export default {
 
   mounted() {
     //使用ref的方式能够更灵活
-    setTimeout(()=>{
-      this.$refs.AddTodo.$on("AddTodo", this.AddTodo)
-    },3000)
+    this.$refs.AddTodo.$on("AddTodo", this.AddTodo)
+    this.$bus.$on("ChangeDone",this.ChangeDone)
+    this.$bus.$on("delTodo",this.delTodo)
   }
 };
 </script>

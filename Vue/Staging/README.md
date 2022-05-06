@@ -1,4 +1,4 @@
-###修改默认配置
+               ###修改默认配置
 - 使用vue inspect > output.js能显示webpack的配置
 - 在vue.config.js中能修改webpack中的配置信息
 
@@ -44,3 +44,13 @@
 - 使用ref的方式：
   - 1、可以在mounted生命周期钩子中使用 this.$refs.xxx.on("自定义事件“，"回调函数"),回调需要放在父组件上
   - 2、与v-on的方式相同
+
+### 全局事件总线
+  - 一、全局事件总线的条件
+    - 1、全部的组件和vm都能访问得到的属性($bus)
+    - 2、能使用 this.$emit、this.$on、this.$off。 
+  - 二、创建全局事件总线  
+    - Vue.prototype.$bus = this;
+  - 三、基于自定义事件使用：
+    - 1、在父组件需要接收数据的组件中使用this.$bus.$on()的方法绑定一个回调（回调在自身上），接收方
+    - 2、在需要发送数据的组件中使用this.$bus.$emit()发送数据，发送方
