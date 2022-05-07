@@ -11,24 +11,19 @@
 </template>
 
 <script>
-import PubSub from "pubsub-js";
-
 export default {
   name: "Itme",
   props: ["todo"],
-  methods: {
+  methods:{
     ChangeDone() {
       // this.ChangeDone(this.todo.id)
-      this.$bus.$emit("ChangeDone", this.todo.id)
+      this.$bus.$emit("ChangeDone",this.todo.id)
     },
-    delTodo() {
+    delTodo(){
       // this.delTodo(this.todo.id)
-      //使用全局事件总线
-      // this.$bus.$emit("delTodo",this.todo.id)
-      //发布消息
-      PubSub.publish("delTodo", this.todo.id);
+      this.$bus.$emit("delTodo",this.todo.id)
     }
-  },
+  }
 }
 </script>
 

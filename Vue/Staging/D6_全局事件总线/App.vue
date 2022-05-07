@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import PubSub from 'pubsub-js';
 import List from "./components/List";
 import Item from "./components/Item";
 import MyFooter from "./components/MyFooter";
@@ -40,7 +39,7 @@ export default {
       })
     },
     //删除一个todo
-    delTodo(msgName,id) {
+    delTodo(id) {
       if (confirm("确定要删除?")) {
         this.todos = this.todos.filter((todo) => {
           return todo.id !== id
@@ -84,15 +83,8 @@ export default {
   mounted() {
     //使用ref的方式能够更灵活
     this.$refs.AddTodo.$on("AddTodo", this.AddTodo)
-    this.$bus.$on("ChangeDone", this.ChangeDone)
-    // this.$bus.$on("delTodo",this.delTodo)
-    //订阅消息
-    this.sub = PubSub.subscribe("delTodo", this.delTodo);
-  },
-  beforeCreate() {
-    this.$bus.$off("ChangeDone");
-    //关闭订阅
-    PubSub.unsubscribe(this.sub);
+    this.$bus.$on("ChangeDone",this.ChangeDone)
+    this.$bus.$on("delTodo",this.delTodo)
   }
 };
 </script>
