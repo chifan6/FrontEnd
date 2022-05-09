@@ -120,23 +120,11 @@ body {
   color: #fff;
   background-color: #da4f49;
   border: 1px solid #bd362f;
-  margin-left: 5px;
-}
-
-.btn-edit {
-  color: #fff;
-  background-color: skyblue;
-  border: 1px solid #87CEEB;
 }
 
 .btn-danger:hover {
   color: #fff;
   background-color: #bd362f;
-}
-
-.btn-edit:hover {
-  color: #fff;
-  background-color: #00b3ee;
 }
 
 .btn:focus {

@@ -4,17 +4,9 @@
       <!--下面的方法修改了props不推荐使用-->
       <!--<input type="checkbox" v-model="todo.done" />-->
       <input type="checkbox" :checked="todo.done" @change="ChangeDone"/>
-      <span v-show="!todo.isEdit">{{ todo.title }}</span>
-      <input
-          type="text"
-          :value="todo.title"
-          v-show="todo.isEdit"
-          @blur="isBlur(todo,$event)"
-          ref="focus"
-      >
+      <span>{{ todo.title }}</span>
     </label>
     <button class="btn btn-danger" @click="delTodo">删除</button>
-    <button class="btn btn-edit" @click="ChangEdit(todo)">编辑</button>
   </li>
 </template>
 
@@ -35,28 +27,6 @@ export default {
       // this.$bus.$emit("delTodo",this.todo.id)
       //发布消息
       PubSub.publish("delTodo", this.todo.id);
-    },
-    ChangEdit(todo) {
-      //判断todo中是否存在isEdit属性
-      //不能使用todo.isEdit的判断方法 因为如果有的话isEdit的值默认为false会导致没有效果
-      if (todo.hasOwnProperty("isEdit")){
-          todo.isEdit = true
-      }else {
-        this.$set(todo, "isEdit", true)
-      }
-      //自动获取焦点
-      //Vue在函数执行完函数体的内容才会重新渲染模板
-      //当执行到获取焦点是还没有进行渲染输入框
-      //this.$refs.focus.focus()
-
-      //$nextTick会在DOM元素渲染后调用
-      this.$nextTick(function (){
-        this.$refs.focus.focus();
-      })
-    },
-    isBlur(todo,e){
-      todo.isEdit = false;
-      todo.title = e.target.value;
     }
   },
 }
