@@ -10,6 +10,7 @@
           :value="todo.title"
           v-show="todo.isEdit"
           @blur="isBlur(todo,$event)"
+          @keyup.e.enter="isBlur(todo,$event)"
           ref="focus"
       >
     </label>
@@ -55,7 +56,9 @@ export default {
       })
     },
     isBlur(todo,e){
+      //将内容显示到页面
       todo.isEdit = false;
+      if(!(e.target.value.trim())) return alert("修改不能为空!")
       todo.title = e.target.value;
     }
   },
