@@ -1,14 +1,17 @@
 <template>
   <div class="row">
-    <div class="card" v-for="user in info.users" :key="user.id">
-      <a :href="user.html_url" target="_blank">
+    <div class="card" v-for="info in info.users" :key="info.id">
+      <a :href="info.html_url" target="_blank">
         <img
-            :src="user.avatar_url"
+            :src="info.avatar_url"
             style="width: 100px"
         />
       </a>
-      <p class="card-text">{{user.login}}</p>
+      <p class="card-text">{{info.login}}</p>
     </div>
+    <h1 v-show="info.isFirst">Welcome!</h1>
+    <h1 v-show="info.isLoading">Loading....</h1>
+    <h1 style="color: red">{{info.error}}</h1>
   </div>
 </template>
 
@@ -18,14 +21,20 @@ export default {
   data() {
     return {
       info: {
-        users: []
+        users: [],
+        //是否时第一次加载
+        isFirst: true,
+        //是否加载中
+        isLoading: false,
+        //错误信息
+        error:""
       }
     }
   },
   mounted() {
     this.$bus.$on("getInfo",(info)=>{
-      this.info.users = info
-      console.log(info);
+      //使用ES6语法替换对象的方法，防止数据丢失，同时能保留该函数为纯函数
+      this.info = {...this.info,...info}
     })
   }
 }
