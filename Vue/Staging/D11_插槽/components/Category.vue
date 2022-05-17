@@ -11,7 +11,7 @@
 
     <!--插槽默认配置-->
     <slot name="video">
-      <h6>如果没又使用到该插槽则会使用默认的配置</h6>
+      <hr style="border: black 1px solid"/>
     </slot>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   props: ["title"],
   data() {
     return {
-      tests: ["test1", "test2", "test3", "test4"],
+      tests: ["test1", "test2", "test3"],
       tests2: ["test5"]
     }
   }
