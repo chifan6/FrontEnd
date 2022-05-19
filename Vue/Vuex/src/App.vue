@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="root">
     <Count/>
   </div>
 </template>
@@ -17,4 +17,8 @@ export default {
 </script>
 
 <style>
+#root{
+  width: 500px;
+  margin: 0 auto;
+}
 </style>

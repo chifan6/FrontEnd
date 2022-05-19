@@ -26,14 +26,25 @@ const mutations = {
         state.count -= value
     },
 };
+const getters = {
+    bigCount({count}) {
+        return count * 10
+    },
+    mood(){
+        return "Good"
+    }
+}
+
 const state = {
-    count: 0
+    count: 0,
+    weather:"Cloudy"
 };
 
 const store = new Vuex.Store({
     actions,
     mutations,
-    state
+    state,
+    getters
 })
 
 export default store
