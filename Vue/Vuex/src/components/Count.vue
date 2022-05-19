@@ -3,7 +3,8 @@
     <h2>The current sum is zero：{{count}}</h2>
     <h3>The sum is magnified 10 times：{{bigCount}}</h3>
     <h4>today's weather：{{weather}}</h4>
-    <h4>mood：{{mood}}</h4>
+<!--    <h4>mood：{{mood}}</h4>-->
+    <h4 style="color: #990033">The length of the Todos component is：{{todos.length}}</h4>
     <select v-model="typeInfo">
       <option :value="1">1</option>
       <option :value="2">2</option>
@@ -36,7 +37,8 @@ export default {
     //||
     //||
     // ...mapState({count:"count",weather:"weather"}),
-    ...mapState(['count','weather']),
+    ...mapState("CountOption",['count','weather']),
+    ...mapState("TodosOption",['todos']),
 
     /*bigCount() {
       return this.$store.getters.bigCount;
@@ -48,7 +50,7 @@ export default {
     //||
     //||
     // ...mapGetters({bigCount:"bigCount",mood:"mood"}),
-    ...mapGetters(["bigCount","mood"])
+    ...mapGetters("CountOption",["bigCount","mood"])
   },
   methods: {
     /*add() {
@@ -61,8 +63,7 @@ export default {
     //^^
     //||
     //||
-    ...mapMutations({add: "ADD",minus:"MINUS"}),
-
+    ...mapMutations("CountOption",{add: "ADD",minus:"MINUS"}),
     /*addOdd() {
       //分发addOdd actions
       this.$store.dispatch("addOdd", this.typeInfo)
@@ -74,7 +75,7 @@ export default {
     //||
     //||
     // ...mapActions({addOdd:"addOdd",asyncAdd:"asyncAdd"}),
-    ...mapActions(["addOdd","asyncAdd"])
+    ...mapActions("CountOption",["addOdd","asyncAdd"])
   }
 }
 </script>
