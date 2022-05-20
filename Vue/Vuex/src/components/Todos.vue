@@ -1,6 +1,12 @@
 <template>
   <div>
     <h4 style="color: #990033">The sum of the count component is：{{count}}</h4>
+    <h4>The first todo is：{{FirstName}}</h4>
+    <button>Click Add Sleep</button>
+    <br>
+    <button @click="addE">Click todo to the beginning of e</button>
+    <br>
+    <br>
     <input
         type="text"
         placeholder="Please enter your task name and press Enter to confirm"
@@ -26,20 +32,28 @@ export default {
   methods: {
     addTodo() {
       const todoObj = {id: nanoid(), title: this.typeInfo};
-      this.$store.state.todos.unshift(todoObj);
+      this.$store.commit("TodosOption/addTodo", todoObj)
+      this.typeInfo = "";
+    },
+    addE(){
+      const todoObj = {id: nanoid(), title: this.typeInfo};
+      this.$store.dispatch("TodosOption/addE", todoObj)
       this.typeInfo = "";
     }
   },
   computed: {
     todos() {
-      return this.$store.state.todos;
+      return this.$store.state.TodosOption.todos;
     },
     count() {
-      return this.$store.state.count
+      return this.$store.state.CountOption.count;
+    },
+    FirstName(){
+      return this.$store.getters["TodosOption/FirstName"]
     }
   },
   mounted() {
-    console.log(this)
+    // console.log(this.$store)
   }
 }
 </script>
