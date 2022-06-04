@@ -9,16 +9,18 @@
         <router-link class="list-group-item" active-class="active" to="/home/message">Message</router-link>
       </li>
     </ul>
-    <router-view></router-view>
+    <!--缓存路由组件-->
+    <!--include="组件里面的name属性名称"-->
+    <keep-alive include="News">
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  mounted() {
-    // console.log(this)
-  }
+
 }
 </script>
 
