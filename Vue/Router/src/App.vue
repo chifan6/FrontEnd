@@ -1,33 +1,31 @@
 <template>
   <div>
-      <div class="row">
-        <div class="col-xs-offset-2 col-xs-8">
-          <div class="page-header"><h2>Vue Router Demo</h2></div>
+    <Banner/>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-2">
+        <div class="list-group">
+          <router-link class="list-group-item" active-class="active" :to="{name:`about`}">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-2 col-xs-offset-2">
-          <div class="list-group">
-            <router-link class="list-group-item" active-class="active" :to="{name:`about`}">About</router-link>
-            <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="panel">
-            <div class="panel-body">
-              <router-view></router-view>
-            </div>
+      <div class="col-xs-6">
+        <div class="panel">
+          <div class="panel-body">
+            <router-view></router-view>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Banner from "@/components/Banner";
 
 export default {
   name: 'App',
   components: {
+    Banner
   }
 }
 </script>
@@ -38,8 +36,9 @@ export default {
 }
 
 button {
-  border: #5bc0de 1px solid;
+  border: #0b2c89 1px solid;
   background-color: #00b3ee;
+
 }
 
 button:hover {
