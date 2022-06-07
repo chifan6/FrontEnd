@@ -15,7 +15,7 @@ VueRouter.prototype.replace = function replace(location) {
     return originalReplace.call(this, location).catch(err => err)
 }
 
-export default new VueRouter({
+const router = new VueRouter({
         mode: "history",
         routes: [
             {
@@ -24,16 +24,52 @@ export default new VueRouter({
                 component: About
             },
             {
+
+                name: "home",
                 path: "/home",
                 component: Home,
                 children: [
                     {
+                        meta: {isAuthorization: true},
+                        name: "news",
                         path: "news",
-                        component: News
+                        component: News,
+                        /*
+                        独享路由守卫
+                        通过路由即将进入该组件时调用*/
+                        beforeEnter(to,from,next){
+                            if (to.meta.isAuthorization) {
+                                if (localStorage.username === "mouk") {
+                                    next()
+                                } else {
+                                    alert("用户名错误！")
+                                }
+                            } else {
+                                next()
+                            }
+                        }
                     },
                     {
+                        meta: {
+                            isAuthorization: true
+                        },
+                        name: "message",
                         path: "message",
                         component: Message,
+                        /*
+                        独享路由守卫
+                        通过路由即将进入该组件时调用*/
+                        /*beforeEnter(to,from,next){
+                            if (to.meta.isAuthorization) {
+                                if (localStorage.username === "mouk") {
+                                    next()
+                                } else {
+                                    alert("用户名错误！")
+                                }
+                            } else {
+                                next()
+                            }
+                        },*/
                         children: [
                             {
                                 name: "details",
@@ -53,10 +89,10 @@ export default new VueRouter({
                                         title:route.params.title
                                     }
                                 }*/
-                                props(route){
+                                props(route) {
                                     return {
                                         id: route.query.id,
-                                        title:route.query.title
+                                        title: route.query.title
                                     }
                                 }
                             }
@@ -67,3 +103,26 @@ export default new VueRouter({
         ]
     }
 )
+
+//前置路由守卫
+//进入路由组件之前调用
+/*router.beforeEach((to, from, next) => {
+    if (to.meta.isAuthorization) {
+        if (localStorage.username === "mouk") {
+            next()
+        } else {
+            alert("用户名错误！")
+        }
+    } else {
+        next()
+    }
+
+});*/
+
+//后置路由守卫
+//进入路由组件之后调用
+router.afterEach((to) => {
+    document.title = to.name
+})
+
+export default router

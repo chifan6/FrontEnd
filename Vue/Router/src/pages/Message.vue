@@ -50,7 +50,7 @@ export default {
     },
     replaceShow(m) {
       this.$router.replace({
-        name: `details`,
+        name: `Message`,
         query: {
           id: m.id,
           title: m.title
@@ -60,6 +60,23 @@ export default {
   },
   beforeDestroy() {
     console.log("Message组件即将被销毁")
+  },
+  //路由守卫钩子(生命周期钩子)
+  //通过路由来到此组件之前调用
+  beforeRouteEnter(to, from, next) {
+    if (to.meta.isAuthorization) {
+      if (localStorage.username === "mouk") {
+        next()
+      } else {
+        alert("用户名错误！")
+      }
+    } else {
+      next()
+    }
+  },
+  //即将离开切换到其他组件式调用
+  beforeRouteLeave(to, from, next) {
+    next()
   }
 }
 </script>

@@ -11,7 +11,7 @@
     </ul>
     <!--缓存路由组件-->
     <!--include="组件里面的name属性名称"-->
-    <keep-alive include="News">
+    <keep-alive :include="['News','Message']"]>
       <router-view></router-view>
     </keep-alive>
   </div>
