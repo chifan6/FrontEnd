@@ -5,6 +5,7 @@ import News from "../pages/News";
 import Message from "../pages/Message";
 import Details from "../pages/Details";
 
+//关闭重复点击控制台抱错的提示
 const originalPush = VueRouter.prototype.push
 const originalReplace = VueRouter.prototype.replace
 
